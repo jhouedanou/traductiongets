@@ -1,90 +1,53 @@
-# 🚀 Guide Rapide : Déploiement Automatique GitHub → OVH
+# 🚀 Guide rapide : déploiement vers GitHub Pages
 
-## ⚡ Configuration en 3 étapes (5 minutes)
+## Configuration en 3 étapes
 
-### 1️⃣ Pousser le code sur GitHub
+### 1️⃣ Activer GitHub Pages
+
+Sur GitHub : **Settings** → **Pages** → **Source** → **GitHub Actions**
+
+### 2️⃣ Pousser le code
 
 ```bash
-# Si ce n'est pas déjà fait
 git add .
-git commit -m "Setup automated FTP deployment"
+git commit -m "Configure GitHub Pages deployment"
 git push origin main
 ```
 
-### 2️⃣ Configurer les Secrets GitHub
+### 3️⃣ Vérifier le déploiement
 
-**Sur GitHub** : `Settings` → `Secrets and variables` → `Actions` → `New repository secret`
-
-Ajoutez ces 4 secrets :
-
-```
-FTP_HOST      → ftp.cluster002.hosting.ovh.net
-FTP_USER      → gets
-FTP_PASSWORD  → Hs9Txr5H4
-FTP_PATH      → /
-```
-
-### 3️⃣ C'est tout ! 🎉
-
-Le déploiement est maintenant automatique à chaque `git push` !
-
----
-
-## 📺 Voir vos déploiements
-
-**GitHub** → Onglet `Actions` → Workflow "Deploy to OVH via FTP"
+- Ouvrir l'onglet **Actions**
+- Attendre le workflow **Deploy to GitHub Pages**
+- Ouvrir l'URL publiée dans l'environnement `github-pages`
 
 ---
 
 ## 🔄 Workflow quotidien
 
 ```bash
-# 1. Modifier vos fichiers
+# 1. Modifier les fichiers du site
 # 2. Commiter
 git add .
-git commit -m "Mise à jour du contenu"
+git commit -m "Mise à jour du site"
 
 # 3. Pousser
 git push origin main
-
-# ✨ Déploiement automatique sur OVH !
 ```
+
+Le déploiement se lance automatiquement.
 
 ---
 
-## 📚 Documentation complète
+## ⚠️ Limites à garder en tête
 
-Voir [GITHUB-ACTIONS-SETUP.md](GITHUB-ACTIONS-SETUP.md) pour :
-- Dépannage
-- Déploiement manuel
-- Options avancées
-- Notifications
+- GitHub Pages héberge uniquement du contenu statique
+- Le dossier `backend/` n'est pas déployé
+- Les fichiers `.md` de documentation ne sont pas publiés
 
 ---
 
-## ⚠️ IMPORTANT : Sécurité
+## 🆘 En cas de problème
 
-Le fichier `deploy-ftp.sh` contient vos identifiants FTP en clair.
-Il est maintenant dans `.gitignore` et ne sera **jamais** poussé sur GitHub.
-
-✅ GitHub Actions utilise des secrets chiffrés (sécurisé)
-❌ Ne commitez jamais `deploy-ftp.sh` (dangereux)
-
----
-
-## 💡 Astuce
-
-Pour vérifier que `deploy-ftp.sh` n'est pas tracké :
-
-```bash
-git status
-# deploy-ftp.sh ne doit PAS apparaître
-```
-
-Si il apparaît, supprimez-le du tracking :
-
-```bash
-git rm --cached deploy-ftp.sh
-git commit -m "Remove sensitive file from tracking"
-git push
-```
+1. vérifier que **Pages** utilise **GitHub Actions** comme source
+2. vérifier l'exécution du workflow dans **Actions**
+3. relancer le workflow manuellement si nécessaire
