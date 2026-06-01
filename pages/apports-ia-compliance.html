@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apports de l'Intelligence artificielle à la Compliance - G-ET-S</title>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<!-- Isotope JS for filtering -->
+<script src="https://unpkg.com/isotype-layout@3/dist/isotope.pkgd.js"></script>
+<style>
+        /* Template d'article élégant - Version réutilisable */
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        .article-header {
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-header h1 {
+            color: #1a202c;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .article-meta {
+            background: rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .article-content .card {
+            border: none;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+        }
+
+        .article-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin: 2rem 0 3rem 0;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-image img {
+            transition: transform 0.3s ease;
+        }
+
+        .article-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .article-text {
+            font-size: 1.1rem;
+            color: #2d3748;
+            line-height: 2;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-text.lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+
+        .article-text p {
+            margin-bottom: 1.8rem;
+        }
+
+        .quote-highlight {
+            font-style: italic;
+            color: #667eea;
+            font-weight: 500;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .quote-highlight::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .nav-buttons {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .nav-buttons .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .btn-outline-primary {
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .nav-buttons .btn-outline-primary:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Animation d'entrée */
+        .article-content {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-text {
+                font-size: 1.125rem;
+                text-align: left;
+            }
+
+            .article-text.lead {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+
+            .article-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Styles supplémentaires pour différents types de contenu */
+        .article-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #667eea;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .article-list {
+            background: rgba(102, 126, 234, 0.03);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .article-list ul {
+            margin-bottom: 0;
+        }
+
+        .article-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .author-info {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-style: italic;
+            color: #4a5568;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<main class="container mt-4 mb-5">
+<div class="row justify-content-center">
+<div class="col-12 article-container">
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-4">
+<ol class="breadcrumb">
+<li class="breadcrumb-item" data-i18n="page_apports_ia_compliance.accueil"><a href="../index.html">Accueil</a></li>
+<li class="breadcrumb-item" data-i18n="page_apports_ia_compliance.generalites">Généralités</li>
+<li aria-current="page" class="breadcrumb-item active" data-i18n="page_apports_ia_compliance.apports_de_lintelligence_artificielle_a_la_co">Apports de l'Intelligence artificielle à la Compliance</li>
+</ol>
+</nav>
+<!-- Article header -->
+<div class="article-header">
+<h1 class="display-8" data-i18n="page_apports_ia_compliance.apports_de_lintelligence_artificielle_a_la_co_2">Apports de l'Intelligence artificielle à la Compliance</h1>
+<div class="article-meta d-flex align-items-center">
+<i class="fas fa-calendar-alt me-2"></i>
+<span class="me-3" data-i18n="page_apports_ia_compliance.publie_le_24_septembre_2025">Publié le 24 septembre 2025</span>
+<i class="fas fa-tag me-2"></i>
+<span data-i18n="page_apports_ia_compliance.generalites_contributions">Généralités - Contributions</span>
+</div>
+</div>
+<!-- Article content -->
+<div class="article-content">
+<div class="card">
+<div class="card-body p-4 p-md-5">
+<!-- Paragraphe d'introduction (lead) -->
+<div class="article-text" data-i18n="page_apports_ia_compliance.en_tant_que_membre_du_comite_scientifique_de_">
+                                En tant que membre du Comité Scientifique de la collection Ad Valorem de l'éditeur L'Harmattan, il m'a été demandé un avis sur le livre en cours de rédaction « Les apports de l'intelligence artificielle et la Compliance ».
+                            </div>
+<div class="article-image text-center">
+<img alt="Salariés et Dirigeants en Confiance" class="img-fluid" src="../images/nouvelleversion/image3.jpg" style="max-height: 400px; object-fit: contain; width: 100%;"/>
+</div>
+<!-- Contenu principal de l'article -->
+<div class="article-text">
+<p data-i18n="page_apports_ia_compliance.nayant_pas_de_competences_particulieres_sur_l">N'ayant pas de compétences particulières sur l'IA, je me suis contenté de rédiger l'avant-propos qui suit.</p>
+<br/>
+<h5 data-i18n="page_apports_ia_compliance.avant_propos_reflexions_dun_beotien_de_lia_et"><strong>AVANT-PROPOS : RÉFLEXIONS D'UN BÉOTIEN DE L'IA ET DE LA COMPLIANCE</strong></h5>
+<br/>
+<p data-i18n="page_apports_ia_compliance.maintenant_depuis_plus_dune_annee_le_systeme_">Maintenant depuis plus d'une année, le système d'IA « ChatGPT4 » a été rendu disponible pour le grand public. Les grands concepteurs/fournisseurs de ces nouveaux services d'IA dite « générative », dans une ambiance de forte émulation entre eux, ont déployé leur force de frappe marketing. L'effet boule de neige a joué, créant un phénomène de déferlement. Beaucoup de personnes et d'organisations, pas nécessairement qualifiées, ont vu une opportunité de se faire connaître en prenant la parole dans les médias et en publiant articles ou livres… Pour le béotien curieux que je suis, c'est un peu comme se désaltérer à une bouche d'incendie. Quelques recherches ponctuelles pour trouver une réponse à mes questions ont été loin de m'éclairer.</p>
+<p data-i18n="page_apports_ia_compliance.or_la_variete_des_systemes_dia_la_rapidite_da">Or, la variété des systèmes d'IA, la rapidité d'arrivée de nouveaux outils, la difficulté intrinsèque de vraiment comprendre « comment ça marche », à quoi cela peut servir en bien et les risques de fausses routes à cause des biais sont des freins bien réels.</p>
+<p data-i18n="page_apports_ia_compliance.une_interessante_approche_possible_consiste_a">Une intéressante approche possible consiste à partir d'exemples d'utilisation de l'IA sur une spécialité, telle que la Compliance, activité normalement connue des dirigeants.</p>
+<p data-i18n="page_apports_ia_compliance.aussi_lorsque_en_tant_que_membre_du_comite_sc">Aussi lorsque, en tant que membre du Comité Scientifique de la collection Ad Valorem de l'Harmattan, j'ai été sollicité pour relire le présent ouvrage, je l'ai fait in extenso avec intérêt. J'y ai beaucoup appris, y compris, sur la compliance ! La compliance est observée essentiellement d'un point de vue financier, bancaire, fiscal, et aussi suivant le prisme de la gouvernance et des RH.</p>
+<p data-i18n="page_apports_ia_compliance.bien_des_chapitres_de_cet_ouvrage_sadressent_">Bien des chapitres de cet ouvrage s'adressent aussi aux décideurs politiques et économiques, aux professionnels de la compliance, du droit et du chiffre, aux ingénieurs en Intelligence Artificielle et aux étudiants et à toutes les personnes s'intéressant à la compliance.</p>
+<p data-i18n="page_apports_ia_compliance.dautres_beotiens_devraient_apprecier_a_la_lec">D'autres béotiens devraient apprécier à la lecture de ce livre, accessible et agrémenté d'exemples concrets, et y revenir à l'occasion d'une nouvelle interrogation.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation buttons -->
+<div class="nav-buttons d-flex justify-content-center">
+<a class="btn btn-outline-primary" data-i18n="page_apports_ia_compliance.retour_a_laccueil" href="../index.html">
+<i class="fas fa-home me-2"></i>Retour à l'accueil
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Contribution footer -->
+<div id="contribution-footer-placeholder"></div>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Homepage functionality script -->
+<script src="../js/homepage.js"></script>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+<script src="../assets/js/popper.min.js"></script>
+</body>
+</html>

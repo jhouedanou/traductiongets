@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Actualités de Gouvernance &amp; Structures" name="description"/>
+<title>Actualités - G &amp; S</title>
+<link href="css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/i18n.js"></script>
+    <script src="js/includes.js"></script>
+<style>
+            body { background: linear-gradient(180deg, #eef2f8 0%, #ffffff 35%); }
+            .news-hero {
+                padding: 72px 0 48px;
+                text-align: center;
+                color: #0f172a;
+            }
+            .news-hero h1 {
+                font-weight: 800;
+                font-size: clamp(2.25rem, 2.8vw, 3rem);
+                letter-spacing: -0.02em;
+                margin-bottom: 12px;
+            }
+            .news-hero p {
+                font-size: 1.05rem;
+                max-width: 720px;
+                margin: 0 auto;
+                color: #334155;
+            }
+            .hero-content {
+                margin-bottom: 12px;
+            }
+            .hiteam-logo {
+                max-height: 80px;
+                width: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                transition: all 0.3s ease;
+            }
+            .hiteam-logo:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            }
+            @media (max-width: 768px) {
+                .hero-content {
+                    flex-direction: column;
+                    text-align: center;
+                }warp-cli dns families malware
+
+                .hero-content h1 {
+                    margin-right: 0 !important;
+                    margin-bottom: 16px;
+                }
+                .hiteam-logo {
+                    max-height: 60px;
+                }
+            }
+            .news-list {
+                max-width: 1080px;
+                margin: 0 auto 72px;
+                display: grid;
+                gap: 28px;
+            }
+            .news-card {
+                background: rgba(255, 255, 255, 0.96);
+                border-radius: 28px;
+                padding: 36px 42px;
+                box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+                border: 1px solid rgba(148, 163, 184, 0.18);
+                position: relative;
+                overflow: hidden;
+            }
+            .news-card::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 60%);
+                opacity: 0.75;
+                pointer-events: none;
+            }
+            .news-card h2 {
+                font-size: clamp(1.4rem, 2vw, 1.7rem);
+                color: #1f2937;
+                font-weight: 700;
+                margin-bottom: 18px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .event-logo {
+                max-height: 50px;
+                width: auto;
+                border-radius: 6px;
+            }
+            .news-card p {
+                color: #475569;
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            .news-date {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #1d4ed8;
+                letter-spacing: 0.02em;
+                text-transform: uppercase;
+                margin-bottom: 16px;
+            }
+            .news-date i { font-size: 1rem; }
+            .news-card a.news-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                background: linear-gradient(135deg, #2563eb 0%, #4c1d95 100%);
+                color: #ffffff;
+                padding: 12px 22px;
+                border-radius: 14px;
+                text-decoration: none;
+                font-weight: 600;
+                margin-top: 22px;
+                position: relative;
+                z-index: 1;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+            .news-card a.news-link:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 16px 34px rgba(37, 99, 235, 0.35);
+            }
+            .news-placeholder {
+                border: 2px dashed rgba(148, 163, 184, 0.4);
+                background: rgba(255, 255, 255, 0.75);
+                color: #64748b;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 48px 32px;
+            }
+            .news-placeholder p { max-width: 420px; }
+            .section-divider {
+                padding-top: 24px;
+            }
+            .section-divider h1 {
+                font-size: clamp(2rem, 2.5vw, 2.5rem);
+            }
+            .additional-info {
+                margin-top: 16px;
+            }
+            @media (max-width: 768px) {
+                .news-card { padding: 28px 24px; border-radius: 22px; }
+                .news-list { gap: 20px; }
+            }
+        </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div id="nav-placeholder"></div>
+<main>
+<section class="news-hero">
+<div class="container">
+<div class="hero-content d-flex align-items-center justify-content-center flex-wrap">
+<h1 class="me-4 mb-3" data-i18n="page_actualites.actualites_futures">Actualités futures</h1>
+</div>
+<p data-i18n="page_actualites.7_juillet_2026">7 juillet 2026</p>
+</div>
+</section>
+<section class="news-list">
+<article class="news-card">
+<div class="news-date"><i class="fas fa-calendar-day"></i>7 juillet 2026</div>
+<h2 data-i18n="page_actualites.simulation_de_reunions_de_conseil_dadministra">Simulation de réunions de Conseil d'Administration</h2>
+<p data-i18n="page_actualites.guy_le_pechon_sera_lun_des_deux_animateurs_de">
+                        Guy Le Péchon sera l'un des deux animateurs de l'après-midi consacrée à des simulations avec jeux de rôles pour deux réunions de Conseil d'Administration.
+                    </p>
+<p data-i18n="page_actualites.cet_apres_midi_se_situe_a_la_fin_des_cours_se">
+                        Cet après-midi se situe à la fin des cours se déroulant actuellement du Certificat de Centrale-Supélec Executive Education pour les membres en place ou potentiels de Comex et Codir.
+                    </p>
+<p data-i18n="page_actualites.ainsi_les_participants_amelioreront_leur_conn">
+                        Ainsi, les participants amélioreront leur connaissance des relations attendues entre les Comex/ouCodir et les Conseils d'Administration.
+                    </p>
+</article>
+</section>
+<section class="news-hero section-divider">
+<div class="container">
+<h1 data-i18n="page_actualites.passe_recent">Passé récent</h1>
+</div>
+</section>
+<section class="news-list">
+<article class="news-card">
+<div class="news-date"><i class="fas fa-calendar-day"></i>24 avril 2026</div>
+<h2 data-i18n="page_actualites.premiere_journee_du_nouveau_certificat_de_for">Première journée du nouveau Certificat de formation « Comex Codir, Gouvernance 5.0 »</h2>
+<p data-i18n="page_actualites.premiere_journee_du_nouveau_certificat_de_for_2">
+                        Première journée du nouveau Certificat de formation « Comex Codir, Gouvernance 5.0 » de Centrale-Supélec Executive Education.
+                    </p>
+<p data-i18n="page_actualites.voir_les_details_a_la_page_formation_au_comex">
+                        Voir les détails à la page « Formation au Comex Codir ».
+                    </p>
+<p data-i18n="page_actualites.g_s_a_participe_a_son_elaboration_et_animera_">
+                        G &amp; S a participé à son élaboration et animera plusieurs cours.
+                    </p>
+<p data-i18n="page_actualites.la_lecture_duprogramme_detailledonne_tous_les">
+                        La lecture du <a href="images/2025 09 18 Fiche programme_GV05_26_Executive_Certificate_Gouvernance_5_0_2025 (002).pdf" rel="noopener" target="_blank">programme détaillé</a> donne tous les détails.
+                    </p>
+<a class="news-link" href="pages/certificat-centrale.html">
+                        Voir les détails
+                        <i aria-hidden="true" class="fas fa-arrow-right"></i>
+</a>
+</article>
+<article class="news-card">
+<div class="news-date"><i class="fas fa-calendar-day"></i>23 avril 2026 — 18 h</div>
+<h2 data-i18n="page_actualites.seance_inaugurale_du_certificat_de_centrale_s">Séance inaugurale du Certificat de Centrale-Supélec Executive Education pour les membres en place ou à venir de Comex Codir</h2>
+<p data-i18n="page_actualites.avecpascal_picq_paleoanthropologue_de_renom_u">
+                        Avec <strong>Pascal Picq</strong>, paléoanthropologue de renom : une conférence inédite sur l'anthropologie et l'évolution des entreprises.
+                    </p>
+<a class="news-link" href="https://my.weezevent.com/conference-anthropologie-et-evolution-des-entreprises" rel="noopener" target="_blank">
+                        Pour voir le contenu de la conférence et s'inscrire, cliquer ici
+                        <i aria-hidden="true" class="fas fa-arrow-up-right-from-square"></i>
+</a>
+</article>
+<article class="news-card">
+<div class="news-date"><i class="fas fa-calendar-day"></i>15 novembre 2025</div>
+<h2 data-i18n="page_actualites.salon_du_livre_des_polytechniciens">Salon du livre des polytechniciens</h2>
+<p data-i18n="page_actualites.photo_du_standavec_guy_le_pechon_accompagne_d">
+<a href="https://www.g-et-s.com/images/20251115.jpg" rel="noopener" target="_blank">Photo du stand</a> avec Guy Le Péchon accompagné de Catherine Montagnon,
+                        polytechnicienne, et son livre « L’humanité, les médecins et le travail :
+                        des changements de paradigme ? » à sortir très prochainement.
+                    </p>
+<p data-i18n="page_actualites.presentation_et_dedicace_de_livres_en_particu">
+                        Présentation et dédicace de livres en particulier « Le Monde et la
+                        gouvernance des ETI ».
+                    </p>
+<a class="news-link" href="https://www.g-et-s.com/pages/livre-eti.html">
+                        Voir l'article sur le monde et la gouvernance des ETI
+                        <i aria-hidden="true" class="fas fa-arrow-right"></i>
+</a>
+</article>
+<article class="news-card">
+<div class="news-date"><i class="fas fa-calendar-day"></i>15 octobre 2025</div>
+<h2 data-i18n="page_actualites.soiree_hi_team">
+<span>Soirée Hi-Team</span>
+<a class="hiteam-logo-link" href="https://t.ly/4o3Tq" rel="noopener" target="_blank">
+<img alt="Hi-Team Logo" class="hiteam-logo" onerror="this.style.display='none'" src="includes/hiteam.jpg"/>
+</a>
+</h2>
+<p data-i18n="page_actualites.presentation_par_guy_le_pechon_dextraits_des_">
+                        Présentation par Guy Le Péchon d'extraits des résultats de l'étude G &amp; S de la féminisation des Instances de Gouvernance des sociétés du CA40 à fin mai 2025. Pour visionner la vidéo cliquer <a href="https://www.youtube.com/watch?v=LkX9PxGCDUQ" rel="noopener" target="_blank">ici</a>.
+                    </p>
+<p data-i18n="page_actualites.puis_la_videode_valerie_lejeune_comment_le_ce">
+                        Puis, <a href="https://t.ly/4o3Tq" target="_blank">la vidéo</a> de Valérie Lejeune « Comment le Certificat COMEX CODIR, Gouvernance 5.0 de Centrale Supélec Executive Education a été élaboré»
+                    </p>
+<!-- <a class="news-link" href="https://t.ly/4o3Tq" target="_blank" rel="noopener">
+                        https://t.ly/4o3Tq
+                        <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a> -->
+</article>
+<article class="news-card">
+<div class="news-date"><i class="fas fa-calendar-day"></i>14 octobre 2025</div>
+<h2 data-i18n="page_actualites.soiree_mixite_des_instances_comex_codir_et_ca">Soirée : Mixité des instances (COMEX/CODIR) et cadres dirigeant(e)s</h2>
+<p data-i18n="page_actualites.g_s_a_lorigine_de_levenement_propose_aux_comi">
+                        G &amp; S, à l'origine de l'évènement proposé aux Comités Carrières des associations d'anciens de grandes écoles (G16+), poursuit la dynamique de la loi « Rixain ». Après avoir contribué à la conception de la soirée en présentiel du 14 octobre 2025 en présence de Madame la Députée Marie-Pierre Rixain, nous avons le plaisir de partager l'invitation officielle.
+                    </p>
+<a class="news-link" href="https://www.emlyon-alumni.com/fr/event/conference-g16-carrieres-mixite-des-instances-dirigeantes-etat-des-lieux-actions-engagees-et-defis-persistants/2025/09/15/593" rel="noopener" target="_blank">
+                        Consulter l'invitation
+                        <i aria-hidden="true" class="fas fa-arrow-up-right-from-square"></i>
+</a>
+<p class="additional-info" data-i18n="page_actualites.presentation_par_guy_le_pechon_dextraits_des__2">
+                        Présentation par Guy Le Péchon d'extraits des résultats de l'étude G &amp; S de la féminisation des Instances de Gouvernance des sociétés du CA40 à fin mai 2025.
+                    </p>
+<p data-i18n="page_actualites.puis_comment_le_certificat_comex_codir_gouver">
+                        Puis, comment le certificat COMEX CODIR Gouvernance 5.0 a été élaboré par Valérie Lejeune.
+                    </p>
+<a class="news-link" href="images/compte-rendu-soiree-mixite-2025.pdf" rel="noopener" target="_blank">
+                        Compte-rendu de la riche soirée
+                        <i aria-hidden="true" class="fas fa-file-pdf"></i>
+</a>
+</article>
+</section>
+</main>
+<div id="footer-placeholder"></div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Gouvernance &amp; Structures" name="keywords"/>
+<title>Assises de la parité 2012 et 2023 - G-ET-S</title>
+<!-- Bootstrap CSS CDN -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- Custom theme CSS -->
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS CDN -->
+<script crossorigin="anonymous" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 40px;
+        }
+        
+        .page-title {
+            color: #1e73be;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .event-header {
+            background-color: #efefef;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-date {
+            background: #1e73be;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .event-location {
+            font-size: 1.2em;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            color: #1e73be;
+            border-bottom: 2px solid #1e73be;
+            padding-bottom: 10px;
+            margin-top: 35px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .speaker-card {
+            background-color: #efefef;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .speaker-name {
+            color: #1e73be;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .speaker-title {
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .topic-card {
+            background: white;
+            border-left: 4px solid #28a745;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background-color: #efefef;
+            border-left: 4px solid #17a2b8;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            background-color: #efefef;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid #28a745;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 5px;
+        }
+        
+        .btn-primary-custom {
+            background-color: #1e73be;
+            border-color: #1e73be;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #155a8a;
+            border-color: #155a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(30, 115, 190, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .back-to-home {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2em;
+            }
+            .main-container {
+                padding: 25px;
+                margin: 10px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/includes.js"></script>
+<!-- Isotope JS for filtering -->
+<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.js"></script>
+<style>
+	/* unified-construction-style */
+	body { background-color: #efefef !important; }
+	.spinner-container, .construction-spinner { display: none !important; }
+	.back-link { background-color: #1e73be !important; }
+	.btn-primary-custom { background-color: #1e73be !important; background-image: none !important; }
+	</style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<!-- Main content -->
+<main class="container-fluid pt-4 pb-4">
+<div class="container main-container">
+<h1 class="page-title" data-i18n="page_assises_parite.assises_de_la_parite_2012_et_2023">Assises de la parité 2012 et 2023</h1>
+<h2 class="section-title" data-i18n="page_assises_parite.forum_de_la_mixite_21_decembre_2012"><i class="fas fa-calendar text-primary me-2"></i>Forum de la Mixité - 21 décembre 2012</h2>
+<div class="highlight-box">
+<p data-i18n="page_assises_parite.au_forum_de_la_mixite_du_21_decembre_2012_guy">Au Forum de la Mixité du 21 décembre 2012, Guy Le Péchon a été l'un des intervenants au sein de l'atelier <strong>Leyders Associates</strong> sur le thème :</p>
+<h4 data-i18n="page_assises_parite.se_positionner_pour_etre_administrable_femini" style="color: #1e73be; font-style: italic;">"Se positionner pour être administrable. Féminiser son board."</h4>
+<p data-i18n="page_assises_parite.il_a_evoque_les_profils_des_administratrices_">Il a évoqué les profils des administratrices au sein de nombreuses sociétés cotées sur Euronext et suggéré surtout penser à convaincre les Présidents d'élargir de façon professionnelle les cooptations des membres de leurs Conseils.</p>
+</div>
+<h2 class="section-title" data-i18n="page_assises_parite.webinaire_8_mars_2023"><i class="fas fa-video text-primary me-2"></i>Webinaire - 8 mars 2023</h2>
+<div class="speaker-card">
+<p data-i18n="page_assises_parite.reprenant_mis_a_jour_des_elements_de_son_inte">Reprenant mis à jour des éléments de son intervention enregistrée - Assises de la parité 2012 et 2023 - le 8 mars 2023 dans un Webinaire organisé par le <strong>Centre des Professions financières</strong>, fin juin 2023, Guy Le Péchon a été interviewé par <strong>Lucille Desjonquères</strong> au cours de la séance d'inauguration à <strong>Bercy des Assises de la Parité</strong>.</p>
+<p data-i18n="page_assises_parite.il_a_pu_donner_un_apercu_de_la_situation_de_l">Il a pu donner un aperçu de la situation de la féminisation des Instances de Gouvernance (Conseils d'Administration ou de Surveillance, COMEX et CODIR) des sociétés du CAC 40 à fin juin 2023.</p>
+<div class="text-center my-4">
+<a class="btn btn-primary-custom" href="https://www.youtube.com/watch?v=d0J-_e489vg&amp;t=70s" target="_blank">
+<i class="fas fa-play me-2"></i>
+                        Voir la vidéo de l'interview
+                    </a>
+</div>
+</div>
+<h2 class="section-title" data-i18n="page_assises_parite.presentation_de_letude"><i class="fas fa-chart-line text-primary me-2"></i>Présentation de l'étude</h2>
+<div class="text-center my-4">
+<p data-i18n="page_assises_parite.copie_de_lune_des_planches_majeures_projetees"><strong>Copie de l'une des planches majeures projetées</strong></p>
+<img alt="Graphique Assises de la Parité" src="../images/fem.png" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"/>
+</div>
+<div class="highlight-box">
+<h4 data-i18n="page_assises_parite.obtenir_le_rapport_complet"><i class="fas fa-envelope text-info me-2"></i>Obtenir le rapport complet</h4>
+<p data-i18n="page_assises_parite.g_s_enverra_copie_de_la_presentation_de_letud" style="font-weight: 600;">G &amp; S enverra copie de la présentation de l'étude et du rapport détaillé à fin juin 2023 aux personnes le demandant indiquant leurs coordonnées à <a href="mailto:contact@g-et-s.com" style="color: #1e73be; text-decoration: underline;">contact@g-et-s.com</a></p>
+</div>
+<!-- Back to home section -->
+<div class="back-to-home">
+<a class="btn btn-primary-custom" href="../index.html">
+<i class="fas fa-home me-2"></i>
+                    Retour à l'accueil
+                </a>
+</div>
+</div>
+</main>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

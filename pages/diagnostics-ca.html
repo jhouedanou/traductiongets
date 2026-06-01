@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Gouvernance &amp; Structures" name="keywords"/>
+<title>Diagnostics CA - G-ET-S</title>
+<!-- Bootstrap CSS CDN -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- Custom theme CSS -->
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS CDN -->
+<script crossorigin="anonymous" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<style>
+        body {
+            background-color: #efefef;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .construction-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .logo-section {
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+        
+        .construction-title {
+            color: #1e73be;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .construction-subtitle {
+            color: #6c757d;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .construction-description {
+            color: #495057;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .spinner-container {
+            margin: 30px 0;
+        }
+        
+        .construction-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1e73be;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .btn-primary-custom {
+            background-color: #efefef;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(30, 115, 190, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #1e73be;
+        }
+        
+        @media (max-width: 768px) {
+            .construction-title {
+                font-size: 2em;
+            }
+            .construction-container {
+                margin: 20px 10px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/includes.js"></script>
+<!-- Isotope JS for filtering -->
+<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.js"></script>
+<style>
+	/* unified-construction-style */
+	body { background-color: #efefef !important; }
+	.spinner-container, .construction-spinner { display: none !important; }
+	.back-link { background-color: #1e73be !important; }
+	.btn-primary-custom { background-color: #1e73be !important; background-image: none !important; }
+	</style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<!-- Main content -->
+<main class="container-fluid">
+<div class="container">
+<div class="construction-container">
+<div class="logo-section">
+<img alt="Logo G-ET-S" class="logo" onerror="this.style.display='none'" src="../images/logo-gs.png"/>
+</div>
+<h1 class="construction-title" data-i18n="page_diagnostics_ca.diagnostics_ca">
+<i class="fas fa-tools text-primary me-3"></i>
+                    Diagnostics CA
+                </h1>
+<p class="construction-subtitle" data-i18n="page_diagnostics_ca.page_en_cours_de_developpement">
+                    Page en cours de développement
+                </p>
+<div class="spinner-container">
+<div class="construction-spinner"></div>
+</div>
+<div class="construction-description">
+<p data-i18n="page_diagnostics_ca.cette_page_est_actuellement_en_cours_de_const"><i class="fas fa-info-circle text-info me-2"></i> Cette page est actuellement en cours de construction.</p>
+<p data-i18n="page_diagnostics_ca.notre_equipe_travaille_activement_sur_ce_cont">Notre équipe travaille activement sur ce contenu pour vous offrir la meilleure expérience possible.</p>
+<p data-i18n="page_diagnostics_ca.contenu_a_venir_informations_detaillees_resso"><strong>Contenu à venir :</strong> Informations détaillées, ressources et outils relatifs à ce sujet.</p>
+</div>
+<div class="contact-info">
+<h4 data-i18n="page_diagnostics_ca.nous_contacter"><i class="fas fa-envelope text-primary me-2"></i>Nous contacter</h4>
+<p class="mb-2" data-i18n="page_diagnostics_ca.pour_plus_dinformations_sur_ce_sujet_nhesitez">Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :</p>
+<p class="mb-0" data-i18n="page_diagnostics_ca.email_contact_g_et_s_com">
+<i class="fas fa-at text-primary me-2"></i>
+<strong>Email :</strong> contact@g-et-s.com
+                    </p>
+</div>
+<div class="mt-4">
+<a class="btn-primary-custom" href="../index.html">
+<i class="fas fa-home me-2"></i>
+                        Retour à l'accueil
+                    </a>
+<a class="btn-primary-custom" href="../contact.html">
+<i class="fas fa-envelope me-2"></i>
+                        Nous contacter
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

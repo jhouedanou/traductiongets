@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Gouvernance &amp; Structures, COMEX, CODIR, Formation, Centrale Supelec" name="keywords"/>
+<title>Certificat COMEX CODIR Gouvernance 5.0 - G-ET-S</title>
+<!-- Bootstrap CSS -->
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- Bootstrap JS -->
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<style>
+        body {
+            background: linear-gradient(180deg, #eef2f8 0%, #ffffff 35%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .main-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding: 50px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #1e73be;
+        }
+
+        .page-title {
+            color: #1e73be;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .page-subtitle {
+            color: #1e73be;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .page-institution {
+            color: #1e73be;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            color: #2d3748;
+            line-height: 2;
+            text-align: justify;
+            margin-bottom: 1.8rem;
+        }
+
+        .content-text a {
+            color: #0563c1;
+            text-decoration: underline;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .content-text a:hover {
+            color: #1e73be;
+            text-decoration: none;
+        }
+
+        .highlight-note {
+            background: #fff7db;
+            border-left: 4px solid #00b050;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #00b050;
+            font-size: 1rem;
+        }
+
+        .video-section {
+            margin: 40px 0;
+        }
+
+        .video-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .btn-video {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #1e73be 0%, #155a8a 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 115, 190, 0.3);
+        }
+
+        .btn-video:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 115, 190, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-video i {
+            font-size: 1.3rem;
+        }
+
+        .image-container {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.02);
+        }
+
+        .info-box {
+            background: #f8fbff;
+            border-left: 4px solid #1e73be;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            color: #1e73be;
+            font-weight: 700;
+        }
+
+        .pdf-note {
+            background: #e8f4f8;
+            border: 2px dashed #1e73be;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .pdf-note i {
+            font-size: 2rem;
+            color: #1e73be;
+            margin-bottom: 10px;
+        }
+
+        .back-to-home {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .btn-home {
+            background-color: #1e73be;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 115, 190, 0.3);
+        }
+
+        .btn-home:hover {
+            background-color: #155a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 115, 190, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 30px 20px;
+                margin-top: 20px;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .page-institution {
+                font-size: 1.1rem;
+            }
+
+            .content-text {
+                font-size: 1rem;
+            }
+
+            .video-links {
+                flex-direction: column;
+            }
+
+            .btn-video {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<!-- Main content -->
+<main class="container">
+<div class="main-container">
+<!-- Page Header -->
+<div class="page-header">
+<h1 class="page-title" data-i18n="page_certificat_centrale.certificat_pour_les_membres_de_comex_codiren_">
+                    Certificat pour les membres de COMEX CODIR<br/>
+                    en place ou potentiel(le)s
+                </h1>
+<p class="page-subtitle" data-i18n="page_certificat_centrale.gouvernance_5_0">Gouvernance 5.0</p>
+<p class="page-institution" data-i18n="page_certificat_centrale.centrale_supelec_executive_education">Centrale Supelec Executive Education</p>
+</div>
+<!-- Content Section -->
+<div class="content-section">
+<p class="content-text" data-i18n="page_certificat_centrale.les_deux_cabinets_de_conseils_gouvernance_et_">
+                    Les deux cabinets de conseils, <strong>Gouvernance et Structures</strong> et <strong>Maison Effervescence</strong> ont depuis plus d'un an remarqué que, s'il existait pour les hommes et les femmes de nombreuses <a href="formations-administrateurs.html">formations aux Conseils d'Administration</a>, par contre tel n'était pas le cas pour les COMEX CODIR.
+                </p>
+<p class="content-text" data-i18n="page_certificat_centrale.apres_une_premiere_tentative_avec_organisme_u">
+                    Après une première tentative avec organisme universitaire, ils ont pu, aidés d'autres spécialistes élaborer avec <strong>Centrale-Supelec Executive Education</strong>, un programme approfondi pour la formation des membres des COMEX CODIR en place ou souhaitant le devenir.
+                </p>
+<p class="content-text" data-i18n="page_certificat_centrale.lesprit_general_du_cours_est_de_sattacher_a_c">
+                    L'esprit général du cours est de s'attacher à ce que les participants, fassent leurs les processus permettant à un organisme collectif opérationnel de réussir dans sa liaison entre les conseils d'administration et les opérationnels, en utilisant au mieux tous les outils et approches modernes aujourd'hui disponibles (<strong>Gouvernance 5.0</strong>)
+                </p>
+<!-- Video Section -->
+<div class="video-section">
+<p class="content-text" data-i18n="page_certificat_centrale.pour_decouvrir_ce_programme_il_vous_est_possi">
+                        Pour découvrir ce programme, il vous est possible de visionner :
+                    </p>
+<div class="video-links">
+<!-- <a href="https://www.youtube.com/watch?v=jARq_hrr-lI&t=9s" target="_blank" rel="noopener" class="btn-video">
+                            <i class="fab fa-youtube"></i>
+                            Comment le certificat COMEX CODIR Gouvernance 5.0 a été élaboré, Valérie Lejeune
+                        </a> -->
+<a class="btn-video" href="https://www.youtube.com/watch?v=rEW6aeaC8S8" rel="noopener" target="_blank">
+<i class="fab fa-youtube"></i>
+                            Présentation du Certificat par la responsable pédagogique, Valérie Lejeune
+                        </a>
+</div>
+<p class="content-text" data-i18n="page_certificat_centrale.ou_bien" style="text-align: center;">
+                        ou bien
+                    </p>
+<div class="video-links">
+<a class="btn-video" href="https://register.gotowebinar.com/recording/viewRecording/3333371157831365206/6318281345356940804/valerie.ls.lejeune@gmail.com?registrantKey=8077840797808095840&amp;type=ABSENTEEEMAILRECORDINGLINK" rel="noopener" target="_blank">
+<i class="fas fa-video"></i>
+                            Voir le webinar
+                        </a>
+</div>
+<p class="content-text" data-i18n="page_certificat_centrale.avec_un_directeur_operationnel_experimente" style="text-align: center; margin-top: 20px;">
+                        avec un directeur opérationnel expérimenté.
+                    </p>
+</div>
+<!-- Image Section -->
+<div class="image-container">
+<img alt="Programme du certificat Centrale-Supelec" loading="lazy" src="../images/image1.png"/>
+</div>
+<br/>
+<div style="text-align: center;display: flex; justify-content: center;">
+</div>
+<!-- PDF Link Section -->
+<div class="pdf-note">
+<i class="fas fa-file-pdf"></i>
+<p class="content-text" data-i18n="page_certificat_centrale.la_brochuredonne_tous_les_details" style="margin-bottom: 0;"><a href="../images/laric.pdf" rel="noopener" style="color: #1d4ed8; font-weight: 600; text-decoration: underline;" target="_blank"><strong>La brochure</strong></a> donne tous les détails.
+                    </p>
+</div>
+<!-- IFA Alliance -->
+<div class="info-box">
+<p class="content-text" data-i18n="page_certificat_centrale.une_alliance_a_ete_conclue_avec_linstitut_fra" style="margin-bottom: 0;">
+                        Une alliance a été conclue avec l'<strong>Institut Français des Administrateurs</strong> pour faire connaître ce nouveau certificat.
+                    </p>
+</div>
+<!-- Session Info -->
+<div class="info-box" style="background: #e8f8f5; border-left-color: #00b050;">
+<p class="content-text" data-i18n="page_certificat_centrale.la1resessionse_deroulera_a_partir_du23_avril_" style="margin-bottom: 0;">
+<i class="fas fa-calendar-check" style="color: #00b050; margin-right: 8px;"></i>
+                        La <strong>1<sup>re</sup> session</strong> se déroulera à partir du <strong>23 avril 2026</strong>. Il reste encore quelques places. <strong><a href="mailto:valerie.lejeune@centralesupelec.fr">Valérie Lejeune</a></strong>.
+                    </p>
+</div>
+</div>
+<!-- Back to home -->
+<div class="back-to-home">
+<a class="btn-home" href="../index.html">
+<i class="fas fa-home"></i>
+                    Retour à l'accueil
+                </a>
+</div>
+</div>
+</main>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

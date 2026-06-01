@@ -1,0 +1,271 @@
+<header id="masthead" class="bg-light py-3">
+    <style>
+        .news-ribbon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            border-radius: 18px 18px 4px 4px;
+            background: linear-gradient(135deg, #f97373 0%, #dc2626 100%);
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 18px rgba(220, 38, 38, 0.28);
+            text-decoration: none;
+            transition: transform 0.2s ease;
+            -webkit-animation: glowing-news 1300ms infinite;
+            -moz-animation: glowing-news 1300ms infinite;
+            -o-animation: glowing-news 1300ms infinite;
+            animation: glowing-news 1300ms infinite;
+        }
+        .news-ribbon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 26px rgba(220, 38, 38, 0.32);
+            color: #ffffff;
+            animation: none;
+        }
+        .news-ribbon i { margin-right: 8px; }
+
+        @-webkit-keyframes glowing-news {
+            0% {
+                box-shadow: 0 10px 18px rgba(220, 38, 38, 0.28);
+            }
+            50% {
+                box-shadow: 0 10px 28px rgba(220, 38, 38, 0.5);
+            }
+            100% {
+                box-shadow: 0 10px 18px rgba(220, 38, 38, 0.28);
+            }
+        }
+        @keyframes glowing-news {
+            0% {
+                box-shadow: 0 10px 18px rgba(220, 38, 38, 0.28);
+            }
+            50% {
+                box-shadow: 0 10px 28px rgba(220, 38, 38, 0.5);
+            }
+            100% {
+                box-shadow: 0 10px 18px rgba(220, 38, 38, 0.28);
+            }
+        }
+        .logo-panel {
+            background: linear-gradient(180deg, rgba(236, 241, 249, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border-radius: 26px;
+            padding: 18px 16px 24px;
+            width: 100%;
+            box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+        }
+        .logo-panel .navbar-brand img { max-width: 100%; height: auto; }
+        @media (max-width: 576px) {
+            .news-ribbon { margin-bottom: 14px; }
+            .logo-panel { padding: 16px 12px; border-radius: 20px; }
+        }
+
+        /* Home and Menu Button */
+        .home-menu-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #dc3545;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid #dc3545;
+        }
+        .home-menu-btn:hover {
+            background: #bb2d3b;
+            border-color: #bb2d3b;
+            color: #ffffff;
+            text-decoration: none;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+        }
+        .home-menu-btn i {
+            font-size: 1rem;
+        }
+
+        /* Hide on home page */
+        body.home-page #home-menu-container {
+            display: none;
+        }
+
+        /* Search Suggestions */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1050;
+            margin-top: 2px;
+        }
+
+        .suggestions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .suggestion-item {
+            padding: 10px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.2s ease;
+            font-size: 12px;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover {
+            background: #f8f9fa;
+        }
+
+        .suggestion-item-title {
+            font-weight: 500;
+            color: #1e73be;
+            margin-bottom: 2px;
+        }
+
+        .suggestion-item-category {
+            font-size: 10px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .suggestion-highlight {
+            background: #fff3cd;
+            font-weight: 600;
+        }
+
+        .no-suggestions {
+            padding: 12px;
+            text-align: center;
+            color: #999;
+            font-size: 11px;
+        }
+
+        /* Active language flag indicator */
+        a.lang-active img {
+            outline: 2px solid #0d6efd;
+            outline-offset: 2px;
+            border-radius: 3px;
+        }
+    </style>
+    <div class="container">
+        <!-- Top row with logo, social links and language flags -->
+        <div class="row">
+            <!-- Logo Section -->
+            <div class="col-12 col-md-2 m-0 p-0 d-flex align-items-start flex-column gap-3">
+                <a class="news-ribbon" href="actualites.html" aria-label="Consulter les actualités de G &amp; S">
+                    <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                    <span data-i18n="header.news">Actualités</span>
+                </a>
+                <div class="logo-panel d-flex flex-column align-items-center">
+                    <a href="index.html" class="navbar-brand mb-3">
+                        <img
+                            src="images/2020/02/logo-gets-3C.png"
+                            alt="G-ET-S Logo"
+                            class="img-fluid"
+                            style="height: 116px;"
+                        >
+                    </a>
+                    <div id="rube" class="d-flex gap-2 flex-row align-items-center justify-content-center w-100">
+                        <a
+                            href="https://twitter.com/GUYLP001"
+                            target="_blank"
+                            rel="noopener"
+                            class="d-flex justify-content-center align-items-center btn-outline-primary btn-sm"
+                        >
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/guy-le-p%C3%A9chon-0b72a9/"
+                            target="_blank"
+                            rel="noopener"
+                            class="btn btn-outline-primary btn-sm"
+                        >
+                            <i class="fab fa-linkedin" style="font-size: 33px; color: #ffffff;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 m-0 p-0 d-flex align-items-center justify-content-center d-none d-md-flex">
+                <img
+                    src="images/g-et-s-img-1024x376.jpg"
+                    alt="G-ET-S Background"
+                    class="img-fluid w-100"
+                    style="max-width: 612px; border-radius: 28px; box-shadow: 0 18px 36px rgba(15, 23, 42, 0.18); object-fit: cover;"
+                >
+            </div>
+            <div class="col-12 col-md-2 m-0 p-0 d-flex align-items-center">
+
+<div class="row">   
+        
+                <div id="velvet" class="col-12">
+                    <a href="index.html" title="Version française">
+                        <img
+                            src="images/elementor/thumbs/drapeau-fr-ol3pyz4uvdy1p3tpw4z2zvbrp5s0f6t7v3ho8zg7og.png"
+                            alt="Version française"
+                            class="img-fluid"
+                        >
+                    </a>
+                    <a href="home.html" title="English version">
+                        <img
+                            src="images/elementor/thumbs/english-flag-ol3pyy70ojwrdhv31mkgfdkb3rwn7hphiyu6rphluo.png"
+                            alt="English version"
+                            class="img-fluid"
+                        >
+                    </a>
+                </div>
+                <div id="search-container"  class="col-12 mt-3">
+                    <!-- Recherche locale -->
+                    <div style="max-width: 100%; position: relative;">
+                        <div class="input-group input-group-sm">
+                            <input type="text"
+                                   id="header-search-input"
+                                   placeholder="Rechercher..."
+                                   data-i18n-placeholder="search.placeholder"
+                                   class="form-control"
+                                   autocomplete="off"
+                                   style="font-size: 11px; padding: 6px 32px 6px 8px;">
+                            <button class="btn btn-danger" type="button" id="header-search-clear" aria-label="Effacer la recherche" title="Effacer la recherche" data-i18n-aria-label="header.clear_search" data-i18n-title="header.clear_search" style="position: absolute; right: 50px; top: 50%; transform: translateY(-50%); z-index: 10; padding: 4px 8px; display: none; border-radius: 4px;">
+                                <i class="fas fa-times" style="font-size: 11px;" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-primary" type="button" id="header-search-btn" style="padding: 6px 12px;">
+                                <i class="fas fa-search" style="font-size: 11px;"></i>
+                            </button>
+                        </div>
+                        <!-- Suggestions de recherche -->
+                        <div id="search-suggestions" class="search-suggestions" style="display: none;">
+                            <div class="suggestions-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Home and Menu Button (visible on all pages except home) -->
+                    <div id="home-menu-container" class="mt-3">
+                        <a href="/" id="home-menu-link" class="home-menu-btn" aria-label="Page d'accueil et menu" data-i18n-aria-label="header.home_menu">
+                            <i class="fas fa-home"></i>
+                            <span data-i18n="header.home_menu">Page d'accueil et menu</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</header>

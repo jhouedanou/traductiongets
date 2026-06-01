@@ -1,0 +1,62 @@
+name: Deploy to OVH via FTP
+
+# Déclenchement du workflow
+on:
+  push:
+    branches:
+      - main  # Déploie automatiquement quand on push sur main
+  workflow_dispatch:  # Permet de déclencher manuellement depuis GitHub
+
+jobs:
+  deploy:
+    name: Deploy to FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le code source
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Nécessaire pour git-ftp
+
+      # 2. Configurer git-ftp
+      - name: Setup git-ftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-ftp
+
+      # 3. Déployer via FTP
+      - name: Deploy to FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_PATH: ${{ secrets.FTP_PATH }}
+        run: |
+          # Configuration git-ftp
+          git config git-ftp.url "ftp://$FTP_HOST$FTP_PATH"
+          git config git-ftp.user "$FTP_USER"
+          git config git-ftp.password "$FTP_PASSWORD"
+
+          # Premier déploiement ou mise à jour
+          if git ftp push 2>&1 | grep -q "fatal"; then
+            echo "Initialisation du déploiement FTP..."
+            git ftp init --force
+          else
+            echo "Mise à jour via FTP..."
+            git ftp push
+          fi
+
+      # 4. Notification de succès
+      - name: Deployment success
+        if: success()
+        run: |
+          echo "✅ Déploiement réussi sur $FTP_HOST"
+          echo "📦 Fichiers déployés: $(git diff-tree --no-commit-id --name-only -r HEAD | wc -l)"
+
+      # 5. Notification d'erreur
+      - name: Deployment failed
+        if: failure()
+        run: |
+          echo "❌ Le déploiement a échoué"
+          echo "Vérifiez les logs ci-dessus pour plus de détails"

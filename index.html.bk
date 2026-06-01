@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="Gouvernance & Structures">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accueil - G-ET-S</title>
+        <!-- Bootstrap CSS CDN -->
+        <link href="css/theme.css" rel="stylesheet" type="text/css">
+        <link href="styles.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <!-- Font Awesome CDN for icons -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+        <script src="bootstrap/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <!-- jQuery for includes -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Custom includes script -->
+        <script src="js/includes.js"></script>
+        <!-- Isotope JS for filtering -->
+        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+        <!-- Auto Dataset Generator -->
+        <script src="js/auto-dataset-generator.js"></script>
+        <!-- Font Awesome CDN for icons -->
+    </head>
+    <style>
+        /* Désactive les infobulles Pinegrow sur l'accueil */
+        .pinegrow-editable[data-pg-name]:hover::before {
+            content: none !important;
+            display: none !important;
+        }
+    </style>
+    <body class="home-page">
+        <!-- Header include -->
+        <div id="header-placeholder"></div>
+        <!-- Navigation include -->
+        <div id="nav-placeholder"></div>
+        <!-- Barre de filtres (déplacée sous la navigation) -->
+        <style>
+            .filters-toolbar { border: 1px solid #e6e6e6; border-radius: 8px; padding: 10px; background: #ffffff; margin: 12px auto; max-width: 1140px; display:none;}
+            .filters-toolbar .form-label { font-size: 0.8rem; color: #666; }
+        </style>
+        <div class="filters-toolbar hide hidden">
+            <div class="row g-2 align-items-end">
+                <div class="col-sm-6 col-md-4">
+                    <label for="category-filter" class="form-label mb-1">Filtrer par catégorie</label>
+                    <select id="category-filter" class="form-select form-select-sm">
+                        <option value="*">Toutes les catégories</option>
+                        <option value=".generalites-contrib">Généralités – Contributions</option>
+                        <option value=".generalites-docs">Généralités – Documents utiles</option>
+                        <option value=".feminisation-contrib">Féminisation – Contributions</option>
+                        <option value=".feminisation-docs">Féminisation – Documents utiles</option>
+                        <option value=".qui">Qui est G &amp; S</option>
+                        <option value=".pour-mandataires">Pour mandataires</option>
+                        <option value=".pour-societes">Pour Sociétés</option>
+                    </select>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <label for="search-input" class="form-label mb-1">Recherche</label>
+                    <div class="d-flex gap-2">
+                        <input id="search-input" type="text" class="form-control form-control-sm" placeholder="Rechercher dans les colonnes...">
+                        <button type="button" class="btn btn-sm btn-primary do-search">Rechercher</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary clear-search">Effacer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main content goes here -->
+        <main class="container-full pt-4 pb-4 w-100 bg-white ">
+            <div id="drizllz" class="container main-container bg-white  w-90">
+                <!-- Nouvelle navigation 7 colonnes et zone d'articles -->
+                <section class="home-navigation pt-3 pb-3">
+                    <style>
+                        /* Styles portés par la page d'accueil (scopés au main pour respecter la contrainte) */
+                        .home-navigation .home-nav-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 12px; }
+                        @media (max-width: 768px) { .home-navigation .home-nav-grid { grid-template-columns: repeat(1, 1fr); } }
+
+                        .home-navigation .nav-col { 
+                            border: none; 
+                            border-radius: 16px; 
+                            padding: 32px 24px; 
+                            background: rgba(255, 255, 255, 0.95); 
+                            -webkit-backdrop-filter: blur(10px);
+                            backdrop-filter: blur(10px);
+                            min-height: 100%; 
+                            box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04); 
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        .home-navigation .nav-col::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            height: 3px;
+                            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                            opacity: 0;
+                            transition: opacity 0.3s ease;
+                        }
+                        .home-navigation .nav-col:hover { 
+                            transform: translateY(-4px); 
+                            box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.08);
+                        }
+                        .home-navigation .nav-col:hover::before { opacity: 1; }
+                        .home-navigation .nav-col.filler { background: transparent; border: 2px dashed #e2e8f0; box-shadow: none; }
+
+                        .home-navigation .level1 { 
+                            font-size: 1.2rem; 
+                            font-weight: 600; 
+                            color: #1a202c; 
+                            margin-bottom: 24px; 
+                            text-align: center; 
+                            padding-bottom: 16px; 
+                            position: relative;
+                            letter-spacing: -0.025em;
+                            line-height: 1.3;
+                        }
+                        .home-navigation .level1::after {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 40px;
+                            height: 2px;
+                            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                            border-radius: 1px;
+                        }
+                        .home-navigation .level2 { 
+                            font-size: 1rem; 
+                            font-weight: 500; 
+                            color: #4a5568; 
+                            margin: 20px 0 16px 0; 
+                            text-align: center;
+                            letter-spacing: -0.01em;
+                        }
+                        .home-navigation .level3 { 
+                            list-style: none; 
+                            padding-left: 0; 
+                            margin: 16px 0; 
+                            display: grid;
+                            grid-template-columns: repeat(2, minmax(0, 1fr));
+                            gap: 8px;
+                        }
+                        .home-navigation .level3 li { 
+                            margin-bottom: 0; 
+                            text-align: center; 
+                        }
+                        .home-navigation .nav-action { 
+                            background: rgba(102, 126, 234, 0.08); 
+                            border: 1px solid rgba(102, 126, 234, 0.2); 
+                            padding: 12px 20px; 
+                            color: #667eea; 
+                            cursor: pointer; 
+                            text-align: center; 
+                            font-size: 0.9rem; 
+                            border-radius: 10px; 
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            width: 100%;
+                            font-weight: 500;
+                            letter-spacing: -0.01em;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        .home-navigation .nav-action::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: -100%;
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+                            transition: left 0.6s;
+                        }
+                        .home-navigation .nav-action:hover { 
+                            background: rgba(102, 126, 234, 0.12); 
+                            border-color: rgba(102, 126, 234, 0.3);
+                            transform: translateY(-1px); 
+                            color: #5a67d8;
+                            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
+                        }
+                        .home-navigation .nav-action:hover::before { left: 100%; }
+                        .home-navigation .link-as-text { 
+                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                            border: none; 
+                            color: white; 
+                            padding: 16px 24px; 
+                            font: inherit; 
+                            cursor: pointer; 
+                            border-radius: 12px; 
+                            font-weight: 600;
+                            font-size: 1rem;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            width: 100%;
+                            text-align: center;
+                            letter-spacing: -0.01em;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        .home-navigation .link-as-text::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: -100%;
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                            transition: left 0.6s;
+                        }
+                        .home-navigation .link-as-text:hover { 
+                            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%); 
+                            transform: translateY(-2px); 
+                            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+                        }
+                        .home-navigation .link-as-text:hover::before { left: 100%; }
+
+                        .home-navigation .filters-toolbar { border: 1px solid #e6e6e6; border-radius: 8px; padding: 10px; background: #ffffff; margin-top: 12px; }
+                        .home-navigation .filters-toolbar .form-label { font-size: 0.8rem; color: #666; }
+
+                        .articles-section { margin-top: 32px; }
+                        .articles-section .articles-header { 
+                            font-size: 1.3rem; 
+                            color: #1a202c; 
+                            font-weight: 600; 
+                            margin-bottom: 24px; 
+                            text-align: center;
+                            letter-spacing: -0.025em;
+                            position: relative;
+                            padding-bottom: 16px;
+                        }
+                        .articles-section .articles-header::after {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 60px;
+                            height: 2px;
+                            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                            border-radius: 1px;
+                        }
+                        .articles-section .grid-item { 
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+                        }
+                        .articles-section .grid-item:hover { 
+                            transform: translateY(-4px); 
+                        }
+                        .articles-section .card { 
+                            height: 100%; 
+                            border: none;
+                            border-radius: 16px;
+                            background: rgba(255, 255, 255, 0.95);
+                            -webkit-backdrop-filter: blur(10px);
+                            backdrop-filter: blur(10px);
+                            box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            overflow: hidden;
+                            position: relative;
+                        }
+                        .articles-section .card::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            height: 3px;
+                            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                            opacity: 0;
+                            transition: opacity 0.3s ease;
+                        }
+                        .articles-section .card:hover {
+                            box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.08);
+                        }
+                        .articles-section .card:hover::before { opacity: 1; }
+                        .articles-section .card-img-top { 
+                            object-fit: cover; 
+                            height: 180px; 
+                            transition: transform 0.3s ease;
+                        }
+                        .articles-section .card:hover .card-img-top {
+                            transform: scale(1.02);
+                        }
+                        .articles-section .card-body {
+                            padding: 24px;
+                        }
+                        .articles-section .card-title { 
+                            font-size: 1.1rem; 
+                            font-weight: 600;
+                            color: #1a202c;
+                            margin-bottom: 12px;
+                            letter-spacing: -0.01em;
+                            line-height: 1.4;
+                        }
+                        .articles-section .card-text { 
+                            font-size: 0.9rem; 
+                            color: #4a5568; 
+                            margin-bottom: 20px;
+                            line-height: 1.5;
+                        }
+                        .articles-section .card-body .d-flex {
+                            display: flex !important;
+                            align-items: center;
+                            gap: 8px;
+                        }
+                        .articles-section .btn-primary {
+                            background: #667eea;
+                            border: 1px solid #667eea;
+                            color: white;
+                            padding: 8px 16px;
+                            border-radius: 8px;
+                            font-size: 0.85rem;
+                            font-weight: 500;
+                            transition: all 0.2s ease;
+                            text-decoration: none;
+                        }
+                        .articles-section .btn-primary:hover {
+                            background: #5a67d8;
+                            border-color: #5a67d8;
+                            transform: translateY(-1px);
+                        }
+                        .articles-section .badge {
+                            background: rgba(102, 126, 234, 0.1);
+                            color: #667eea;
+                            border: 1px solid rgba(102, 126, 234, 0.2);
+                            font-weight: 500;
+                            padding: 4px 8px;
+                            font-size: 0.75rem;
+                        }
+                        
+                        /* Smooth scroll behavior */
+                        html { scroll-behavior: smooth; }
+                        .articles-section .grid-item.hidden { display: none !important; }
+
+                        /* Back to top button */
+                        .back-to-top {
+                            position: fixed;
+                            right: 16px;
+                            bottom: 16px;
+                            width: 44px;
+                            height: 44px;
+                            border-radius: 50%;
+                            background: #667eea;
+                            color: #fff;
+                            border: none;
+                            display: none;
+                            align-items: center;
+                            justify-content: center;
+                            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.35);
+                            z-index: 1040;
+                            cursor: pointer;
+                            transition: background .2s ease, transform .2s ease;
+                        }
+                        .back-to-top:hover { background: #5a67d8; transform: translateY(-1px); }
+                        .back-to-top.show { display: flex; }
+
+                    </style>
+
+                    <style>
+                        /* Plateau d'accueil stylisé 7 colonnes */
+                        .nav-board {
+                            background: linear-gradient(135deg, #eef3fb 0%, #f8f9fc 45%, #ffffff 100%);
+                            border-radius: 28px;
+                            padding: 32px 32px 36px;
+                            border: 1px solid rgba(148, 163, 184, 0.2);
+                            box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+                        }
+                        .main-table-layout {
+                            display: grid;
+                            grid-template-columns: repeat(7, minmax(0, 1fr));
+                            gap: 18px;
+                        }
+                        .header-level-1, .header-level-2, .content-row { display: contents; }
+                        .header-cell, .subheader-cell {
+                            padding: 18px 14px;
+                            border-radius: 18px;
+                            background: linear-gradient(135deg, #6da2d9 0%, #5f8cc4 100%);
+                            color: #ffffff;
+                            text-align: center;
+                            letter-spacing: 0.02em;
+                            border: none;
+                            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.2);
+                        }
+                        .header-cell { font-weight: 700; font-size: 1.05rem; }
+                        .subheader-cell { font-weight: 600; font-size: 0.95rem; }
+                        .content-cell {
+                            padding: 22px 18px 28px;
+                            border-radius: 22px;
+                            background: rgba(255, 255, 255, 0.96);
+                            border: 1px solid rgba(148, 163, 184, 0.18);
+                            box-shadow: 0 16px 36px rgba(15, 23, 42, 0.07);
+                            transition: transform 0.2s ease, box-shadow 0.2s ease;
+                        }
+                        .content-cell:hover {
+                            transform: translateY(-3px);
+                            box-shadow: 0 24px 54px rgba(15, 23, 42, 0.12);
+                        }
+                        .content-cell .section-title {
+                            font-weight: 700;
+                            margin-bottom: 1.1rem;
+                            font-size: 1.02rem;
+                            color: #1f2a44;
+                            text-align: center;
+                        }
+                        .content-list {
+                            list-style: none;
+                            margin: 0;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.55rem;
+                            max-height: 400px;
+                            overflow-y: auto;
+                            overflow-x: hidden;
+                            /* Style de scrollbar uniforme pour toutes les colonnes */
+                            scrollbar-width: thin;
+                            scrollbar-color: rgba(120, 120, 120, 0.7) transparent;
+                        }
+                        .content-list::-webkit-scrollbar {
+                            width: 6px;
+                        }
+                        .content-list::-webkit-scrollbar-track {
+                            background: transparent;
+                        }
+                        .content-list::-webkit-scrollbar-thumb {
+                            background: rgba(120, 120, 120, 0.7);
+                            border-radius: 8px;
+                            border: 1px solid transparent;
+                            background-clip: content-box;
+                        }
+                        .content-list::-webkit-scrollbar-thumb:hover {
+                            background: rgba(100, 100, 100, 0.9);
+                            background-clip: content-box;
+                        }
+                        .item-link {
+                            display: flex;
+                            /* grid-template-columns: 32px 1fr; */
+                            align-items: center;
+                            gap: 0.6rem;
+                            text-decoration: none;
+                            color: #1f2a44;
+                            padding: 10px 12px;
+                            border-radius: 12px;
+                            transition: background 0.2s ease, transform 0.2s ease;
+                            background: rgba(99, 102, 241, 0.06);
+                        }
+                        .item-link:hover {
+                            background: rgba(99, 102, 241, 0.15);
+                            transform: translateX(4px);
+                        }
+                        .item-link .thumb {
+                            width: 28px;
+                            height: 28px;
+                            border-radius: 50%;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: #2563eb;
+                            background: rgba(37, 99, 235, 0.1);
+                            font-size: 0.95rem;
+                        }
+                        @media (max-width: 1200px) {
+                            .nav-board { padding: 28px 24px; }
+                            .main-table-layout { grid-template-columns: repeat(3, 1fr); }
+                            .header-cell, .subheader-cell, .content-cell { grid-column: 1 / 5; }
+                        }
+                        @media (max-width: 768px) {
+                            .nav-board { padding: 24px 18px; }
+                            .main-table-layout { grid-template-columns: 1fr; }
+                            .header-cell, .subheader-cell, .content-cell { grid-column: 1 / -1 !important; }
+                            .header-cell, .subheader-cell { display: none !important; }
+                        }
+                        .content-cell .two-col {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 1.2rem;
+                            align-items: start;
+                        }
+                        @media (max-width: 1200px) {
+                            .content-cell .two-col {
+                                display: flex;
+                                gap: 1.2rem;
+                                align-items: start;
+                                flex-flow: column;
+                            }
+                        }
+                        @media (max-width: 992px) {
+                            .content-cell .two-col { grid-template-columns: 1fr; }
+                        }
+                    </style>
+
+                    <div class="home-nav-grid">
+                        <div class="nav-board">
+                            <div class="main-table-layout">
+                            <!-- En-tête niveau 1 -->
+                            <div class="header-level-1">
+                                <div class="header-cell" style="grid-column: 1 / 5;">G &amp; S contributeur pour une saine Corporate Governance</div>
+                                <div class="header-cell" style="grid-column: 5 / 6;">Qui est G &amp; S</div>
+                                <div class="header-cell" style="grid-column: 6 / 8;">Prestations de Gouvernance et Structures</div>
+                            </div>
+
+                            <!-- En-tête niveau 2 -->
+                            <div class="header-level-2">
+                                <div class="subheader-cell" style="grid-column: 1 / 3;">Généralités "Corporate Governance"</div>
+                                <div class="subheader-cell" style="grid-column: 3 / 5;">Féminisation des instances dirigeantes</div>
+                                <div style="grid-column: 5 / 6;"><!-- fusionné avec l'en-tête du dessus --></div>
+                                <div class="subheader-cell" style="grid-column: 6 / 7;">Pour mandataires</div>
+                                <div class="subheader-cell" style="grid-column: 7 / 8;">Pour Sociétés</div>
+                            </div>
+
+                            <!-- Contenu principal -->
+                            <div class="content-row">
+                                <!-- Colonnes 1-2 : Généralités -->
+                                <div class="content-cell" style="grid-column: 1 / 3;">
+                                    <div class="two-col">
+                                        <div>
+                                            <div class="section-title">Contributions de Guy Le Péchon</div>
+                                            <ul class="content-list" id="list-generalites-contrib"></ul>
+                                        </div>
+                                        <div>
+                                            <div class="section-title">Documents utiles</div>
+                                            <ul class="content-list" id="list-generalites-docs"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Colonnes 3-4 : Féminisation -->
+                                <div class="content-cell" style="grid-column: 3 / 5;">
+                                    <div class="two-col">
+                                        <div>
+                                            <div class="section-title">Contributions de Guy Le Péchon</div>
+                                            <ul class="content-list" id="list-feminisation-contrib"></ul>
+                                        </div>
+                                        <div>
+                                            <div class="section-title">Documents utiles</div>
+                                            <ul class="content-list" id="list-feminisation-docs"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Colonne 5 : Qui est G & S -->
+                                <div class="content-cell" style="grid-column: 5 / 6;">
+                                    <ul class="content-list" id="list-qui"></ul>
+                                </div>
+
+                                <!-- Colonne 6 : Pour mandataires -->
+                                <div class="content-cell" style="grid-column: 6 / 7;">
+                                    <ul class="content-list" id="list-pour-mandataires"></ul>
+                                </div>
+
+                                <!-- Colonne 7 : Pour Sociétés -->
+                                <div class="content-cell" style="grid-column: 7 / 8;">
+                                    <ul class="content-list" id="list-pour-societes"></ul>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Indicateur de chargement -->
+                <div id="loading-indicator" class="text-center mt-4 loading-hidden">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Chargement...</span>
+                    </div>
+                </div>
+
+                <!-- Back to top button -->
+                <button id="back-to-top" class="back-to-top" aria-label="Revenir en haut">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+
+
+                <script>
+                    (function() {
+                        const defaultImg = 'images/2020/02/logo-gets-3C.png';
+
+                        // Utiliser les données centralisées ou fallback local
+                        const dataSets = window.articlesData || {
+                            'generalites-contrib': [
+                                { title: "Shadow Conseil d'Administration de jeunes", url: 'pages/shadow-conseil.html', dateCreation: '2025-09-12' },
+                                { title: 'Administrateur indépendant un vaccin ?', url: 'pages/administrateur-independant.html', dateCreation: '2025-09-30' },
+                                { title: 'IFA et le Numérique', url: 'pages/travaux-ifa-digital.html', dateCreation: '2025-09-29' },
+                                { title: 'Comparaison féminisation Boards et Comex', url: 'pages/comparaison-feminisation-boards-comex.html', dateCreation: '2025-09-28' },
+                                { title: 'Intelligence émotionnelle des administrateurs', url: 'pages/intelligence-emotionnelle-administrateurs.html', dateCreation: '2025-09-27' },
+                                // Articles créés le 24 septembre 2025 (du plus récent au plus ancien)
+                                { title: 'Facilities Management, Les normes Européennes', url: 'pages/facilities-management-normes-europeennes.html', dateCreation: '2025-09-24-4' },
+                                { title: 'Comment les DSI peuvent impliquer les Conseils d\'Administration', url: 'pages/dsi-conseils-administration.html', dateCreation: '2025-09-24-3' },
+                                { title: 'Le monde numérique et la relation client', url: 'pages/monde-numerique-relation-client.html', dateCreation: '2025-09-24-2' },
+                                { title: 'Apports de l\'Intelligence artificielle à la Compliance', url: 'pages/apports-ia-compliance.html', dateCreation: '2025-09-24-1' },
+                                { title: 'Salariés et Dirigeants en Confiance', url: 'pages/salarie-dirigeants-confiance.html', dateCreation: '2025-09-24-0' },
+
+                                // Articles existants (dates antérieures approximatives)
+                                { title: 'Le monde et la gouvernance des ETI', url: 'pages/livre-eti.html', dateCreation: '2025-09-20' },
+                                { title: 'Intelligence collective (Webinar XMPC)', url: 'pages/intelligence-collective.html', dateCreation: '2025-09-14' },
+                                { title: 'Instances de gouvernance (Cours à l\'INSEEC)', url: 'pages/cours-inseec.html', dateCreation: '2025-09-11' },
+
+                                // Articles en construction
+                                { title: 'Club Européen', url: 'pages/club-europeen.html', construction: true, dateCreation: '2025-09-08' }
+                            ],
+                            'generalites-docs': [
+                                { title: 'Formation aux Comex/Codir', url: 'pages/certificat-centrale.html' },
+                                { title: "Formations au C.A.", url: 'pages/formations-administrateurs.html' },
+                                { title: 'Sites intéressants et Amis', url: 'sites-interesssants-4/index.html' },
+                                { title: 'Bibliographie', url: 'pages/bibliographie.html' }
+                            ],
+                            'feminisation-contrib': [
+                                { title: 'Etudes G & S 2010 à 2025', url: 'pages/etude-juin-2025.html' },
+                                { title: 'Assises de la parité 2012 et 2023', url: 'pages/assises-parite.html' },
+                                { title: 'Évènements', url: '#', construction: true },
+                                { title: 'Article Presse', url: 'la-presse-parle-de-gouvernance-structures/index.html' },
+                                { title: 'Observatoire des genres', url: 'pages/observatoire-genres.html' }
+                            ],
+                            'feminisation-docs': [
+                                { title: 'Directive Européenne (2024)', url: 'pages/directive-europeenne.html' },
+                                { title: 'Article 14 Loi Rixain (2021)', url: 'pages/loi-rixain.html' },
+                                { title: 'Loi Zimmerman (2011)', url: 'pages/loi-zimmerman.html' }
+                            ],
+                            'qui': [
+                                { title: 'Introduction', url: 'pages/organisation-gs.html' },
+                                { title: 'Gouvernance Advisors', url: 'gouvernance-advisors/index.html' },
+                                { title: 'Historique', url: 'pages/historique.html' },
+                                { title: 'Contact', url: 'contact.html' }
+                            ],
+                            'pour-mandataires': [
+                                { title: 'Formation au digital', url: 'pages/informatique.html' },
+                                { title: 'Candidature comme mandataire', url: 'pages/candidats-mandataires.html' }
+                            ],
+                            'pour-societes': [
+                                { title: 'Candidats mandataires sociaux', url: 'pages/candidats-mandataires-sociaux.html' },
+                                { title: 'Auto diagnostic Loi Rixain', url: 'pages/questionnaire-rixain-societes.html' },
+                                { title: 'Diagnostics', url: 'pages/diagnostics-ca.html' },
+                                { title: "Catalogue de documents pour l'administrateur", url: 'pages/catalogue-documents.html' },
+                                { title: 'Glossaire des Prestations de conseil', url: 'pages/glossaire-prestations.html' }
+                            ]
+                        };
+
+                        function renderAllCards() {
+                            const grid = document.getElementById('articles-grid');
+                            if (!grid) return;
+                            grid.innerHTML = '';
+
+                            Object.keys(dataSets).forEach(function(key) {
+                                const items = dataSets[key] || [];
+                                items.forEach(function(item) {
+                                    const col = document.createElement('div');
+                                    col.className = 'col grid-item ' + key;
+                                    col.setAttribute('data-category', key);
+
+                                    col.innerHTML = `
+                                        <div class="card h-100">
+                                            <img src="${item.img || defaultImg}" class="card-img-top" alt="${item.title}">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${item.title}</h5>
+                                                <p class="card-text">${item.description || ''}</p>
+                                                <a href="${item.url}" class="btn btn-sm btn-primary">Ouvrir</a>
+                                                ${item.construction ? '<span class="badge bg-warning text-dark ms-2">En construction</span>' : ''}
+                                            </div>
+                                        </div>
+                                    `;
+                                    grid.appendChild(col);
+                                });
+                            });
+
+                            if (typeof window.$ !== 'undefined' && typeof window.$.fn !== 'undefined') {
+                                const $grid = window.$('.content-grid');
+                                if ($grid.length) {
+                                    if ($grid.data('isotope')) {
+                                        $grid.isotope('reloadItems').isotope({ filter: '*' });
+                                    }
+                                }
+                            }
+                        }
+
+                        // Rendu exhaustif des listes dans les colonnes (synchronisé avec dataSets)
+                        function renderList(listId, dataKey) {
+                            const ul = document.getElementById(listId);
+                            if (!ul) return;
+                            ul.innerHTML = '';
+                            const items = dataSets[dataKey] || [];
+                            // Afficher tous les articles (défilement continu)
+                            items.forEach(function(item) {
+                                const li = document.createElement('li');
+                                li.className = 'list-item ' + dataKey;
+                                li.innerHTML = `
+                                    <a class="item-link" href="${item.url}">
+                                        <span>${item.title}</span>
+                                    </a>`;
+                                ul.appendChild(li);
+                            });
+                        }
+
+                        function renderAllColumnLists() {
+                            renderList('list-generalites-contrib', 'generalites-contrib');
+                            renderList('list-generalites-docs', 'generalites-docs');
+                            renderList('list-feminisation-contrib', 'feminisation-contrib');
+                            renderList('list-feminisation-docs', 'feminisation-docs');
+                            renderList('list-qui', 'qui');
+                            renderList('list-pour-mandataires', 'pour-mandataires');
+                            renderList('list-pour-societes', 'pour-societes');
+                            // Appliquer les filtres après rendu
+                            applyColumnFilters();
+                        }
+
+                        // Helper function to normalize text (remove accents)
+                        function normalizeText(text) {
+                            return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                        }
+
+                        // Filtrage des listes de colonnes (catégorie + recherche texte)
+                        function applyColumnFilters() {
+                            const categorySelect = document.getElementById('category-filter');
+                            const searchInput = document.getElementById('search-input');
+                            const category = categorySelect ? (categorySelect.value || '*') : '*';
+                            const term = searchInput ? (searchInput.value || '').toLowerCase().trim() : '';
+                            const normalizedTerm = normalizeText(term);
+
+                            // Parcourir tous les éléments de listes
+                            const allItems = document.querySelectorAll('.content-list li.list-item');
+                            allItems.forEach(function(li){
+                                const text = (li.textContent || '').toLowerCase();
+                                const normalizedText = normalizeText(text);
+                                const matchCategory = (category === '*') || li.classList.contains(category.replace('.', ''));
+
+                                // Fuzzy search: match both with and without accents
+                                const matchSearch = !term || text.includes(term) || normalizedText.includes(normalizedTerm);
+
+                                li.style.display = (matchCategory && matchSearch) ? '' : 'none';
+                            });
+
+                            // Option: masquer les UL vides
+                            document.querySelectorAll('.content-list').forEach(function(ul){
+                                const hasVisible = Array.from(ul.querySelectorAll('li')).some(function(li){
+                                    return li.style.display !== 'none';
+                                });
+                                ul.style.display = hasVisible ? '' : 'none';
+                            });
+                        }
+                        // Expose pour d'autres scripts (ex: recherche du header)
+                        window.applyColumnFilters = applyColumnFilters;
+
+                        function renderCards(key) {
+                            const items = dataSets[key] || [];
+                            const grid = document.getElementById('articles-grid');
+                            if (!grid) return;
+                            grid.innerHTML = '';
+
+                            items.forEach(function(item) {
+                                const col = document.createElement('div');
+                                col.className = 'col grid-item ' + key;
+                                col.setAttribute('data-category', key);
+
+                                col.innerHTML = `
+                                    <div class="card h-100">
+                                        <img src="${item.img || defaultImg}" class="card-img-top" alt="${item.title}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${item.title}</h5>
+                                            <p class="card-text">${item.description || ''}</p>
+                                            <div class="d-flex align-items-center">
+                                                <a href="${item.url}" class="btn btn-primary">Ouvrir</a>
+                                                ${item.construction ? '<span class="badge">En construction</span>' : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                                grid.appendChild(col);
+                            });
+
+                            // Déclenche un recalcul d'Isotope si présent
+                            if (typeof window.$ !== 'undefined' && typeof window.$.fn !== 'undefined' && window.$('.content-grid').data('isotope')) {
+                                window.$('.content-grid').isotope('reloadItems').isotope({ sortBy: 'name' });
+                            }
+                        }
+
+                        // Actions de navigation
+                        document.addEventListener('click', function(e) {
+                            const trigger = e.target.closest('.nav-action');
+                            if (!trigger) return;
+                            const target = trigger.getAttribute('data-target');
+                            if (!target) return;
+                            e.preventDefault();
+                            // Applique le filtre via la liste déroulante pour coopérer avec Isotope
+                            const select = document.getElementById('category-filter');
+                            if (select) {
+                                select.value = '.' + target;
+                                const ev = new Event('change', { bubbles: true });
+                                select.dispatchEvent(ev);
+                            }
+                            // Smooth scroll vers les articles
+                            setTimeout(function() {
+                                const articlesSection = document.getElementById('articles-section');
+                                if (articlesSection) {
+                                    articlesSection.scrollIntoView({ 
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                }
+                            }, 50);
+                            // Met à jour l'URL en hash
+                            if (history.pushState) { history.pushState({ k: target }, '', '#' + target); }
+                        });
+
+                        // Chargement initial: ne plus générer la grille d'articles
+                        renderAllColumnLists();
+
+                        (function initFromHash(){
+                            const key = (location.hash || '').replace('#','');
+                            if (key && dataSets[key]) {
+                                const select = document.getElementById('category-filter');
+                                if (select) {
+                                    select.value = '.' + key;
+                                    const ev = new Event('change', { bubbles: true });
+                                    setTimeout(function(){ select.dispatchEvent(ev); }, 300);
+                                }
+                            }
+                        })();
+
+                        // Back to top behavior
+                        (function initBackToTop(){
+                            const btn = document.getElementById('back-to-top');
+                            if (!btn) return;
+                            function toggleBtn(){
+                                if (window.scrollY > 300) { btn.classList.add('show'); } else { btn.classList.remove('show'); }
+                            }
+                            window.addEventListener('scroll', toggleBtn, { passive: true });
+                            toggleBtn();
+                            btn.addEventListener('click', function(){
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            });
+                        })();
+
+
+                        // Fonction globale pour initialiser la recherche du header
+                        window.initHeaderSearch = function() {
+                            const headerSearchInput = document.getElementById('header-search-input');
+                            const searchInput = document.getElementById('search-input');
+
+                            console.log('initHeaderSearch called');
+                            console.log('headerSearchInput:', headerSearchInput);
+                            console.log('searchInput:', searchInput);
+
+                            // Restaurer la recherche depuis sessionStorage
+                            const pendingSearch = sessionStorage.getItem('pendingSearch');
+                            if (pendingSearch) {
+                                console.log('Restoring search from sessionStorage:', pendingSearch);
+                                if (headerSearchInput) {
+                                    headerSearchInput.value = pendingSearch;
+                                }
+                                if (searchInput) {
+                                    searchInput.value = pendingSearch;
+                                }
+                                // Appliquer le filtre automatiquement
+                                if (window.applyColumnFilters) {
+                                    setTimeout(function() {
+                                        window.applyColumnFilters();
+                                    }, 100);
+                                }
+                            }
+
+                            if (headerSearchInput) {
+                                console.log('Adding event listener to headerSearchInput');
+                                headerSearchInput.addEventListener('input', function(){
+                                    console.log('headerSearchInput input event:', this.value);
+                                    if (searchInput) {
+                                        searchInput.value = this.value;
+                                        console.log('Synchronized searchInput value:', searchInput.value);
+                                    }
+                                    if (window.applyColumnFilters) {
+                                        window.applyColumnFilters();
+                                    }
+                                });
+                            } else {
+                                console.log('headerSearchInput NOT FOUND!');
+                            }
+                        };
+
+                        // Écouteurs filtres en haut de page pour filtrer les colonnes
+                        (function initColumnFilters(){
+                            const categorySelect = document.getElementById('category-filter');
+                            const searchInput = document.getElementById('search-input');
+
+                            console.log('initColumnFilters - categorySelect:', categorySelect);
+                            console.log('initColumnFilters - searchInput:', searchInput);
+
+                            if (categorySelect) {
+                                categorySelect.addEventListener('change', applyColumnFilters);
+                            }
+                            if (searchInput) {
+                                // Sauvegarder la recherche dans sessionStorage au fur et à mesure
+                                searchInput.addEventListener('input', function(){
+                                    const searchValue = this.value;
+                                    if (searchValue) {
+                                        sessionStorage.setItem('pendingSearch', searchValue);
+                                    } else {
+                                        sessionStorage.removeItem('pendingSearch');
+                                    }
+                                });
+                                searchInput.addEventListener('keyup', function(){
+                                    console.log('searchInput keyup:', this.value);
+                                    applyColumnFilters();
+                                });
+                            }
+                            document.querySelectorAll('.do-search').forEach(function(btn){
+                                btn.addEventListener('click', applyColumnFilters);
+                            });
+                            document.querySelectorAll('.clear-search').forEach(function(btn){
+                                btn.addEventListener('click', function(){
+                                    if (searchInput) searchInput.value = '';
+                                    const headerSearchInput = document.getElementById('header-search-input');
+                                    if (headerSearchInput) headerSearchInput.value = '';
+                                    if (categorySelect) categorySelect.value = '*';
+                                    // Supprimer la recherche du sessionStorage
+                                    sessionStorage.removeItem('pendingSearch');
+                                    applyColumnFilters();
+                                });
+                            });
+                        })();
+                    })();
+                </script>
+            </div>
+        </main>
+        <!-- Footer include -->
+        <div id="footer-placeholder"></div>
+        <!-- Homepage functionality script -->
+        <script src="js/homepage.js"></script>
+        <!-- Search functionality script -->
+        <script src="js/search.js"></script>
+        <!-- <script src="js/debug-keywords.js"></script> -->
+        <script src="assets/js/popper.min.js"></script>
+    </body>
+</html>

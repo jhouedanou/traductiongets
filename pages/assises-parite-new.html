@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Gouvernance &amp; Structures" name="keywords"/>
+<title>Les Assises de la Parité - G-ET-S</title>
+<!-- Bootstrap CSS CDN -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- Custom theme CSS -->
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS CDN -->
+<script crossorigin="anonymous" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 40px;
+        }
+        
+        .page-title {
+            color: #1e73be;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .event-header {
+            background-color: #efefef;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-date {
+            background: #1e73be;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .event-location {
+            font-size: 1.2em;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            color: #1e73be;
+            border-bottom: 2px solid #1e73be;
+            padding-bottom: 10px;
+            margin-top: 35px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .speaker-card {
+            background-color: #efefef;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .speaker-name {
+            color: #1e73be;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .speaker-title {
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .topic-card {
+            background: white;
+            border-left: 4px solid #28a745;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-box {
+            background-color: #efefef;
+            border-left: 4px solid #17a2b8;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            background-color: #efefef;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid #28a745;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 5px;
+        }
+        
+        .btn-primary-custom {
+            background-color: #1e73be;
+            border-color: #1e73be;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #155a8a;
+            border-color: #155a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(30, 115, 190, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .back-to-home {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2em;
+            }
+            .main-container {
+                padding: 25px;
+                margin: 10px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/includes.js"></script>
+<!-- Isotope JS for filtering -->
+<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.js"></script>
+<style>
+	/* unified-construction-style */
+	body { background-color: #efefef !important; }
+	.spinner-container, .construction-spinner { display: none !important; }
+	.back-link { background-color: #1e73be !important; }
+	.btn-primary-custom { background-color: #1e73be !important; background-image: none !important; }
+	</style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<!-- Main content -->
+<main class="container-fluid pt-4 pb-4">
+<div class="container main-container">
+<h1 class="page-title" data-i18n="page_assises_parite_new.les_assises_de_la_parite">Les Assises de la Parité</h1>
+<div class="event-header">
+<div class="event-date">
+<i class="fas fa-calendar-alt me-2"></i>
+                    8 mars 2024 - Journée internationale des droits des femmes
+                </div>
+<p class="event-location" data-i18n="page_assises_parite_new.palais_des_congres_paris">
+<i class="fas fa-map-marker-alt me-2"></i>
+                    Palais des Congrès, Paris
+                </p>
+<p class="mb-0" data-i18n="page_assises_parite_new.un_evenement_majeur_pour_legalite_professionn">
+<i class="fas fa-users me-2"></i>
+                    Un événement majeur pour l'égalité professionnelle
+                </p>
+</div>
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-number">200+</div>
+<p class="mb-0" data-i18n="page_assises_parite_new.participants">Participants</p>
+</div>
+<div class="stat-item">
+<div class="stat-number">15</div>
+<p class="mb-0" data-i18n="page_assises_parite_new.intervenants_experts">Intervenants experts</p>
+</div>
+<div class="stat-item">
+<div class="stat-number">6h</div>
+<p class="mb-0" data-i18n="page_assises_parite_new.de_conferences">De conférences</p>
+</div>
+<div class="stat-item">
+<div class="stat-number">3</div>
+<p class="mb-0" data-i18n="page_assises_parite_new.tables_rondes">Tables rondes</p>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-8">
+<h2 class="section-title" data-i18n="page_assises_parite_new.intervenants_prestigieux"><i class="fas fa-microphone text-primary me-2"></i>Intervenants prestigieux</h2>
+<div class="speaker-card">
+<div class="speaker-name">
+<i class="fas fa-user-tie text-primary me-2"></i>
+                            Marie Dupont
+                        </div>
+<div class="speaker-title">Directrice Générale, CAC 40</div>
+<p class="mb-0" data-i18n="page_assises_parite_new.temoignage_sur_les_defis_de_la_parite_dans_le">Témoignage sur les défis de la parité dans les grandes entreprises et les solutions mises en œuvre.</p>
+</div>
+<div class="speaker-card">
+<div class="speaker-name">
+<i class="fas fa-balance-scale text-primary me-2"></i>
+                            Professeur Jean Martin
+                        </div>
+<div class="speaker-title">Expert en Gouvernance d'Entreprise</div>
+<p class="mb-0" data-i18n="page_assises_parite_new.analyse_des_evolutions_reglementaires_et_de_l">Analyse des évolutions réglementaires et de leur impact sur la gouvernance des entreprises.</p>
+</div>
+<div class="speaker-card">
+<div class="speaker-name">
+<i class="fas fa-chart-line text-primary me-2"></i>
+                            Sophie Leroy
+                        </div>
+<div class="speaker-title">Présidente du Cercle des Femmes Dirigeantes</div>
+<p class="mb-0" data-i18n="page_assises_parite_new.retour_dexperience_sur_les_initiatives_reussi">Retour d'expérience sur les initiatives réussies en matière d'égalité professionnelle.</p>
+</div>
+</div>
+<div class="col-lg-4">
+<h2 class="section-title" data-i18n="page_assises_parite_new.programme"><i class="fas fa-list-alt text-primary me-2"></i>Programme</h2>
+<div class="topic-card">
+<h5 data-i18n="page_assises_parite_new.9h00_ouverture"><i class="fas fa-play-circle text-success me-2"></i>9h00 - Ouverture</h5>
+<p class="mb-0" data-i18n="page_assises_parite_new.accueil_et_presentation_des_enjeux">Accueil et présentation des enjeux</p>
+</div>
+<div class="topic-card">
+<h5 data-i18n="page_assises_parite_new.9h30_table_ronde_1"><i class="fas fa-users text-success me-2"></i>9h30 - Table ronde 1</h5>
+<p class="mb-0" data-i18n="page_assises_parite_new.la_parite_dans_les_conseils_dadministration">La parité dans les conseils d'administration</p>
+</div>
+<div class="topic-card">
+<h5 data-i18n="page_assises_parite_new.11h00_table_ronde_2"><i class="fas fa-briefcase text-success me-2"></i>11h00 - Table ronde 2</h5>
+<p class="mb-0" data-i18n="page_assises_parite_new.leadership_feminin_et_performance">Leadership féminin et performance</p>
+</div>
+<div class="topic-card">
+<h5 data-i18n="page_assises_parite_new.14h00_table_ronde_3"><i class="fas fa-lightbulb text-success me-2"></i>14h00 - Table ronde 3</h5>
+<p class="mb-0" data-i18n="page_assises_parite_new.innovation_et_egalite_des_chances">Innovation et égalité des chances</p>
+</div>
+<div class="topic-card">
+<h5 data-i18n="page_assises_parite_new.16h00_networking"><i class="fas fa-handshake text-success me-2"></i>16h00 - Networking</h5>
+<p class="mb-0" data-i18n="page_assises_parite_new.echanges_et_opportunites">Échanges et opportunités</p>
+</div>
+</div>
+</div>
+<div class="highlight-box">
+<h3 data-i18n="page_assises_parite_new.objectifs_de_levenement"><i class="fas fa-bullseye text-info me-2"></i>Objectifs de l'événement</h3>
+<div class="row">
+<div class="col-md-6">
+<ul class="list-unstyled">
+<li class="mb-2" data-i18n="page_assises_parite_new.promouvoir_legalite_professionnelle"><i class="fas fa-arrow-right text-primary me-2"></i>Promouvoir l'égalité professionnelle</li>
+<li class="mb-2" data-i18n="page_assises_parite_new.echanger_les_bonnes_pratiques"><i class="fas fa-arrow-right text-primary me-2"></i>Échanger les bonnes pratiques</li>
+<li class="mb-2" data-i18n="page_assises_parite_new.creer_des_synergies_entre_acteurs"><i class="fas fa-arrow-right text-primary me-2"></i>Créer des synergies entre acteurs</li>
+</ul>
+</div>
+<div class="col-md-6">
+<ul class="list-unstyled">
+<li class="mb-2" data-i18n="page_assises_parite_new.sensibiliser_aux_enjeux_de_diversite"><i class="fas fa-arrow-right text-primary me-2"></i>Sensibiliser aux enjeux de diversité</li>
+<li class="mb-2" data-i18n="page_assises_parite_new.proposer_des_solutions_concretes"><i class="fas fa-arrow-right text-primary me-2"></i>Proposer des solutions concrètes</li>
+<li class="mb-2" data-i18n="page_assises_parite_new.accompagner_les_transformations"><i class="fas fa-arrow-right text-primary me-2"></i>Accompagner les transformations</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 class="section-title" data-i18n="page_assises_parite_new.resultats_et_impact"><i class="fas fa-trophy text-primary me-2"></i>Résultats et impact</h2>
+<div class="row">
+<div class="col-md-6">
+<div class="highlight-box" style="background-color: #efefef; border-left-color: #28a745;">
+<h4 data-i18n="page_assises_parite_new.engagements_pris"><i class="fas fa-check-circle text-success me-2"></i>Engagements pris</h4>
+<ul class="mb-0">
+<li data-i18n="page_assises_parite_new.20_entreprises_se_sont_engagees_dans_une_dema">20 entreprises se sont engagées dans une démarche parité</li>
+<li data-i18n="page_assises_parite_new.creation_dun_reseau_de_mentoring">Création d'un réseau de mentoring</li>
+<li data-i18n="page_assises_parite_new.lancement_dun_observatoire_de_legalite">Lancement d'un observatoire de l'égalité</li>
+</ul>
+</div>
+</div>
+<div class="col-md-6">
+<div class="highlight-box" style="background-color: #efefef; border-left-color: #ffc107;">
+<h4 data-i18n="page_assises_parite_new.suivi_des_actions"><i class="fas fa-calendar-check text-warning me-2"></i>Suivi des actions</h4>
+<ul class="mb-0">
+<li data-i18n="page_assises_parite_new.rendez_vous_trimestriels_programmes">Rendez-vous trimestriels programmés</li>
+<li data-i18n="page_assises_parite_new.indicateurs_de_suivi_definis">Indicateurs de suivi définis</li>
+<li data-i18n="page_assises_parite_new.prochaines_assises_prevues_en_2025">Prochaines assises prévues en 2025</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="text-center mt-4">
+<a class="btn btn-primary-custom me-3" href="../contact.html">
+<i class="fas fa-envelope me-2"></i>
+                    Participer aux prochaines assises
+                </a>
+<a class="btn btn-outline-primary" href="#">
+<i class="fas fa-download me-2"></i>
+                    Télécharger le rapport complet
+                </a>
+</div>
+<!-- Back to home section -->
+<div class="back-to-home">
+<a class="btn btn-primary-custom" href="../index.html">
+<i class="fas fa-home me-2"></i>
+                    Retour à l'accueil
+                </a>
+</div>
+</div>
+</main>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

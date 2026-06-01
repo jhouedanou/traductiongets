@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Gestion Dataset</title>
+    
+    <!-- Vue.js 3 via CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .drag-drop-zone {
+            border: 3px dashed #007bff;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .drag-drop-zone:hover,
+        .drag-drop-zone.dragover {
+            border-color: #0056b3;
+            background-color: #e7f3ff;
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        
+        .admin-card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-card .card-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            font-weight: 600;
+        }
+        
+        .status-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        .file-list-item {
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: white;
+        }
+        
+        .scrape-result {
+            max-height: 300px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .login-card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Interface de login -->
+        <div v-if="!isAuthenticated" class="login-container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card login-card">
+                            <div class="card-body p-5">
+                                <div class="text-center mb-4">
+                                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                                    <h3 class="fw-bold">Administration</h3>
+                                    <p class="text-muted">Accès sécurisé au panneau d'administration</p>
+                                </div>
+                                
+                                <form @submit.prevent="login">
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">
+                                            <i class="fas fa-lock me-2"></i>Mot de passe
+                                        </label>
+                                        <input 
+                                            type="password" 
+                                            class="form-control form-control-lg" 
+                                            id="password"
+                                            v-model="loginPassword"
+                                            required
+                                            placeholder="Entrez le mot de passe admin"
+                                        >
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-lg w-100" :disabled="loading">
+                                        <i v-if="loading" class="fas fa-spinner fa-spin me-2"></i>
+                                        <i v-else class="fas fa-sign-in-alt me-2"></i>
+                                        Se connecter
+                                    </button>
+                                </form>
+                                
+                                <div v-if="loginError" class="alert alert-danger mt-3 mb-0">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    {{ loginError }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interface d'administration -->
+        <div v-else>
+            <!-- Status indicator -->
+            <div class="status-indicator">
+                <div v-if="notification" :class="['alert', notificationClass, 'mb-0']">
+                    <i :class="notificationIcon"></i>
+                    {{ notification }}
+                </div>
+            </div>
+
+            <!-- Header -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container">
+                    <span class="navbar-brand">
+                        <i class="fas fa-cogs me-2"></i>
+                        Administration Dataset
+                    </span>
+                    
+                    <div class="navbar-nav ms-auto">
+                        <button class="btn btn-outline-light" @click="logout">
+                            <i class="fas fa-sign-out-alt me-2"></i>
+                            Déconnexion
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container mt-4">
+                <!-- Upload Section -->
+                <div class="admin-card card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-cloud-upload-alt me-2"></i>
+                            Upload de fichiers
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div 
+                            class="drag-drop-zone"
+                            @drop="handleDrop"
+                            @dragover.prevent
+                            @dragenter.prevent
+                            @click="$refs.fileInput.click()"
+                            :class="{ 'dragover': isDragOver }"
+                            @dragenter="isDragOver = true"
+                            @dragleave="isDragOver = false"
+                        >
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <h4>Glissez-déposez vos fichiers ici</h4>
+                            <p class="text-muted">ou cliquez pour sélectionner</p>
+                            <small class="text-muted">Formats supportés: JSON, CSV, TXT, XML (max 10MB)</small>
+                        </div>
+                        
+                        <input 
+                            type="file" 
+                            ref="fileInput" 
+                            @change="handleFileSelect"
+                            accept=".json,.csv,.txt,.xml"
+                            style="display: none"
+                        >
+                        
+                        <div v-if="uploadedFiles.length" class="mt-4">
+                            <h6>Fichiers uploadés:</h6>
+                            <div v-for="file in uploadedFiles" :key="file.filename" class="file-list-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>{{ file.originalName }}</strong>
+                                        <small class="text-muted d-block">{{ formatFileSize(file.size) }} - {{ formatDate(file.uploadDate) }}</small>
+                                    </div>
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-check me-1"></i>
+                                        {{ file.recordsProcessed || 0 }} enregistrements
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Scraping Section -->
+                <div class="admin-card card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-spider me-2"></i>
+                            Scraping de pages web
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form @submit.prevent="scrapeUrl">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <label for="scrapeUrl" class="form-label">URL à scraper</label>
+                                    <input 
+                                        type="url" 
+                                        class="form-control" 
+                                        id="scrapeUrl"
+                                        v-model="scrapeData.url"
+                                        placeholder="https://example.com"
+                                        required
+                                    >
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="scrapeSelector" class="form-label">Sélecteur CSS (optionnel)</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="scrapeSelector"
+                                        v-model="scrapeData.selector"
+                                        placeholder="h1, .title, #content"
+                                    >
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mt-3" :disabled="loading">
+                                <i v-if="loading" class="fas fa-spinner fa-spin me-2"></i>
+                                <i v-else class="fas fa-spider me-2"></i>
+                                Lancer le scraping
+                            </button>
+                        </form>
+                        
+                        <div v-if="scrapeResults.length" class="mt-4">
+                            <h6>Résultats du scraping:</h6>
+                            <div v-for="result in scrapeResults" :key="result.url" class="scrape-result mb-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <strong>{{ result.title || result.url }}</strong>
+                                    <span class="badge bg-info">{{ result.categories?.join(', ') || 'Général' }}</span>
+                                </div>
+                                <small class="text-muted">{{ result.url }} - {{ formatDate(result.scraped_at) }}</small>
+                                <div class="mt-2">
+                                    <small><strong>Contenu extrait:</strong></small>
+                                    <div class="small text-muted">
+                                        {{ JSON.stringify(result.content, null, 2).substring(0, 200) }}...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dataset Overview -->
+                <div class="admin-card card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-database me-2"></i>
+                            Aperçu du dataset
+                        </h5>
+                        <button class="btn btn-outline-light btn-sm" @click="loadDataset">
+                            <i class="fas fa-refresh me-1"></i>
+                            Actualiser
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div v-if="dataset && Object.keys(dataset).length" class="row">
+                            <div class="col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-file-alt fa-2x text-primary mb-2"></i>
+                                        <h4>{{ Object.keys(dataset).length }}</h4>
+                                        <small class="text-muted">Entrées totales</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-tags fa-2x text-success mb-2"></i>
+                                        <h4>{{ categories.length }}</h4>
+                                        <small class="text-muted">Catégories</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div v-if="categories.length" class="mt-3">
+                            <h6>Catégories détectées:</h6>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span v-for="cat in categories" :key="cat" class="badge bg-secondary">
+                                    {{ cat }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div v-if="!dataset || !Object.keys(dataset).length" class="text-center text-muted py-4">
+                            <i class="fas fa-inbox fa-3x mb-3"></i>
+                            <p>Aucune donnée dans le dataset</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    isAuthenticated: false,
+                    loginPassword: '',
+                    loginError: '',
+                    loading: false,
+                    notification: '',
+                    notificationClass: '',
+                    notificationIcon: '',
+                    isDragOver: false,
+                    uploadedFiles: [],
+                    scrapeData: {
+                        url: '',
+                        selector: ''
+                    },
+                    scrapeResults: [],
+                    dataset: {},
+                    categories: []
+                };
+            },
+            mounted() {
+                this.checkAuthStatus();
+                this.loadDataset();
+                this.loadCategories();
+            },
+            methods: {
+                async checkAuthStatus() {
+                    try {
+                        const response = await fetch('/api/auth-status');
+                        const data = await response.json();
+                        this.isAuthenticated = data.authenticated;
+                    } catch (error) {
+                        console.error('Erreur vérification auth:', error);
+                    }
+                },
+
+                async login() {
+                    this.loading = true;
+                    this.loginError = '';
+                    
+                    try {
+                        const response = await fetch('/api/login', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                password: this.loginPassword
+                            })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.isAuthenticated = true;
+                            this.loginPassword = '';
+                            this.showNotification('Connexion réussie!', 'success');
+                            this.loadDataset();
+                            this.loadCategories();
+                        } else {
+                            this.loginError = data.error || 'Erreur de connexion';
+                        }
+                    } catch (error) {
+                        this.loginError = 'Erreur de connexion au serveur';
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+
+                async logout() {
+                    try {
+                        await fetch('/api/logout', { method: 'POST' });
+                        this.isAuthenticated = false;
+                        this.loginPassword = '';
+                        this.uploadedFiles = [];
+                        this.scrapeResults = [];
+                        this.dataset = {};
+                        this.categories = [];
+                    } catch (error) {
+                        console.error('Erreur déconnexion:', error);
+                    }
+                },
+
+                handleDrop(event) {
+                    event.preventDefault();
+                    this.isDragOver = false;
+                    
+                    const files = event.dataTransfer.files;
+                    if (files.length > 0) {
+                        this.uploadFile(files[0]);
+                    }
+                },
+
+                handleFileSelect(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        this.uploadFile(file);
+                    }
+                },
+
+                async uploadFile(file) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    
+                    this.loading = true;
+                    
+                    try {
+                        const response = await fetch('/api/upload', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.uploadedFiles.unshift(data.fileInfo);
+                            this.showNotification(`Fichier uploadé: ${data.recordsProcessed || 0} enregistrements traités`, 'success');
+                            this.loadDataset();
+                            this.loadCategories();
+                        } else {
+                            this.showNotification(data.error || 'Erreur upload', 'danger');
+                        }
+                    } catch (error) {
+                        this.showNotification('Erreur lors de l\'upload', 'danger');
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+
+                async scrapeUrl() {
+                    this.loading = true;
+                    
+                    try {
+                        const response = await fetch('/api/scrape', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.scrapeData)
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.scrapeResults.unshift(data.data);
+                            this.showNotification('Page scrapée avec succès!', 'success');
+                            this.scrapeData.url = '';
+                            this.scrapeData.selector = '';
+                            this.loadDataset();
+                            this.loadCategories();
+                        } else {
+                            this.showNotification(data.error || 'Erreur scraping', 'danger');
+                        }
+                    } catch (error) {
+                        this.showNotification('Erreur lors du scraping', 'danger');
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+
+                async loadDataset() {
+                    if (!this.isAuthenticated) return;
+                    
+                    try {
+                        const response = await fetch('/api/dataset');
+                        const data = await response.json();
+                        this.dataset = data;
+                    } catch (error) {
+                        console.error('Erreur chargement dataset:', error);
+                    }
+                },
+
+                async loadCategories() {
+                    if (!this.isAuthenticated) return;
+                    
+                    try {
+                        const response = await fetch('/api/categories');
+                        const data = await response.json();
+                        this.categories = data;
+                    } catch (error) {
+                        console.error('Erreur chargement catégories:', error);
+                    }
+                },
+
+                showNotification(message, type) {
+                    this.notification = message;
+                    this.notificationClass = `alert-${type}`;
+                    this.notificationIcon = type === 'success' ? 'fas fa-check-circle me-2' : 'fas fa-exclamation-triangle me-2';
+                    
+                    setTimeout(() => {
+                        this.notification = '';
+                    }, 5000);
+                },
+
+                formatFileSize(bytes) {
+                    if (bytes === 0) return '0 Bytes';
+                    const k = 1024;
+                    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                    const i = Math.floor(Math.log(bytes) / Math.log(k));
+                    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+                },
+
+                formatDate(dateString) {
+                    return new Date(dateString).toLocaleString('fr-FR');
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

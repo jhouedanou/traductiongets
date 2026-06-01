@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Formation au digital - G-ET-S</title>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<style>
+		body {
+			background: linear-gradient(180deg, #eef2f8 0%, #ffffff 35%);
+			min-height: 100vh;
+		}
+
+		.article-hero {
+			padding: 72px 0 48px;
+			text-align: center;
+			color: #0f172a;
+		}
+
+		.article-hero h1 {
+			font-weight: 800;
+			font-size: clamp(2rem, 2.8vw, 2.5rem);
+			letter-spacing: -0.02em;
+			margin-bottom: 12px;
+			color: #1e73be;
+		}
+
+		.article-content {
+			max-width: 1200px;
+			margin: 0 auto 50px;
+			background: rgba(255, 255, 255, 0.96);
+			border-radius: 28px;
+			padding: 48px;
+			box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+			border: 1px solid rgba(148, 163, 184, 0.18);
+		}
+
+		.formation-block {
+			border: solid 1px #c7d1dac7;
+			padding: 30px;
+			border-radius: 12px;
+			background: #fff;
+			margin-bottom: 30px;
+		}
+
+		.formation-block h4 {
+			text-align: center;
+			color: #1e73be;
+			margin-bottom: 20px;
+			font-size: 1.3rem;
+		}
+
+		.formation-block p {
+			text-align: center;
+			color: #000;
+			line-height: 1.8;
+			margin-bottom: 15px;
+		}
+
+		.formation-block p.forma-origi {
+			text-align: center;
+		}
+
+		.workshops-list {
+			margin-top: 30px;
+			padding: 25px;
+			background: #f8f9fa;
+			border-radius: 12px;
+			border: 1px solid #dee2e6;
+		}
+
+		.workshops-list h5 {
+			color: #1e73be;
+			margin-bottom: 20px;
+			text-align: center;
+			font-weight: 600;
+		}
+
+		.workshops-list ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 15px;
+		}
+
+		.workshops-list li {
+			padding: 12px 20px;
+			background: white;
+			border-left: 3px solid #1e73be;
+			border-radius: 6px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+			transition: all 0.2s ease;
+		}
+
+		.workshops-list li:hover {
+			transform: translateX(5px);
+			box-shadow: 0 4px 8px rgba(30, 115, 190, 0.15);
+		}
+
+		/* Tableau des formations - design simple */
+		.formations-table {
+			width: 100%;
+			border: 1px solid #ccc;
+			margin-bottom: 30px;
+			background: white;
+		}
+
+		.formations-table .header-cell {
+			background: #1e73be;
+			padding: 20px;
+			margin-bottom: 0;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.formations-table .header-cell h4 {
+			color: white;
+			margin: 0 0 10px 0;
+			font-size: 1.2rem;
+			font-weight: 600;
+		}
+
+		.formations-table .header-cell p {
+			color: white;
+			margin: 0;
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+
+		.formations-table .forma-institu {
+			background: white;
+			border: none;
+			padding: 20px;
+		}
+
+		.formations-table .forma-institu h4 {
+			color: #1e73be;
+			font-size: 1.1rem;
+			margin-bottom: 15px;
+			font-weight: 600;
+			text-align: center;
+			border-bottom: 1px solid #ddd;
+			padding-bottom: 10px;
+		}
+
+		.formations-table .institution-card {
+			background: white;
+			border: 1px solid #ddd;
+			padding: 15px;
+			margin-bottom: 10px;
+		}
+
+		.formations-table .institution-card:hover {
+			background: #f9f9f9;
+		}
+
+		.formations-table .institution-card:last-child {
+			margin-bottom: 0;
+		}
+
+		.formations-table .institution-card p {
+			margin: 5px 0;
+			line-height: 1.5;
+		}
+
+		.formations-table .institution-card a {
+			color: #1e73be;
+			text-decoration: none;
+		}
+
+		.formations-table .institution-card a:hover {
+			text-decoration: underline;
+		}
+
+		@media (max-width: 768px) {
+			.article-content {
+				padding: 32px 24px;
+				border-radius: 20px;
+				margin: 0 16px 50px;
+			}
+
+			.workshops-list ul {
+				grid-template-columns: 1fr;
+			}
+
+			.formations-table .header-cell h4 {
+				font-size: 1.2rem;
+			}
+
+			.formations-table .header-cell p {
+				font-size: 0.95rem;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div id="nav-placeholder"></div>
+<main>
+<section class="article-hero">
+<div class="container">
+<h1 data-i18n="page_informatique.formation_au_digital"><i class="fas fa-laptop-code me-3"></i>Formation au digital</h1>
+</div>
+</section>
+<section class="container mb-5">
+<div class="article-content">
+<div class="formations-table">
+<div class="header-cell">
+<h4 data-i18n="page_informatique.des_formations_originales_proposees_par_g_s">DES FORMATIONS ORIGINALES PROPOSÉES PAR G &amp; S</h4>
+<p data-i18n="page_informatique.en_sappuyant_sur_des_ateliers_proposes_dans_l">En s'appuyant sur des ateliers proposés dans le passé, tels que le comportements des hommes et des femmes dans les Conseils ou l'utilisation des micro-ordinateurs, aujourd'hui serait sur l'utilisation des réseaux sociaux, G &amp; S peut organiser des ateliers spécifiques</p>
+</div>
+</div>
+<div class="workshops-list">
+<h5 data-i18n="page_informatique.g_s_a_en_tete_des_ateliers_dune_journee_selon">G &amp; S a en tête des ateliers d'une journée selon une approche originale « les mains dans le cambouis » avec des partenaires qualifiés chaque fois sur un thème spécifique tel que :</h5>
+<ul>
+<li data-i18n="page_informatique.codages"><i class="fas fa-code me-2" style="color: #1e73be;"></i>Codages</li>
+<li data-i18n="page_informatique.cybersecurite_avec_un_hacker_reconverti"><i class="fas fa-shield-alt me-2" style="color: #1e73be;"></i>Cybersécurité avec un Hacker reconverti</li>
+<li data-i18n="page_informatique.cloud_visite_guidee_gros_data_center"><i class="fas fa-cloud me-2" style="color: #1e73be;"></i>"Cloud" Visite guidée Gros data Center</li>
+<li data-i18n="page_informatique.internet_des_objets"><i class="fas fa-network-wired me-2" style="color: #1e73be;"></i>Internet des objets</li>
+<li data-i18n="page_informatique.call_center_et_intelligence_artificielle"><i class="fas fa-robot me-2" style="color: #1e73be;"></i>Call Center et Intelligence artificielle</li>
+<li data-i18n="page_informatique.gestion_des_documents_pour_conseils"><i class="fas fa-folder-open me-2" style="color: #1e73be;"></i>Gestion des Documents pour Conseils</li>
+<li data-i18n="page_informatique.big_data_et_relation_client"><i class="fas fa-database me-2" style="color: #1e73be;"></i>Big Data et relation client</li>
+<li data-i18n="page_informatique.big_data_interfaces_avec_si_classiques"><i class="fas fa-exchange-alt me-2" style="color: #1e73be;"></i>Big Data Interfaces avec SI classiques</li>
+<li data-i18n="page_informatique.reglement_europeen_sur_les_donnees_personnell"><i class="fas fa-user-shield me-2" style="color: #1e73be;"></i>Règlement européen sur les données personnelles</li>
+<li data-i18n="page_informatique.la_cryptographie_et_les_mots_de_passe"><i class="fas fa-lock me-2" style="color: #1e73be;"></i>La cryptographie et les mots de passe</li>
+<li data-i18n="page_informatique.realite_virtuelle"><i class="fas fa-vr-cardboard me-2" style="color: #1e73be;"></i>Réalité Virtuelle</li>
+<li data-i18n="page_informatique.blockchain"><i class="fas fa-link me-2" style="color: #1e73be;"></i>Blockchain</li>
+<li data-i18n="page_informatique.mooc"><i class="fas fa-graduation-cap me-2" style="color: #1e73be;"></i>MOOC</li>
+<li data-i18n="page_informatique.salle_de_gestion_de_crise"><i class="fas fa-exclamation-triangle me-2" style="color: #1e73be;"></i>Salle de Gestion de crise</li>
+<li data-i18n="page_informatique.intelligence_artificielle"><i class="fas fa-brain me-2" style="color: #1e73be;"></i>Intelligence artificielle</li>
+</ul>
+</div>
+<div class="text-center mt-4">
+<a class="btn btn-outline-primary" href="../index.html">
+<i class="fas fa-arrow-left me-2"></i>
+						Retour à l'accueil
+					</a>
+</div>
+</div>
+</section>
+</main>
+<div id="footer-placeholder"></div>
+</body>
+</html>

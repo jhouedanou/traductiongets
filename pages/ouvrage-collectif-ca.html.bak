@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Gouvernance & Structures">
+    <title>Ouvrage collectif CA - G-ET-S</title>
+    
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    <!-- Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom theme CSS -->
+    <link href="../css/theme.css" rel="stylesheet" type="text/css">
+    
+    <!-- jQuery for includes -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+    <!-- Custom includes script -->
+    <script src="../js/includes.js"></script>
+    
+    <style>
+        body {
+            background-color: #efefef;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .construction-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .logo-section {
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+        
+        .construction-title {
+            color: #1e73be;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .construction-subtitle {
+            color: #6c757d;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .construction-description {
+            color: #495057;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .spinner-container {
+            margin: 30px 0;
+        }
+        
+        .construction-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1e73be;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .btn-primary-custom {
+            background-color: #efefef;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(30, 115, 190, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #1e73be;
+        }
+        
+        @media (max-width: 768px) {
+            .construction-title {
+                font-size: 2em;
+            }
+            .construction-container {
+                margin: 20px 10px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+	<link href="../css/theme.css" rel="stylesheet" type="text/css">
+		<link href="../styles.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		<!-- Font Awesome CDN for icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+		<script src="../bootstrap/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+		<!-- jQuery for includes -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- Custom includes script -->
+		<script src="../js/includes.js"></script>
+		<!-- Isotope JS for filtering -->
+		<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.js"></script>
+		<style>
+	/* unified-construction-style */
+	body { background-color: #efefef !important; }
+	.spinner-container, .construction-spinner { display: none !important; }
+	.back-link { background-color: #1e73be !important; }
+	.btn-primary-custom { background-color: #1e73be !important; background-image: none !important; }
+	</style>
+</head>
+<body>
+    <!-- Header include -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Navigation include -->
+    <div id="nav-placeholder"></div>
+    
+    <!-- Main content -->
+    <main class="container-fluid">
+        <div class="container">
+            <div class="container main-container bg-white shadow-sm rounded mt-4 mb-4 p-4">
+                <div >
+                    <img src="../images/logo-gs.png" alt="Logo G-ET-S" class="logo" onerror="this.style.display='none'">
+                </div>
+                
+                <h1 class="article-hero"><div class="container"><h1>>
+                    <i class="fas fa-tools text-primary me-3"></i>
+                    Ouvrage collectif CA
+                </h1></div></section>
+        <section class="container mb-5">
+            <div class="article-content">
+                
+                <p >
+                    Page en cours de développement
+                </p>
+                
+                <div >
+                    <div ></div>
+                </div>
+                
+                <div class="content-text">
+                    <p><i class="fas fa-info-circle text-info me-2"></i> Cette page est actuellement en cours de construction.</p>
+                    <p>Notre équipe travaille activement sur ce contenu pour vous offrir la meilleure expérience possible.</p>
+                    <p><strong>Contenu à venir :</strong> Informations détaillées, ressources et outils relatifs à ce sujet.</p>
+                </div>
+                
+                <div class="contact-info">
+                    <h4><i class="fas fa-envelope text-primary me-2"></i>Nous contacter</h4>
+                    <p class="mb-2">Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :</p>
+                    <p class="mb-0">
+                        <i class="fas fa-at text-primary me-2"></i>
+                        <strong>Email :</strong> contact@g-et-s.com
+                    </p>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="../index.html" class="btn-primary-custom">
+                        <i class="fas fa-home me-2"></i>
+                        Retour à l'accueil
+                    </a>
+                    <a href="../contact/index.html" class="btn-primary-custom">
+                        <i class="fas fa-envelope me-2"></i>
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer include -->
+    <div id="footer-placeholder"></div>
+
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

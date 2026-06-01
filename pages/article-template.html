@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[TITRE_ARTICLE] - G-ET-S</title>
+    <link href="../css/theme.css" rel="stylesheet" type="text/css">
+    <link href="../styles.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Aw<esome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <script src="../bootstrap/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <!-- jQuery for includes -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom includes script -->
+    <script src="../js/includes.js"></script>
+    <!-- Isotope JS for filtering -->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+
+    <style>
+        /* Template d'article élégant - Version réutilisable */
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        .article-header {
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-header h1 {
+            color: #1a202c;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .article-meta {
+            background: rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .article-content .card {
+            border: none;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+        }
+
+        .article-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin: 2rem 0 3rem 0;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-image img {
+            transition: transform 0.3s ease;
+        }
+
+        .article-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .article-text {
+            font-size: 1.1rem;
+            color: #2d3748;
+            line-height: 2;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-text.lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+
+        .article-text p {
+            margin-bottom: 1.8rem;
+        }
+
+        .quote-highlight {
+            font-style: italic;
+            color: #667eea;
+            font-weight: 500;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .quote-highlight::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .nav-buttons {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .nav-buttons .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .btn-outline-primary {
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .nav-buttons .btn-outline-primary:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Animation d'entrée */
+        .article-content {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-text {
+                font-size: 1.125rem;
+                text-align: left;
+            }
+
+            .article-text.lead {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+
+            .article-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Styles supplémentaires pour différents types de contenu */
+        .article-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #667eea;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .article-list {
+            background: rgba(102, 126, 234, 0.03);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .article-list ul {
+            margin-bottom: 0;
+        }
+
+        .article-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .author-info {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-style: italic;
+            color: #4a5568;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header include -->
+    <div id="header-placeholder"></div>
+    <!-- Navigation include -->
+    <div id="nav-placeholder"></div>
+
+    <main class="container mt-4 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-12 article-container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../index.html">Accueil</a></li>
+                        <li class="breadcrumb-item">[CATEGORIE]</li>
+                        <li class="breadcrumb-item active" aria-current="page">[TITRE_ARTICLE]</li>
+                    </ol>
+                </nav>
+
+                <!-- Article header -->
+                <div class="article-header">
+                    <h1 class="display-4">[TITRE_ARTICLE]</h1>
+                    <div class="article-meta d-flex align-items-center">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span class="me-3">Publié le [DATE_PUBLICATION]</span>
+                        <i class="fas fa-tag me-2"></i>
+                        <span>[CATEGORIE] - [SOUS_CATEGORIE]</span>
+                    </div>
+                </div>
+
+                <!-- Article content -->
+                <div class="article-content">
+                    <div class="card">
+                        <div class="card-body p-4 p-md-5">
+                            <!-- Article image (optionnel) -->
+                            <!--
+                            <div class="article-image text-center">
+                                <img src="[CHEMIN_IMAGE]"
+                                     alt="[ALT_IMAGE]"
+                                     class="img-fluid"
+                                     style="max-height: 400px; object-fit: cover; width: 100%;">
+                            </div>
+                            -->
+
+                            <!-- Paragraphe d'introduction (lead) -->
+                            <div class="article-text lead">
+                                [PARAGRAPHE_INTRODUCTION]
+                            </div>
+
+                            <!-- Contenu principal de l'article -->
+                            <div class="article-text">
+                                <!-- Utilisez les classes suivantes selon le besoin :
+
+                                     Paragraphe normal :
+                                     <p>[CONTENU]</p>
+
+                                     Sous-titre :
+                                     <h3 class="article-subtitle">[SOUS_TITRE]</h3>
+
+                                     Citation mise en valeur :
+                                     <p><span class="quote-highlight">[CITATION]</span></p>
+
+                                     Liste dans un encadré :
+                                     <div class="article-list">
+                                         <ul>
+                                             <li>[ELEMENT_1]</li>
+                                             <li>[ELEMENT_2]</li>
+                                         </ul>
+                                     </div>
+
+                                     Encadré de mise en valeur :
+                                     <div class="highlight-box">
+                                         <p>[CONTENU_IMPORTANT]</p>
+                                     </div>
+                                -->
+
+                                <p>[CONTENU_ARTICLE]</p>
+                            </div>
+
+                            <!-- Informations sur l'auteur (optionnel) -->
+                            <!--
+                            <div class="author-info">
+                                <p><strong>À propos de l'auteur :</strong> [INFO_AUTEUR]</p>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation buttons -->
+                <div class="nav-buttons d-flex justify-content-center">
+                    <a href="../index.html" class="btn btn-outline-primary">
+                        <i class="fas fa-home me-2"></i>Retour à l'accueil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer include -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Homepage functionality script -->
+    <script src="../js/homepage.js"></script>
+    <!-- Search functionality script -->
+    <script src="../js/search.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Contact - Gouvernance &amp; Structures" name="description"/>
+<title>Contact - G &amp; S</title>
+<link href="css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/includes.js"></script>
+<style>
+        body {
+            background: linear-gradient(180deg, #eef2f8 0%, #ffffff 35%);
+            min-height: 100vh;
+        }
+        .contact-hero {
+            padding: 64px 0 32px;
+            text-align: center;
+        }
+        .contact-hero h1 {
+            font-weight: 800;
+            font-size: clamp(2.25rem, 2.8vw, 3rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #1e73be;
+        }
+        .contact-hero p {
+            color: #475569;
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            max-width: 720px;
+            margin: 0 auto 48px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        .contact-item:last-child { border-bottom: none; }
+        .contact-item .icon {
+            flex: 0 0 48px;
+            height: 48px;
+            width: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1e73be 0%, #2980b9 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .contact-item .label {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 2px;
+        }
+        .contact-item a { color: #1e73be; text-decoration: none; }
+        .contact-item a:hover { text-decoration: underline; }
+        .contact-actions { text-align: center; margin-top: 8px; }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #1e73be 0%, #2980b9 100%);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(30, 115, 190, 0.35);
+            color: #fff;
+        }
+        @media (max-width: 768px) {
+            .contact-card { padding: 28px 20px; margin: 0 16px 40px; border-radius: 18px; }
+        }
+    </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div id="nav-placeholder"></div>
+<main>
+<section class="contact-hero">
+<div class="container">
+<h1 data-i18n="page_contact.contact"><i class="fas fa-envelope me-3"></i>Contact</h1>
+<p data-i18n="page_contact.intro">Pour toute question ou demande d'information sur nos prestations de gouvernance et de structures, n'hésitez pas à nous contacter par les moyens ci-dessous.</p>
+</div>
+</section>
+<section class="container mb-5">
+<div class="contact-card">
+<div class="contact-item">
+<div class="icon"><i class="fas fa-user"></i></div>
+<div>
+<div class="label" data-i18n="page_contact.contact_label">Contact</div>
+<div>Guy Le Péchon</div>
+</div>
+</div>
+<div class="contact-item">
+<div class="icon"><i class="fas fa-building"></i></div>
+<div>
+<div class="label" data-i18n="page_contact.company_label">Société</div>
+<div>G &amp; S — Gouvernance &amp; Structures</div>
+</div>
+</div>
+<div class="contact-item">
+<div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+<div>
+<div class="label" data-i18n="page_contact.address_label">Adresse</div>
+<div data-i18n="page_contact.address">2 allée des privènes, 92330 SCEAUX, France</div>
+</div>
+</div>
+<div class="contact-item">
+<div class="icon"><i class="fas fa-envelope"></i></div>
+<div>
+<div class="label" data-i18n="page_contact.email_label">Email</div>
+<div><a href="mailto:info@g-et-s.com">info@g-et-s.com</a></div>
+</div>
+</div>
+<div class="contact-item">
+<div class="icon"><i class="fas fa-phone"></i></div>
+<div>
+<div class="label" data-i18n="page_contact.phone_label">Téléphone</div>
+<div><a href="tel:+33616310715">06 16 31 07 15</a></div>
+</div>
+</div>
+</div>
+<div class="contact-actions">
+<a class="btn-back" data-i18n="page_contact.retour_a_laccueil" href="index.html">
+<i class="fas fa-home me-2"></i>Retour à l'accueil
+                </a>
+</div>
+</section>
+</main>
+<div id="contribution-footer-placeholder"></div>
+<div id="footer-placeholder"></div>
+</body>
+</html>

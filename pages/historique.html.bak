@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - Page en cours de construction - G-ET-S</title>
+    <!-- jQuery for includes -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom includes script -->
+    <script src="../js/includes.js"></script>
+    <link rel="stylesheet" href="../css/theme.css">
+    <style>
+        .construction-container {
+            text-align: center;
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .logo {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+        .construction-title {
+            color: #1e73be;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        .construction-message {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .contact-info {
+            background: #f7f8f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #1e73be;
+        }
+        .contact-info h3 {
+            color: #1e73be;
+            margin-bottom: 15px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #1e73be;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #035a9e;
+        }
+    </style>
+	<link href="../css/theme.css" rel="stylesheet" type="text/css">
+		<link href="../styles.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+		<!-- Font Awesome CDN for icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+		<script src="../bootstrap/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+		<!-- jQuery for includes -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- Custom includes script -->
+		<script src="../js/includes.js"></script>
+		<!-- Isotope JS for filtering -->
+		<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.js"></script>
+		<style>
+	/* unified-construction-style */
+	body { background-color: #efefef !important; }
+	.spinner-container, .construction-spinner { display: none !important; }
+	.back-link { background-color: #1e73be !important; }
+	.btn-primary-custom { background-color: #1e73be !important; background-image: none !important; }
+	</style>
+</head>
+<body>
+    <!-- Header include -->
+    <div id="header-placeholder"></div>
+    <!-- Navigation include -->
+    <div id="nav-placeholder"></div>
+
+    <div class="container main-container bg-white shadow-sm rounded mt-4 mb-4 p-4">
+        <img src="../images/2020/02/logo-gets-3C.png" alt="Logo G-ET-S" class="logo">
+        
+        <h1 class="article-hero"><div class="container"><h1>>Historique - Page en cours de construction</h1></div></section>
+        <section class="container mb-5">
+            <div class="article-content">
+        
+        <p class="construction-message">
+            Cette page est actuellement en cours de développement. 
+            Le contenu sera disponible prochainement.
+        </p>
+        
+        <div class="contact-info">
+            <h3>Pour plus d'informations</h3>
+            <p>N'hésitez pas à nous contacter pour obtenir des informations sur ce sujet :</p>
+            <p><strong>Email :</strong> <a href="mailto:info@g-et-s.com">info@g-et-s.com</a></p>
+            <p><strong>Contact :</strong> <a href="mailto:contact@g-et-s.com">contact@g-et-s.com</a></p>
+        </div>
+        
+        <a href="../index.html" class="back-link">← Retour à l'accueil</a>
+    </div>
+
+    <!-- Footer include -->
+    <div id="footer-placeholder"></div>
+
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

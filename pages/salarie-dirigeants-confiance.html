@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salariés et Dirigeants en Confiance - G-ET-S</title>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<!-- Isotope JS for filtering -->
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<style>
+        /* Template d'article élégant */
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        .article-header {
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-header h1 {
+            color: #1a202c;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .article-meta {
+            background: rgba(102, 126, 234, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .article-content .card {
+            border: none;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+        }
+
+        .article-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin: 2rem 0 3rem 0;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-image img {
+            transition: transform 0.3s ease;
+        }
+
+        .article-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .article-text {
+            font-size: 1.1rem;
+            color: #2d3748;
+            line-height: 2;
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-text.lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+
+        .article-text p {
+            margin-bottom: 1.8rem;
+        }
+
+        .quote-highlight {
+            font-style: italic;
+            color: #667eea;
+            font-weight: 500;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .quote-highlight::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .nav-buttons {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .nav-buttons .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons .btn-outline-primary {
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .nav-buttons .btn-outline-primary:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Animation d'entrée */
+        .article-content {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-text {
+                font-size: 1.125rem;
+                text-align: left;
+            }
+
+            .article-text.lead {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+
+            .article-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<main class="container mt-4 mb-5">
+<div class="row justify-content-center">
+<div class="col-12 article-container">
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-4">
+<ol class="breadcrumb">
+<li class="breadcrumb-item" data-i18n="page_salarie_dirigeants_confiance.accueil"><a href="../index.html">Accueil</a></li>
+<li class="breadcrumb-item" data-i18n="page_salarie_dirigeants_confiance.generalites">Généralités</li>
+<li aria-current="page" class="breadcrumb-item active" data-i18n="page_salarie_dirigeants_confiance.salaries_et_dirigeants_en_confiance">Salariés et Dirigeants en Confiance</li>
+</ol>
+</nav>
+<!-- Article header -->
+<div class="article-header">
+<h1 class="display-8" data-i18n="page_salarie_dirigeants_confiance.salaries_et_dirigeants_en_confiance_2">Salariés et Dirigeants en Confiance</h1>
+<div class="article-meta d-flex align-items-center">
+<i class="fas fa-calendar-alt me-2"></i>
+<span class="me-3">Publié le 24 septembre 2025</span>
+<i class="fas fa-tag me-2"></i>
+<span>Généralités - Contributions</span>
+</div>
+</div>
+<!-- Article content -->
+<div class="article-content">
+<div class="card">
+<div class="card-body p-4 p-md-5">
+<div class="article-text">
+<p data-i18n="page_salarie_dirigeants_confiance.en_tant_que_membre_du_comite_scientifique_de_">En tant que membre du Comité Scientifique de la collection Ad Valorem de l’éditeur L’Harmattan, il m’a été demandé de rédiger la préface du livre en cours de rédaction « L’entreprise libérée ».</p>
+</div>
+<!-- Article image -->
+<div class="article-image text-center">
+<img alt="Salariés et Dirigeants en Confiance" class="img-fluid" src="../images/nouvelleversion/salariesdirigeantsenconfianc.jpg" style="max-height: 400px; object-fit: contain; width: 100%;"/>
+</div>
+<br/>
+<div class="text-center my-4">
+<h2 data-i18n="page_salarie_dirigeants_confiance.preface">Préface</h2>
+</div>
+<br/>
+<div class="article-text">
+<p data-i18n="page_salarie_dirigeants_confiance.lorsque_a_la_demande_de_valerie_lejeune_direc">Lorsque, à la demande de Valérie Lejeune, Directrice de la collection Ad Valorem, j’ai commencé à lire le livre, j’ai été un peu déconcerté de parcourir une sorte d’autobiographie de l’auteur décrivant à la première personne de manière très directe ses années d’expérience professionnelle très variées avec de nombreuses réussites, essentiellement dans le domaine de la production industrielle. Surpris, mais comme pour un roman, capturé par le sympathique récit, l’envie de connaître la suite des étapes de la vie professionnelle d’un ingénieur quelque peu rebelle était créée. J’ai poursuivi la lecture.</p>
+<p data-i18n="page_salarie_dirigeants_confiance.je_fus_aussi_amuse_de_retrouver_des_anecdotes">Je fus aussi amusé de retrouver des anecdotes similaires aux miennes, par exemple, voir l’auteur convaincre, en la pratiquant, de l’intérêt de la méthode « PERT » de planification de multiples tâches imbriquées au sein d’un projet. L’auteur a dû faire preuve de beaucoup de ténacité pour obtenir des temps de calcul ! La méthode PERT, innovante à l’époque, était rendue praticable grâce à la puissance toute relative des ordinateurs existants. Il fallait introduire les données grâce à des cartes perforées et au minimum une heure de calcul était nécessaire pour traiter un réseau de 500 tâches. Aujourd’hui sur un micro-ordinateur, une fois les données saisies à l’écran, quelques secondes suffisent pour traiter et voir les résultats colorés à l’écran.</p>
+<p data-i18n="page_salarie_dirigeants_confiance.lattention_du_lecteur_ayant_ete_ainsi_acquise">L’attention du lecteur ayant été ainsi acquise, ce dernier, en particulier s’il dirige une société et souhaite élargir sa culture en gouvernance d’entreprise, trouvera dans la suite du livre une analyse approfondie des modèles d’entreprises issus ou voisins de l’approche « L’entreprise libérée » avec une mise en oeuvre exemplaire par l’entreprise FAVI. Modèles faisant une très large confiance aux membres du personnel organisés en unités autonomes.</p>
+<p data-i18n="page_salarie_dirigeants_confiance.lhypothese_sous_jacente_est_que_les_motivatio">L’hypothèse sous-jacente est que les motivations des personnes sont considérées comme situées à un niveau élevé dans le classique diagramme Maslow, diagramme que l’auteur commente en profondeur. L’auteur situe son expérience personnelle en regard de ces modèles. En simplifiant, comme M. Jourdain, il en pratiquait certaines recommandations souvent de simple bon sens, sans vraiment le savoir.</p>
+<p data-i18n="page_salarie_dirigeants_confiance.utilisant_cette_experience_personnelle_y_comp">Utilisant cette expérience personnelle, y compris comme professeur et conférencier ainsi que sa connaissance intime de ces modèles, l’auteur décrit alors le modèle qu’il préconise. Il l’a appelé « Janus », peut-être en référence au dieu romain Janus, dieu à deux têtes capable d’ouvrir à la fois les portes vers le passé et le futur. De manière détaillée et très ouverte, il décrit dans le détail son modèle avec des tableaux sur la manière de l’appliquer. Partie très utile, pour ceux, sans doute des consultants plutôt que des dirigeants eux-mêmes, qui voudront mettre en oeuvre son modèle pour transformer une entreprise.</p>
+<p data-i18n="page_salarie_dirigeants_confiance.le_livre_contient_divers_schemas_illustrant_l">Le livre contient divers schémas illustrant la vision de l’auteur que je fais volontiers mienne, à savoir « une idée complexe n’existe vraiment que si elle peut être présenté grâce à un schéma ». Question sous-jacente très profonde : « Peut-on se passer des mots pour penser et communiquer ? ». Personnellement, je crois que oui.</p>
+<p data-i18n="page_salarie_dirigeants_confiance.alors_que_souvent_les_dirigeants_critiquent_l">Alors que souvent les dirigeants critiquent les normes telles ISO 9001, 14 001,... comme lourdes et seulement contraignantes, il explique avec des exemples concrets comment s’en servir comme des leviers pour la transformation des entreprises.</p>
+<p data-i18n="page_salarie_dirigeants_confiance.lauteur_regrette_de_voir_que_ces_modeles_sont">L’auteur regrette de voir que ces modèles sont peu appliqués en France. En liaison avec les nombreux contacts qu’il a su nouer, pourrait-il consacrer du temps à établir un diagnostic explicitant les raisons de ce désintérêt des dirigeants pour la mise en pratique de ces modèles, dont le sien ! et suggérer des recommandations. Tel pourrait être le thème de son prochain livre.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation buttons -->
+<div class="nav-buttons d-flex justify-content-center">
+<a class="btn btn-outline-primary" href="../index.html">
+<i class="fas fa-home me-2"></i>Retour à l'accueil
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Contribution footer -->
+<div id="contribution-footer-placeholder"></div>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Homepage functionality script -->
+<script src="../js/homepage.js"></script>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+<script src="../assets/js/popper.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Gouvernance &amp; Structures" name="keywords"/>
+<title>Glossaire des Prestations de conseil - G-ET-S</title>
+<!-- Bootstrap CSS CDN -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- Custom theme CSS -->
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS CDN -->
+<script crossorigin="anonymous" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<style>
+        body {
+            background-color: #efefef;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .construction-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .logo-section {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .construction-title {
+            color: #1e73be;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .construction-subtitle {
+            color: #6c757d;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .construction-description {
+            color: #495057;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .btn-primary-custom {
+            background-color: #efefef;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(30, 115, 190, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #1e73be;
+        }
+
+        .ai-images-sidebar {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .ai-images-sidebar img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .ai-caption {
+            font-size: 0.9em;
+            color: #6c757d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .construction-title {
+                font-size: 2em;
+            }
+            .construction-container {
+                margin: 20px 10px;
+                padding: 30px 20px;
+            }
+            .ai-images-sidebar {
+                position: relative;
+                margin-top: 30px;
+            }
+        }
+    </style>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/includes.js"></script>
+<!-- Isotope JS for filtering -->
+<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.js"></script>
+<style>
+	/* unified-construction-style */
+	body { background-color: #efefef !important; }
+	.spinner-container, .construction-spinner { display: none !important; }
+	.back-link { background-color: #1e73be !important; }
+	.btn-primary-custom { background-color: #1e73be !important; background-image: none !important; }
+	</style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<!-- Main content -->
+<main class="container-fluid">
+<div class="container">
+<div class="construction-container">
+<div class="logo-section">
+<img alt="Logo G-ET-S" class="logo" onerror="this.style.display='none'" src="../images/logo-gs.png"/>
+</div>
+<h1 class="construction-title" data-i18n="page_glossaire_prestations.glossaire_des_prestations_de_conseil">
+<i class="fas fa-book text-primary me-3"></i>
+                    Glossaire des Prestations de conseil
+                </h1>
+<div class="row">
+<div class="col-lg-8">
+<div class="construction-description" style="text-align: left;">
+<p data-i18n="page_glossaire_prestations.tant_un_conseil_dadministration_que_des_manag" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                                Tant un conseil d'administration que des managers exécutifs peuvent être amené à utiliser des prestations de conseil.
+                            </p>
+<p data-i18n="page_glossaire_prestations.dans_le_cadre_dune_enquete_menee_par_une_equi" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                                Dans le cadre d'une enquête menée par une équipe de l'association de <a href="https://www.xmp-consult.org/agenda/webinar-intelligence-collective-10196" style="color: #1e73be;" target="_blank">XMP Consult</a>, Association de consultants indépendants issus de grandes écoles auprès de tels dirigeants, et de la publication des résultats de cette enquête dans leur <a href="https://www.xmp-consult.org/global/gene/link.php?doc_id=150&amp;fg=1" style="color: #1e73be;" target="_blank">lettre annuelle de février 2025</a>, dans laquelle G &amp; S a commis deux articles, il a été jugé utile d'y faire figurer un glossaire des prestations de conseil pour faciliter le choix entre ce type de prestation.
+                            </p>
+<p data-i18n="page_glossaire_prestations.le_resultat_est_larticle_redige_par_g_s_voir_" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                                Le résultat est l'article rédigé par G &amp; S. voir Page 8 <a href="https://www.xmp-consult.org/global/gene/link.php?doc_id=150&amp;fg=1" style="color: #1e73be;" target="_blank">de la lettre</a>.
+                            </p>
+<p data-i18n="page_glossaire_prestations.larticle_propose_une_classification_des_diffe" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                                L'article propose une classification des différents types de prestations de Conseil et pour chacune d'elle un résumé expliquant leur contenu.
+                            </p>
+<p data-i18n="page_glossaire_prestations.quand_un_dirigeant_est_face_a_un_probleme_et_" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px;">
+                                Quand un dirigeant est face à un problème et se pose la question quelle de prestations de conseil faire appel pour m'aider à résoudre ce problème, balayer rapidement ce glossaire devrait lui apporter un éclairage intéressant.
+                            </p>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="ai-images-sidebar">
+<p class="ai-caption" data-i18n="page_glossaire_prestations.images_generees_par_intelligence_artificielle">Images générées par Intelligence Artificielle</p>
+<img alt="Illustration IA 1" src="/images/01.jpg"/>
+<br/>
+<img alt="Illustration IA 2" src="/images/02.jpg"/>
+<br/>
+<img alt="Illustration IA 3" src="/images/03.jpg"/>
+<br/>
+<img alt="Illustration IA 4" src="/images/05.jpg"/>
+</div>
+</div>
+</div>
+<div class="contact-info">
+<h4 data-i18n="page_glossaire_prestations.nous_contacter"><i class="fas fa-envelope text-primary me-2"></i>Nous contacter</h4>
+<p class="mb-2" data-i18n="page_glossaire_prestations.pour_plus_dinformations_sur_ce_sujet_nhesitez">Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :</p>
+<p class="mb-0" data-i18n="page_glossaire_prestations.email_contact_g_et_s_com">
+<i class="fas fa-at text-primary me-2"></i>
+<strong>Email :</strong> contact@g-et-s.com
+                    </p>
+</div>
+<div class="mt-4">
+<a class="btn-primary-custom" href="../index.html">
+<i class="fas fa-home me-2"></i>
+                        Retour à l'accueil
+                    </a>
+<a class="btn-primary-custom" href="../contact.html">
+<i class="fas fa-envelope me-2"></i>
+                        Nous contacter
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Contribution footer -->
+<div id="contribution-footer-placeholder"></div>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "test-page-1": {
+    "title": "Test Corporate Governance",
+    "url": "https://example.com/governance",
+    "scraped_at": "2024-01-15T10:30:00.000Z",
+    "categories": ["governance", "management"],
+    "content": {
+      "headings": [
+        {"tag": "h1", "text": "Corporate Governance Best Practices"},
+        {"tag": "h2", "text": "Board Leadership"}
+      ],
+      "paragraphs": [
+        "La gouvernance d'entreprise est essentielle pour assurer la transparence.",
+        "Les conseils d'administration jouent un rôle clé."
+      ]
+    }
+  },
+  "test-page-2": {
+    "title": "Digital Transformation",
+    "url": "https://example.com/digital",
+    "scraped_at": "2024-01-15T11:00:00.000Z",
+    "categories": ["technology", "management"],
+    "content": {
+      "headings": [
+        {"tag": "h1", "text": "Digital Innovation"},
+        {"tag": "h2", "text": "Technology Strategy"}
+      ],
+      "paragraphs": [
+        "La transformation numérique révolutionne les entreprises.",
+        "L'intelligence artificielle devient incontournable."
+      ]
+    }
+  }
+}

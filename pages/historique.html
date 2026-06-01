@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Gouvernance &amp; Structures" name="keywords"/>
+<title>Historique - G-ET-S</title>
+<!-- Bootstrap CSS CDN -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- Custom theme CSS -->
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS CDN -->
+<script crossorigin="anonymous" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<style>
+        body {
+            background-color: #efefef;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .construction-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .logo-section {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .construction-title {
+            color: #1e73be;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .construction-subtitle {
+            color: #6c757d;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .construction-description {
+            color: #495057;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .spinner-container {
+            margin: 30px 0;
+        }
+
+        .construction-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1e73be;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn-primary-custom {
+            background-color: #efefef;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(30, 115, 190, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #1e73be;
+        }
+
+        @media (max-width: 768px) {
+            .construction-title {
+                font-size: 2em;
+            }
+            .construction-container {
+                margin: 20px 10px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<!-- Font Awesome CDN for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/includes.js"></script>
+<!-- Isotope JS for filtering -->
+<script src="https://unpkg.com/isotope-layout/dist/isotope.pkgd.js"></script>
+<style>
+	/* unified-construction-style */
+	body { background-color: #efefef !important; }
+	.spinner-container, .construction-spinner { display: none !important; }
+	.back-link { background-color: #1e73be !important; }
+	.btn-primary-custom { background-color: #1e73be !important; background-image: none !important; }
+	</style>
+</head>
+<body>
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<!-- Main content -->
+<main class="container-fluid">
+<div class="container">
+<div class="construction-container">
+<div class="logo-section">
+<img alt="Logo G-ET-S" class="logo" onerror="this.style.display='none'" src="../images/logo-gs.png"/>
+</div>
+<h1 class="construction-title" data-i18n="page_historique.historique">
+                    Historique
+                </h1>
+<div class="construction-description" style="text-align: left;">
+<p class="mt-4 mb-4" data-i18n="page_historique.le_communique_de_presse_ci_dessous_indique_la" style="font-size: 1.1em; line-height: 1.8;">
+                        Le communiqué de presse ci-dessous indique la reprise par Guy Le Péchon de G &amp; S, cabinet de conseil créé en 2003 par des membres de l'association ADAE
+                    </p>
+<h2 data-i18n="page_historique.communique_de_presse_du_4_mai_2009" style="color: #1e73be; font-size: 1.5em; margin-bottom: 20px; border-bottom: 2px solid #1e73be; padding-bottom: 10px;">
+                        Communiqué de presse du 4 mai 2009
+                    </h2>
+<h3 data-i18n="page_historique.gouvernance_et_structures_propose_aux_conseil" style="color: #035a9e; font-size: 1.3em; margin-bottom: 20px;">
+                        Gouvernance et Structures propose aux Conseils d'Administration des prestations intégrées
+                    </h3>
+<p data-i18n="page_historique.gouvernance_structures_societe_detudes_et_de_" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                        Gouvernance &amp; Structures, société d'études et de conseil créée en 2003, vient d'être reprise par l'un de ses associés fondateurs, Consultancy International Services.
+                    </p>
+<p data-i18n="page_historique.desormais_anime_par_son_associe_gerant_guy_le" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                        Désormais animé par son associé/gérant, Guy Le Péchon, X-INSEAD, membre de l'IFA, les « Gouvernance-Advisors » du réseau G &amp; S peuvent mener des missions très diverses : diagnostic et « benchmarking » sur le fonctionnement ou la composition des Conseils d'Administration en vue d'en augmenter la valeur ajoutée, recherche de mandataires sociaux dont des administrateurs en particulier indépendants, utilisation ad-hoc des nouvelles technologies, enquêtes et études sur la « corporate gouvernance».
+                    </p>
+<p data-i18n="page_historique.ainsi_dernierement_g_s_a_mene_une_etude_appro" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px;">
+                        Ainsi dernièrement G&amp;S a mené une étude approfondie sur la place des femmes mandataires sociaux au sein de 550 entreprises françaises cotées sur Euronext et antérieurement une enquête originale à l'époque sur le thème de - gouvernance, performance et modernité-, enquête en collaboration avec l'ADAE et la société Acadys auprès d'un échantillon comprenant des entreprises moyennes et filiales de groupes étrangers.
+                    </p>
+<div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #1e73be;">
+<p data-i18n="page_historique.site_internet_http_www_g_et_s_com" style="margin-bottom: 10px;"><strong>Site internet :</strong> <a href="http://www.g-et-s.com" style="color: #1e73be;">http://www.g-et-s.com</a></p>
+<p data-i18n="page_historique.contacts_info_g_et_s_com" style="margin-bottom: 10px;"><strong>Contacts :</strong> <a href="mailto:info@g-et-s.com" style="color: #1e73be;">info@g-et-s.com</a></p>
+<p data-i18n="page_historique.courrier_guy_le_pechon_g_s_2_allee_des_troene" style="margin-bottom: 10px;"><strong>Courrier :</strong> Guy Le Péchon, G &amp; S, 2 allée des troènes, 92330 SCEAUX, France</p>
+<p data-i18n="page_historique.tel_06_16_31_07_15" style="margin-bottom: 0;"><strong>Tél :</strong> 06 16 31 07 15</p>
+</div>
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 30px; margin-bottom: 30px;">
+<h2 data-i18n="page_historique.g_s_pionnier_pour_observation_de_la_feminisat" style="color: white; font-size: 1.5em; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">
+<i class="fas fa-award" style="margin-right: 10px;"></i>G &amp; S pionnier pour observation de la féminisation des Conseils d'Administration
+                        </h2>
+<p data-i18n="page_historique.g_s_a_ete_le_premier_a_presenter_des_statisti" style="font-size: 1.1em; line-height: 1.8; margin-bottom: 0;">
+                            G &amp; S a été le premier à présenter des statistiques détaillées sur la féminisation des conseils des sociétés cotées sur Euronext Paris, lors d'une réunion des anciens de l'INSEAD en juillet 2009 pendant le temps de préparation de la loi Copé Zimmerman.
+                        </p>
+</div>
+<div style="margin: 30px 0;">
+<p data-i18n="page_historique.letude_g_s_sur_la_place_des_femmes_administra">L'étude G &amp; S sur <b><span style="color: #0000ff;">« La place des femmes administrateurs dans les sociétés cotées françaises »</span></b> <span style="color: #000000;">présentée ci-dessous a été mise à jour à partir des rapports annuels à fin 2009.</span></p>
+</div>
+<div style="margin: 30px 0; padding: 30px; background: #f8f9fa; border-radius: 12px;">
+<table align="center" border="2" cellpadding="0" cellspacing="3" width="100%">
+<tbody>
+<tr>
+<td height="322" style="padding: 15px;" width="51%">
+<p style="text-align: center;"><img class="aligncenter" decoding="async" height="188" src="../images/tbrfclv.jpg" style="max-width: 100%; height: auto;" width="445"/></p>
+<p style="text-align: center;"><img class="aligncenter" decoding="async" height="141" src="../images/salle.jpg" style="max-width: 100%; height: auto;" width="445"/></p>
+</td>
+<td data-i18n="page_historique.le_petit_dejeuner_organise_debut_juillet_2009_2" height="322" style="padding: 15px;" width="49%">
+<div align="center">
+<p align="center" data-i18n="page_historique.le_petit_dejeuner_organise_debut_juillet_2009"><span style="color: #0033cc;">Le Petit déjeuner organisé début juillet 2009</span></p>
+<p align="center" data-i18n="page_historique.par"><span style="color: #0033cc;"><br/>par</span></p>
+<p align="center" data-i18n="page_historique.le_club_mixite_et_le_cercle_des_administrateu"><span style="color: #0033cc;"><br/>le Club Mixité, et le Cercle des Administrateurs<br/>INSEAD ALUMNI ASSOCIATION FRANCE<br/>sur le thème :</span></p>
+<p align="center" data-i18n="page_historique.la_place_des_femmes_administrateurs_dans_les_"><br/><b><span style="color: #000066;">« La place des femmes administrateurs dans les sociétés cotées françaises »</span></b></p>
+<p align="center" data-i18n="page_historique.a_rassemble_plus_dune_soixantaine_de_particip"><br/>a rassemblé plus d'une soixantaine de participant(es)</p>
+<p align="center" data-i18n="page_historique.voir_les_photos_dans_la_colonne_de_gauche">Voir les photos dans la colonne de gauche</p>
+<p align="center" data-i18n="page_historique.le_theme_a_ete_introduit_par_guy_le_pechon_as">Le thème a été introduit par Guy Le Péchon, Associé/Gérant de</p>
+<p align="center" data-i18n="page_historique.gouvernance_structures_par_une_presentation_d"><br/>Gouvernance &amp; Structures par une présentation des résultats principaux de l'étude approfondie qu'il a menée dans plus de 500 sociétés françaises cotées sur les marchés A, B et C d'Euronext</p>
+<p align="center" data-i18n="page_historique.pour_teledecharger_le_programme_de_cet_evenem"><span style="color: #ff0000;">Pour télédécharger le programme de cet évènement</span> <a href="./../wp-content/uploads/2020/01/invifad.pdf">cliquer ici</a><br/><span style="color: #ff0000;">Pour parcourir les premiers transparents de la présentation</span> <a href="./../wp-content/uploads/2020/01/debpres.pdf">cliquer ici.</a><br/><span style="color: #ff0000;">Pour obtenir des extraits de l'étude, envoyer un courriel à</span> <a href="mailto:info@g-et-s.com">info@g-et-s.com</a> en précisant bien vos noms, prénoms, coordonnées et fonctions</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-4">
+<a class="btn-primary-custom" href="../index.html">
+<i class="fas fa-home me-2"></i>
+                        Retour à l'accueil
+                    </a>
+<a class="btn-primary-custom" href="../contact.html">
+<i class="fas fa-envelope me-2"></i>
+                        Nous contacter
+                    </a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>

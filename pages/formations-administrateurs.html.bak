@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formations d'Administrateurs - Page en cours de construction - G-ET-S</title>
+	<link href="../css/theme.css" rel="stylesheet" type="text/css">
+	<link href="../styles.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<script src="../bootstrap/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="../js/includes.js"></script>
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+	<style>
+		/* unified-construction-style */
+		body { background-color: #efefef; min-height: 100vh; }
+		.logo { max-width: 300px; height: auto; }
+		.construction-container { background: #ffffff; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin: 50px auto; padding: 40px 30px; text-align: center; }
+		.btn-primary-custom { background-color: #1e73be; color: #fff; border: none; padding: 10px 24px; border-radius: 25px; text-decoration: none; display: inline-block; }
+	</style>
+</head>
+<body>
+	<div id="header-placeholder"></div>
+	<div id="nav-placeholder"></div>
+	<main class="container-fluid">
+		<div class="container">
+			<div class="container main-container bg-white shadow-sm rounded mt-4 mb-4 p-4">
+				<div >
+					<img src="../images/logo-gs.png" alt="Logo G-ET-S" class="logo" onerror="this.style.display='none'">
+				</div>
+				<h1 class="article-hero"><div class="container"><h1>>Formations d'Administrateurs - Page en cours de construction</h1></div></section>
+        <section class="container mb-5">
+            <div class="article-content">
+				<p class="construction-message">Cette page est actuellement en cours de développement. Le contenu sera disponible prochainement.</p>
+				<div class="mt-3">
+					<a href="../index.html" class="btn-primary-custom"><i class="fas fa-home me-2"></i>Retour à l'accueil</a>
+					<a href="../contact.html" class="btn-primary-custom ms-2"><i class="fas fa-envelope me-2"></i>Nous contacter</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<div id="footer-placeholder"></div>
+
+<!-- Search functionality script -->
+<script src="../js/search.js"></script>
+</body>
+</html>
+

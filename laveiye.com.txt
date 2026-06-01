@@ -1,0 +1,52 @@
+;;
+;; Domain:     laveiye.com.
+;; Exported:   2026-05-28 15:37:21
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+laveiye.com	3600	IN	SOA	carlane.ns.cloudflare.com. dns.cloudflare.com. 2053164924 10000 2400 604800 3600
+
+;; NS Records
+laveiye.com.	86400	IN	NS	carlane.ns.cloudflare.com.
+laveiye.com.	86400	IN	NS	nero.ns.cloudflare.com.
+
+;; CNAME Records
+_domainconnect.laveiye.com.	1	IN	CNAME	_domainconnect.gd.domaincontrol.com. ; cf_tags=cf-proxied:true
+tracking.laveiye.com.	1	IN	CNAME	links1.resend-dns.com. ; cf_tags=cf-proxied:false
+www.laveiye.com.	1	IN	CNAME	laveiye.com. ; cf_tags=cf-proxied:true
+
+;; MX Records
+laveiye.com.	3600	IN	MX	10 alt4.aspmx.l.google.com.
+laveiye.com.	3600	IN	MX	10 alt3.aspmx.l.google.com.
+laveiye.com.	3600	IN	MX	5 alt1.aspmx.l.google.com.
+laveiye.com.	3600	IN	MX	5 alt2.aspmx.l.google.com.
+laveiye.com.	3600	IN	MX	1 aspmx.l.google.com.
+send.laveiye.com.	1	IN	MX	10 feedback-smtp.eu-west-1.amazonses.com.
+
+;; TXT Records
+cf2024-1._domainkey.laveiye.com.	1	IN	TXT	"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweykoi+o48IOGuP7GR3X0MOExCUDY/BCRHoWBnh3rChl7WhdyCxW3jgq1daEjPPqoi7sJvdg5hEQVsgVRQP4DcnQDVjGMbASQtrY4WmB1VebF+RPJB2ECPsEDTpeiI5ZyUAwJaVX7r6bznU67g7LvFq35yIo4sdlmtZGV+i0H4cpYH9+3JJ78k" "m4KXwaf9xUJCWF6nxeD+qG6Fyruw1Qlbds2r85U9dkNDVAS3gioCvELryh1TxKGiVTkg4wqHTyHfWsp7KD3WQHYJn0RyfJJu6YEmL77zonn7p2SRMvTMP3ZEXibnC9gz3nnhR6wcYL8Q7zXypKTMD58bTixDSJwIDAQAB"
+_dmarc.laveiye.com.	1	IN	TXT	"v=DMARC1; p=none; rua=mailto:contacts@bigfiveabidjan.com"
+google._domainkey.laveiye.com.	60	IN	TXT	"v=DKIM1;k=rsa;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk8CBLHVz3XBOmngHPhqNhv0dObrtFx1eVnw/lt96XksHm7rmAZDqUMdBo1BNdX8H1uPS1mua8OxjCssGb2zPJzDQ/e2oUKuGJA51u//YFLj9pJUnPwnujkamRUozECaPsUSVRd6W3h3WT+BBNZY8oSjM4bHysSFWLDWeQuOTKw+rhWndm8TdFT0tki7WpzJ6euU" "N1mNVVfGSefPifzMElyWJYT3mTbwkZpCgao59hfLBLX58qftHEmE+mtVYibfs7ShhKjB12GFiGlipBsocHpbFIHwgiPzRnw59gSDQa6p5itNmMYkeTbUG+g7XSvudbzqT/+Nt11P4GshnSB72awIDAQAB"
+laveiye.com.	1	IN	TXT	"v=spf1 include:_spf.google.com ~all"
+laveiye.com.	3600	IN	TXT	"google-site-verification=gk5gqNpWxjNYklhqvmEabkM8QRtyuxNcesG9BE6E5YI"
+laveiye.com.	60	IN	TXT	"google-site-verification=r5vfmIXj52HiA0Cy5HAdq6iA45dSXwSSvHWDDsJHqXg"

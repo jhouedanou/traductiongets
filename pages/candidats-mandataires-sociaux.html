@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+
+<html lang="fr-FR">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta charset="utf-8"/>
+<link href="https://gmpg.org/xfn/11" rel="profile"/>
+<title>CANDIDAT(E)S MANDATAIRES ADMINISTRATRICES ADMINISTRATEURS – G-ET-S</title>
+<meta content="max-image-preview:large" name="robots"/>
+<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="./../feed/index.html" rel="alternate" title="G-ET-S » Flux" type="application/rss+xml"/>
+<link href="./../comments/feed/index.html" rel="alternate" title="G-ET-S » Flux des commentaires" type="application/rss+xml"/>
+<script>
+// &Eacute;mojis WordPress d&eacute;sactiv&eacute;s pour &eacute;viter les erreurs de chargement
+// window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"wpemoji":"\/\/wp-includes\/js\/wp-emoji.js","twemoji":"\/\/wp-includes\/js\/twemoji.js"}};
+/**
+ * @output wp-includes/js/wp-emoji-loader.js
+ */
+
+/**
+ * Emoji Settings as exported in PHP via _print_emoji_detection_script().
+ * @typedef WPEmojiSettings
+ * @type {object}
+ * @property {?object} source
+ * @property {?string} source.concatemoji
+ * @property {?string} source.twemoji
+ * @property {?string} source.wpemoji
+ * @property {?boolean} DOMReady
+ * @property {?Function} readyCallback
+ */
+
+/**
+ * Support tests.
+ * @typedef SupportTests
+ * @type {object}
+ * @property {?boolean} flag
+ * @property {?boolean} emoji
+ */
+
+/**
+ * IIFE to detect emoji support and load Twemoji if needed.
+ *
+ * @param {Window} window
+ * @param {Document} document
+ * @param {WPEmojiSettings} settings
+ */
+( function wpEmojiLoader( window, document, settings ) {
+	if ( typeof Promise === 'undefined' ) {
+		return;
+	}
+
+	var sessionStorageKey = 'wpEmojiSettingsSupports';
+	var tests = [ 'flag', 'emoji' ];
+
+	/**
+	 * Checks whether the browser supports offloading to a Worker.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {boolean}
+	 */
+	function supportsWorkerOffloading() {
+		return (
+			typeof Worker !== 'undefined' &&
+			typeof OffscreenCanvas !== 'undefined' &&
+			typeof URL !== 'undefined' &&
+			URL.createObjectURL &&
+			typeof Blob !== 'undefined'
+		);
+	}
+
+	/**
+	 * @typedef SessionSupportTests
+	 * @type {object}
+	 * @property {number} timestamp
+	 * @property {SupportTests} supportTests
+	 */
+
+	/**
+	 * Get support tests from session.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @returns {?SupportTests} Support tests, or null if not set or older than 1 week.
+	 */
+	function getSessionSupportTests() {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = JSON.parse(
+				sessionStorage.getItem( sessionStorageKey )
+			);
+			if (
+				typeof item === 'object' &&
+				typeof item.timestamp === 'number' &&
+				new Date().valueOf() < item.timestamp + 604800 && // Note: Number is a week in seconds.
+				typeof item.supportTests === 'object'
+			) {
+				return item.supportTests;
+			}
+		} catch ( e ) {}
+		return null;
+	}
+
+	/**
+	 * Persist the supports in session storage.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {SupportTests} supportTests Support tests.
+	 */
+	function setSessionSupportTests( supportTests ) {
+		try {
+			/** @type {SessionSupportTests} */
+			var item = {
+				supportTests: supportTests,
+				timestamp: new Date().valueOf()
+			};
+
+			sessionStorage.setItem(
+				sessionStorageKey,
+				JSON.stringify( item )
+			);
+		} catch ( e ) {}
+	}
+
+	/**
+	 * Checks if two sets of Emoji characters render the same visually.
+	 *
+	 * This is used to determine if the browser is rendering an emoji with multiple data points
+	 * correctly. set1 is the emoji in the correct form, using a zero-width joiner. set2 is the emoji
+	 * in the incorrect form, using a zero-width space. If the two sets render the same, then the browser
+	 * does not support the emoji correctly.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} set1 Set of Emoji to test.
+	 * @param {string} set2 Set of Emoji to test.
+	 *
+	 * @return {boolean} True if the two sets render the same.
+	 */
+	function emojiSetsRenderIdentically( context, set1, set2 ) {
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set1, 0, 0 );
+		var rendered1 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( set2, 0, 0 );
+		var rendered2 = new Uint32Array(
+			context.getImageData(
+				0,
+				0,
+				context.canvas.width,
+				context.canvas.height
+			).data
+		);
+
+		return rendered1.every( function ( rendered2Data, index ) {
+			return rendered2Data === rendered2[ index ];
+		} );
+	}
+
+	/**
+	 * Checks if the center point of a single emoji is empty.
+	 *
+	 * This is used to determine if the browser is rendering an emoji with a single data point
+	 * correctly. The center point of an incorrectly rendered emoji will be empty. A correctly
+	 * rendered emoji will have a non-zero value at the center point.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 6.8.2
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} emoji Emoji to test.
+	 *
+	 * @return {boolean} True if the center point is empty.
+	 */
+	function emojiRendersEmptyCenterPoint( context, emoji ) {
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+		context.fillText( emoji, 0, 0 );
+
+		// Test if the center point (16, 16) is empty (0,0,0,0).
+		var centerPoint = context.getImageData(16, 16, 1, 1);
+		for ( var i = 0; i < centerPoint.data.length; i++ ) {
+			if ( centerPoint.data[ i ] !== 0 ) {
+				// Stop checking the moment it's known not to be empty.
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Determines if the browser properly renders Emoji that Twemoji can supplement.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @private
+	 *
+	 * @param {CanvasRenderingContext2D} context 2D Context.
+	 * @param {string} type Whether to test for support of "flag" or "emoji".
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+	 *
+	 * @return {boolean} True if the browser can render emoji, false if it cannot.
+	 */
+	function browserSupportsEmoji( context, type, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+		var isIdentical;
+
+		switch ( type ) {
+			case 'flag':
+				/*
+				 * Test for Transgender flag compatibility. Added in Unicode 13.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (white flag emoji + transgender symbol).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDFF3\uFE0F\u200D\u26A7\uFE0F', // as a zero-width joiner sequence
+					'\uD83C\uDFF3\uFE0F\u200B\u26A7\uFE0F' // separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for Sark flag compatibility. This is the least supported of the letter locale flags,
+				 * so gives us an easy test for full support.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly ([C] + [Q]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					'\uD83C\uDDE8\uD83C\uDDF6', // as the sequence of two code points
+					'\uD83C\uDDE8\u200B\uD83C\uDDF6' // as the two code points separated by a zero-width space
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for English flag compatibility. England is a country in the United Kingdom, it
+				 * does not have a two letter locale code but rather a five letter sub-division code.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					context,
+					// as the flag sequence
+					'\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F',
+					// with each code point separated by a zero-width space
+					'\uD83C\uDFF4\u200B\uDB40\uDC67\u200B\uDB40\uDC62\u200B\uDB40\uDC65\u200B\uDB40\uDC6E\u200B\uDB40\uDC67\u200B\uDB40\uDC7F'
+				);
+
+				return ! isIdentical;
+			case 'emoji':
+				/*
+				 * Does Emoji 16.0 cause the browser to go splat?
+				 *
+				 * To test for Emoji 16.0 support, try to render a new emoji: Splatter.
+				 *
+				 * The splatter emoji is a single code point emoji. Testing for browser support
+				 * required testing the center point of the emoji to see if it is empty.
+				 *
+				 * 0xD83E 0xDEDF (\uD83E\uDEDF) == &#129759; Splatter.
+				 *
+				 * When updating this test, please ensure that the emoji is either a single code point
+				 * or switch to using the emojiSetsRenderIdentically function and testing with a zero-width
+				 * joiner vs a zero-width space.
+				 */
+				var notSupported = emojiRendersEmptyCenterPoint( context, '\uD83E\uDEDF' );
+				return ! notSupported;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Checks emoji support tests.
+	 *
+	 * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+	 * scope. Everything must be passed by parameters.
+	 *
+	 * @since 6.3.0
+	 *
+	 * @private
+	 *
+	 * @param {string[]} tests Tests.
+	 * @param {Function} browserSupportsEmoji Reference to browserSupportsEmoji function, needed due to minification.
+	 * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+	 * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+	 *
+	 * @return {SupportTests} Support tests.
+	 */
+	function testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+		var canvas;
+		if (
+			typeof WorkerGlobalScope !== 'undefined' &&
+			self instanceof WorkerGlobalScope
+		) {
+			canvas = new OffscreenCanvas( 300, 150 ); // Dimensions are default for HTMLCanvasElement.
+		} else {
+			canvas = document.createElement( 'canvas' );
+		}
+
+		var context = canvas.getContext( '2d', { willReadFrequently: true } );
+
+		/*
+		 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+		 * it doesn't work when the font is bolder than 500 weight. So, we
+		 * check for bold rendering support to avoid invisible emoji in Chrome.
+		 */
+		context.textBaseline = 'top';
+		context.font = '600 32px Arial';
+
+		var supports = {};
+		tests.forEach( function ( test ) {
+			supports[ test ] = browserSupportsEmoji( context, test, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+		} );
+		return supports;
+	}
+
+	/**
+	 * Adds a script to the head of the document.
+	 *
+	 * @ignore
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param {string} src The url where the script is located.
+	 *
+	 * @return {void}
+	 */
+	function addScript( src ) {
+		var script = document.createElement( 'script' );
+		script.src = src;
+		script.defer = true;
+		document.head.appendChild( script );
+	}
+
+	settings.supports = {
+		everything: true,
+		everythingExceptFlag: true
+	};
+
+	// Create a promise for DOMContentLoaded since the worker logic may finish after the event has fired.
+	var domReadyPromise = new Promise( function ( resolve ) {
+		document.addEventListener( 'DOMContentLoaded', resolve, {
+			once: true
+		} );
+	} );
+
+	// Obtain the emoji support from the browser, asynchronously when possible.
+	new Promise( function ( resolve ) {
+		var supportTests = getSessionSupportTests();
+		if ( supportTests ) {
+			resolve( supportTests );
+			return;
+		}
+
+		if ( supportsWorkerOffloading() ) {
+			try {
+				// Note that the functions are being passed as arguments due to minification.
+				var workerScript =
+					'postMessage(' +
+					testEmojiSupports.toString() +
+					'(' +
+					[
+						JSON.stringify( tests ),
+						browserSupportsEmoji.toString(),
+						emojiSetsRenderIdentically.toString(),
+						emojiRendersEmptyCenterPoint.toString()
+					].join( ',' ) +
+					'));';
+				var blob = new Blob( [ workerScript ], {
+					type: 'text/javascript'
+				} );
+				var worker = new Worker( URL.createObjectURL( blob ), { name: 'wpTestEmojiSupports' } );
+				worker.onmessage = function ( event ) {
+					supportTests = event.data;
+					setSessionSupportTests( supportTests );
+					worker.terminate();
+					resolve( supportTests );
+				};
+				return;
+			} catch ( e ) {}
+		}
+
+		supportTests = testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+		setSessionSupportTests( supportTests );
+		resolve( supportTests );
+	} )
+		// Once the browser emoji support has been obtained from the session, finalize the settings.
+		.then( function ( supportTests ) {
+			/*
+			 * Tests the browser support for flag emojis and other emojis, and adjusts the
+			 * support settings accordingly.
+			 */
+			for ( var test in supportTests ) {
+				settings.supports[ test ] = supportTests[ test ];
+
+				settings.supports.everything =
+					settings.supports.everything && settings.supports[ test ];
+
+				if ( 'flag' !== test ) {
+					settings.supports.everythingExceptFlag =
+						settings.supports.everythingExceptFlag &&
+						settings.supports[ test ];
+				}
+			}
+
+			settings.supports.everythingExceptFlag =
+				settings.supports.everythingExceptFlag &&
+				! settings.supports.flag;
+
+			// Sets DOMReady to false and assigns a ready function to settings.
+			settings.DOMReady = false;
+			settings.readyCallback = function () {
+				settings.DOMReady = true;
+			};
+		} )
+		.then( function () {
+			return domReadyPromise;
+		} )
+		.then( function () {
+			// When the browser can not render everything we need to load a polyfill.
+			if ( ! settings.supports.everything ) {
+				settings.readyCallback();
+
+				var src = settings.source || {};
+
+				if ( src.concatemoji ) {
+					addScript( src.concatemoji );
+				} else if ( src.wpemoji && src.twemoji ) {
+					addScript( src.twemoji );
+					addScript( src.wpemoji );
+				}
+			}
+		} );
+} )( window, document, window._wpemojiSettings );
+</script>
+<link href="./../wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css" id="hfe-widgets-style-css" media="all" rel="stylesheet"/>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<style id="classic-theme-styles-inline-css">
+/**
+ * These rules are needed for backwards compatibility.
+ * They should match the button element rules in the base theme.json file.
+ */
+.wp-block-button__link {
+	color: #ffffff;
+	background-color: #32373c;
+	border-radius: 9999px; /* 100% causes an oval, but any explicit but really high value retains the pill shape. */
+
+	/* This needs a low specificity so it won't override the rules from the button element if defined in theme.json. */
+	box-shadow: none;
+	text-decoration: none;
+
+	/* The extra 2px are added to size solids the same as the outline versions.*/
+	padding: calc(0.667em + 2px) calc(1.333em + 2px);
+
+	font-size: 1.125em;
+}
+
+.wp-block-file__button {
+	background: #32373c;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--contrast: var(--contrast);--wp--preset--color--contrast-2: var(--contrast-2);--wp--preset--color--contrast-3: var(--contrast-3);--wp--preset--color--base: var(--base);--wp--preset--color--base-2: var(--base-2);--wp--preset--color--base-3: var(--base-3);--wp--preset--color--accent: var(--accent);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link href="./../wp-content/plugins/table-addons-for-elementor/public/css/table-addons-for-elementor-public.css" id="table-addons-for-elementor-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/header-footer-elementor/assets/css/header-footer-elementor.css" id="hfe-style-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.css" id="elementor-icons-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/css/frontend.css" id="elementor-frontend-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/uploads/elementor/css/post-624.css" id="elementor-post-624-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor-pro/assets/css/frontend.css" id="elementor-pro-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/css/widget-heading.min.css" id="widget-heading-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/uploads/elementor/css/post-944.css" id="elementor-post-944-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/uploads/elementor/css/post-177.css" id="elementor-post-177-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/uploads/elementor/css/post-197.css" id="elementor-post-197-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/themes/generatepress/assets/css/unsemantic-grid.css" id="generate-style-grid-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/themes/generatepress/assets/css/style.css" id="generate-style-css" media="all" rel="stylesheet"/>
+<style id="generate-style-inline-css">
+body{background-color:#efefef;color:#3a3a3a;}a{color:#1e73be;}a:hover, a:focus, a:active{color:#000000;}body .grid-container{max-width:1100px;}.wp-block-group__inner-container{max-width:1100px;margin-left:auto;margin-right:auto;}.generate-back-to-top{font-size:20px;border-radius:3px;position:fixed;bottom:30px;right:30px;line-height:40px;width:40px;text-align:center;z-index:10;transition:opacity 300ms ease-in-out;}:root{--contrast:#222222;--contrast-2:#575760;--contrast-3:#b2b2be;--base:#f0f0f0;--base-2:#f7f8f9;--base-3:#ffffff;--accent:#1e73be;}.has-contrast-color{color:#222222;}.has-contrast-background-color{background-color:#222222;}.has-contrast-2-color{color:#575760;}.has-contrast-2-background-color{background-color:#575760;}.has-contrast-3-color{color:#b2b2be;}.has-contrast-3-background-color{background-color:#b2b2be;}.has-base-color{color:#f0f0f0;}.has-base-background-color{background-color:#f0f0f0;}.has-base-2-color{color:#f7f8f9;}.has-base-2-background-color{background-color:#f7f8f9;}.has-base-3-color{color:#ffffff;}.has-base-3-background-color{background-color:#ffffff;}.has-accent-color{color:#1e73be;}.has-accent-background-color{background-color:#1e73be;}body, button, input, select, textarea{font-family:Georgia, Times New Roman, Times, serif;font-size:12px;}body{line-height:1.2;}.entry-content > [class*="wp-block-"]:not(:last-child){margin-bottom:1.5em;}.main-title{font-size:45px;}.main-navigation .main-nav ul ul li a{font-size:14px;}.sidebar .widget, .footer-widgets .widget{font-size:17px;}h1{font-weight:300;font-size:40px;}h2{font-weight:300;font-size:30px;}h3{font-size:20px;}h4{font-size:inherit;}h5{font-size:inherit;}@media (max-width:768px){.main-title{font-size:30px;}h1{font-size:30px;}h2{font-size:25px;}}.top-bar{background-color:#636363;color:#ffffff;}.top-bar a{color:#ffffff;}.top-bar a:hover{color:#303030;}.site-header{background-color:#ffffff;color:#3a3a3a;}.site-header a{color:#3a3a3a;}.main-title a,.main-title a:hover{color:#222222;}.site-description{color:#757575;}.main-navigation,.main-navigation ul ul{background-color:#1e73be;}.main-navigation .main-nav ul li a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{color:#ffffff;}.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a, .main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a, .main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{color:#ffffff;background-color:#035a9e;}button.menu-toggle:hover,button.menu-toggle:focus,.main-navigation .mobile-bar-items a,.main-navigation .mobile-bar-items a:hover,.main-navigation .mobile-bar-items a:focus{color:#ffffff;}.main-navigation .main-nav ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#035a9e;}.navigation-search input[type="search"],.navigation-search input[type="search"]:active, .navigation-search input[type="search"]:focus, .main-navigation .main-nav ul li.search-item.active > a, .main-navigation .menu-bar-items .search-item.active > a{color:#ffffff;background-color:#035a9e;}.main-navigation ul ul{background-color:#035a9e;}.main-navigation .main-nav ul ul li a{color:#ffffff;}.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):hover > a,.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul ul li.sfHover:not([class*="current-menu-"]) > a{color:#bbd2e8;background-color:#035a9e;}.main-navigation .main-nav ul ul li[class*="current-menu-"] > a{color:#bbd2e8;background-color:#035a9e;}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .one-container .container, .separate-containers .paging-navigation, .inside-page-header{background-color:#ffffff;}.entry-meta{color:#595959;}.entry-meta a{color:#595959;}.entry-meta a:hover{color:#1e73be;}.sidebar .widget{background-color:#ffffff;}.sidebar .widget .widget-title{color:#000000;}.footer-widgets{background-color:#ffffff;}.footer-widgets .widget-title{color:#000000;}.site-info{color:#ffffff;background-color:#222222;}.site-info a{color:#ffffff;}.site-info a:hover{color:#606060;}.footer-bar .widget_nav_menu .current-menu-item a{color:#606060;}input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea,select{color:#666666;background-color:#fafafa;border-color:#cccccc;}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus,select:focus{color:#666666;background-color:#ffffff;border-color:#bfbfbf;}button,html input[type="button"],input[type="reset"],input[type="submit"],a.button,a.wp-block-button__link:not(.has-background){color:#ffffff;background-color:#666666;}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,a.button:hover,button:focus,html input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,a.button:focus,a.wp-block-button__link:not(.has-background):active,a.wp-block-button__link:not(.has-background):focus,a.wp-block-button__link:not(.has-background):hover{color:#ffffff;background-color:#3f3f3f;}a.generate-back-to-top{background-color:rgba( 0,0,0,0.4 );color:#ffffff;}a.generate-back-to-top:hover,a.generate-back-to-top:focus{background-color:rgba( 0,0,0,0.6 );color:#ffffff;}@media (max-width:768px){.main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{background:none;color:#ffffff;}}.inside-top-bar{padding:10px;}.inside-header{padding:40px;}.site-main .wp-block-group__inner-container{padding:40px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-40px;width:calc(100% + 80px);max-width:calc(100% + 80px);}.rtl .menu-item-has-children .dropdown-menu-toggle{padding-left:20px;}.rtl .main-navigation .main-nav ul li.menu-item-has-children > a{padding-right:20px;}.site-info{padding:20px;}@media (max-width:768px){.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:30px;}.site-main .wp-block-group__inner-container{padding:30px;}.site-info{padding-right:10px;padding-left:10px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-30px;width:calc(100% + 60px);max-width:calc(100% + 60px);}}.one-container .sidebar .widget{padding:0px;}/* End cached CSS */@media (max-width:768px){.main-navigation .menu-toggle,.main-navigation .mobile-bar-items,.sidebar-nav-mobile:not(#sticky-placeholder){display:block;}.main-navigation ul,.gen-sidebar-nav{display:none;}[class*="nav-float-"] .site-header .inside-header > *{float:none;clear:both;}}
+</style>
+<link href="./../wp-content/themes/generatepress/assets/css/mobile.css" id="generate-mobile-style-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/themes/generatepress/assets/css/components/font-icons.css" id="generate-font-icons-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.css" id="font-awesome-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css" id="hfe-elementor-icons-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/css/widget-icon-list.min.css" id="hfe-icons-list-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/css/widget-social-icons.min.css" id="hfe-social-icons-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.css" id="hfe-social-share-icons-brands-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.css" id="hfe-social-share-icons-fontawesome-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css" id="hfe-nav-menu-icons-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor-pro/assets/css/widget-blockquote.min.css" id="hfe-widget-blockquote-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor-pro/assets/css/widget-mega-menu.min.css" id="hfe-mega-menu-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css" id="hfe-nav-menu-widget-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.css" id="elementor-icons-shared-0-css" media="all" rel="stylesheet"/>
+<link href="./../wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.css" id="elementor-icons-fa-brands-css" media="all" rel="stylesheet"/>
+<script id="jquery-core-js" src="./../wp-includes/js/jquery/jquery.js"></script>
+<script id="jquery-migrate-js" src="./../wp-includes/js/jquery/jquery-migrate.js"></script>
+<script id="jquery-js-after">
+!function($){"use strict";$(document).ready(function(){$(this).scrollTop()>100&&$(".hfe-scroll-to-top-wrap").removeClass("hfe-scroll-to-top-hide"),$(window).scroll(function(){$(this).scrollTop()<100?$(".hfe-scroll-to-top-wrap").fadeOut(300):$(".hfe-scroll-to-top-wrap").fadeIn(300)}),$(".hfe-scroll-to-top-wrap").on("click",function(){$("html, body").animate({scrollTop:0},300);return!1})})}(jQuery);
+!function($){'use strict';$(document).ready(function(){var bar=$('.hfe-reading-progress-bar');if(!bar.length)return;$(window).on('scroll',function(){var s=$(window).scrollTop(),d=$(document).height()-$(window).height(),p=d? s/d*100:0;bar.css('width',p+'%')});});}(jQuery);
+</script>
+<link href="./../wp-json/index.html" rel="https://api.w.org/"/>
+<link href="./../wp-json/wp/v2/pages/944/index.html" rel="alternate" title="JSON" type="application/json"/>
+<link href="./../xmlrpc.php?rsd" rel="EditURI" title="RSD" type="application/rsd+xml"/>
+<meta content="WordPress 6.8.2" name="generator"/>
+<link href="./index.html" rel="canonical"/>
+<link href="./../index.html?p=944" rel="shortlink"/>
+<link href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fcandidats-mandataires-administratrices-administrateurs-7%2F" rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"/>
+<link href="./../wp-json/oembed/1.0/embed/index.html?url=.%2F%2Fcandidats-mandataires-administratrices-administrateurs-7%2F&amp;format=xml" rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"/>
+<meta content="Elementor 3.31.3; features: additional_custom_breakpoints, e_element_cache; settings: css_print_method-external, google_font-enabled, font_display-auto" name="generator"/>
+<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+<link href="./../wp-content/uploads/2020/01/cropped-logo-gets-2-1-32x32.png" rel="icon" sizes="32x32"/>
+<link href="./../wp-content/uploads/2020/01/cropped-logo-gets-2-1-192x192.png" rel="icon" sizes="192x192"/>
+<link href="./../wp-content/uploads/2020/01/cropped-logo-gets-2-1-180x180.png" rel="apple-touch-icon"/>
+<meta content="./../wp-content/uploads/2020/01/cropped-logo-gets-2-1-270x270.png" name="msapplication-TileImage"/>
+<style id="wp-custom-css">
+			.main-navigation a {
+    display: block;
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 12px;
+}
+
+td.elementor-repeater-item-7fb6a10 {
+    width: 60%;
+}
+
+table.tafe-table td, table.tafe-table th {
+    padding: 0.5em;
+    border: 1px solid #767676;
+    word-break: normal;
+}
+
+.tble p {
+	padding-bottom: 15px;
+}
+
+th.elementor-inline-editing.elementor-repeater-item-b38a7aa {
+    width: 48%;
+}
+
+ul.menu-missions li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+td.elementor-repeater-item-ef55a79 {
+    width: 50%;
+}
+
+td.elementor-repeater-item-8cb9f7e {
+    width: 45%;
+}
+
+.interessant tr {
+	background-color: #fff;
+}
+
+.interessant table, .interessant th, .interessant td {
+    border: none;
+}
+
+.formations table, .formations th, .formations td {
+    border: none;
+}
+
+.presse table,.presse tr,.presse td {
+    background-color: transparent!important;
+}
+
+td.elementor-repeater-item-87660df {
+    vertical-align: top;
+}
+
+.page-id-312 thead.tafe-table-header {
+    display: none;
+}
+
+.page-id-322 thead.tafe-table-header {
+    display: none;
+}		</style>
+<!-- jQuery for includes -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Custom includes script -->
+<script src="../js/i18n.js"></script>
+    <script src="../js/includes.js"></script>
+<!-- Styles globaux G-ET-S -->
+<link href="../styles.css" rel="stylesheet" type="text/css"/>
+<link href="../css/theme.css" rel="stylesheet" type="text/css"/>
+<style>
+        .candidats-intro {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.04) 0%, rgba(99, 102, 241, 0.08) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin: 0 auto 28px auto;
+            max-width: 880px;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+        }
+
+        .candidats-intro p {
+            margin-bottom: 0.9rem;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #1f2937;
+        }
+
+        .candidats-intro strong {
+            color: #4338ca;
+        }
+
+        .candidats-content {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            padding: 32px 26px;
+            margin: 0 auto 32px auto;
+            max-width: 1100px;
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+        }
+
+        .candidats-content table {
+            width: 100% !important;
+            border-collapse: separate !important;
+            border-spacing: 0;
+            background: transparent;
+        }
+
+        .candidats-content table td,
+        .candidats-content table th {
+            border-color: #d9e0ef !important;
+            padding: 14px 16px !important;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+
+        .candidats-content table tr:nth-child(even) td {
+            background: rgba(248, 250, 255, 0.6);
+        }
+
+        .candidats-content table tr:nth-child(odd) td {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .candidats-content table td span[style*="color: #ff0000"] {
+            color: #e11d48 !important;
+        }
+
+        @media (max-width: 992px) {
+            .candidats-intro,
+            .candidats-content {
+                padding: 20px;
+            }
+
+            .candidats-content table td,
+            .candidats-content table th {
+                display: block;
+                width: 100% !important;
+            }
+        }
+    </style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<!-- Bootstrap CSS CDN -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" rel="stylesheet"/>
+<!-- Bootstrap JS CDN -->
+<script crossorigin="anonymous" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="wp-singular page-template page-template-elementor_header_footer page page-id-944 wp-custom-logo wp-embed-responsive wp-theme-generatepress ehf-header ehf-footer ehf-template-generatepress ehf-stylesheet-generatepress no-sidebar nav-below-header separate-containers fluid-header active-footer-widgets-3 nav-aligned-center header-aligned-center dropdown-hover elementor-default elementor-template-full-width elementor-kit-624 elementor-page elementor-page-944 full-width-content" itemscope="" itemtype="https://schema.org/WebPage">
+<!-- Header include -->
+<div id="header-placeholder"></div>
+<!-- Navigation include -->
+<div id="nav-placeholder"></div>
+<div class="site grid-container container hfeed grid-parent" id="page">
+<div class="site-content" id="content">
+<div class="elementor elementor-944" data-elementor-id="944" data-elementor-type="wp-page">
+<section class="elementor-section elementor-top-section elementor-element elementor-element-24928c7 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="24928c7">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-696bb30" data-element_type="column" data-id="696bb30">
+<div class="elementor-widget-wrap">
+</div>
+</div>
+<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-b79855f" data-element_type="column" data-id="b79855f">
+<div class="elementor-widget-wrap elementor-element-populated">
+<div class="elementor-element elementor-element-12aff76 elementor-widget elementor-widget-text-editor" data-element_type="widget" data-id="12aff76" data-widget_type="text-editor.default">
+<p data-i18n="page_candidats_mandataires_sociaux.accueil_candidats_mandatairesadministratrices" style="text-align: right;"><span style="color: #00ccff;"><a href="../index.html" style="color: #00ccff;">Accueil</a> &gt;&gt; <a href="../index.htmlelementor-380/" style="color: #00ccff;">CANDIDATS MANDATAIRES</a> ADMINISTRATRICES ADMINISTRATEURS</span></p> </div>
+</div>
+</div>
+</div>
+</section>
+<section class="elementor-section elementor-top-section elementor-element elementor-element-fd46d24 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-element_type="section" data-id="fd46d24">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-aa53d7c" data-element_type="column" data-id="aa53d7c">
+<div class="elementor-widget-wrap elementor-element-populated">
+<div class="elementor-element elementor-element-d5c73e2 elementor-widget elementor-widget-heading" data-element_type="widget" data-id="d5c73e2" data-widget_type="heading.default">
+<h2 class="elementor-heading-title elementor-size-default" data-i18n="page_candidats_mandataires_sociaux.candidat_e_s_mandatairesadministratrices_admi">CANDIDAT(E)S MANDATAIRES<br/>
+ADMINISTRATRICES ADMINISTRATEURS</h2> </div>
+<div class="elementor-element elementor-element-efcd55b elementor-widget elementor-widget-text-editor candidats-content" data-element_type="widget" data-id="efcd55b" data-widget_type="text-editor.default">
+<div class="candidats-intro">
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_des_conseils_dadministration_peuve">Aujourd’hui, des Conseils d’Administration peuvent être amenés à rechercher des femmes et des hommes qualifiés afin de les coopter en tant qu’administrateurs ou administratrices.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.gouvernance_structures_connait_deja_un_certai">Gouvernance &amp; Structures connaît déjà un certain nombre de candidats. Leur mini CV anonyme figure ci-dessous.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.pour_connaitre_leur_nom_et_leurs_coordonnees_">Pour connaître leur nom et leurs coordonnées et les joindre, écrivez à <a href="mailto:contact@g-et-s.com">contact@g-et-s.com</a> en précisant la référence indiquée.</p>
+</div>
+<p> </p>
+<table align="center" border="0" cellpadding="0" cellspacing="10" width="78%"><tbody><tr>
+<td class="justifier" data-i18n="page_candidats_mandataires_sociaux.hommes_candidatsle_candidat_x_ensta_actuellem" valign="top" width="484"><table align="center" border="1" cellpadding="0" cellspacing="6" width="100%"><tbody>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.hommes_candidats" style="height: 58px; text-align: center;" valign="top"><span style="color: #ff0000;"><b> <span style="font-size: 14px;">Hommes Candidats</span></b></span></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.le_candidat_x_ensta_actuellement_expert_indep_2" valign="top">
+<p align="JUSTIFY" data-i18n="page_candidats_mandataires_sociaux.le_candidat_x_ensta_actuellement_expert_indep"><strong>Le candidat, X-Ensta, actuellement expert indépendant en fusions – acquisitions, a 35 ans d’expérience en opérations de haut de bilan, dont vingt années dans l’énergie et les matières premières.</strong></p>
+<p align="JUSTIFY" data-i18n="page_candidats_mandataires_sociaux.apres_un_debut_de_carriere_dans_le_nucleaire_">Après un début de carrière dans le nucléaire, il a été en charge d’affaires en redressement au Ministère de l’Industrie et à la Direction du Trésor. Il fut ensuite responsable pendant 6 années d’un important holding pétrolier multinational, puis durant 4 ans a été Directeur général Adjoint d’une grande structure de gestion de participations, avant de rejoindre un des leaders mondiaux du nucléaire pour y réaliser notamment des restructurations de participations et d’activités, des opérations de haut de bilan et des réflexions stratégiques</p>
+<p align="JUSTIFY" data-i18n="page_candidats_mandataires_sociaux.il_a_ete_administrateur_dun_grand_groupe_mini">Il a été administrateur d’un grand groupe minier et d’une holding de participations, et jusqu’à récemment Président du Conseil de Surveillance d’une société dans laquelle le BPI détient une participation.</p>
+<p align="JUSTIFY" data-i18n="page_candidats_mandataires_sociaux.il_est_depuis_plusieurs_annees_expert_industr">Il est depuis plusieurs années expert industrie-énergie au sein d’un cabinet de fusions et acquisitions.</p>
+<p align="JUSTIFY" data-i18n="page_candidats_mandataires_sociaux.ref_920">Ref: 920</p>
+</td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_membre_du_comite_d_2" valign="top">
+<table border="0" cellpadding="1" cellspacing="0" width="437"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_membre_du_comite_d_3" width="435">
+<p data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_membre_du_comite_d"><strong> Administrateur indépendant, membre du Comité d’audit, expert en gestion des risques, transformation numérique et cybersécurité</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_senior_manager_dans_un_cabinet_de_">Aujourd’hui, Senior Manager dans un cabinet de conseil traitant de la gestion des risques, fraude et corruption. En remontant dans le temps, dans un contexte régulé (Solvabilité 2), il a été Administrateur et Président du Comité d’audit d’une société de Prévoyance dont il en a mené la cession . Dans une société industrielle du CAC40, il a dirigé un centre de service partagé, été auditeur interne et chef de projet d’une opération de fusion acquisition. Au sein d’une grande entreprise américaine, et avant, dans un grand groupe français des télécoms, il a été auditeur interne.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.a_loccasion_de_ses_nombreuses_missions_il_a_a">A l’occasion de ses nombreuses missions, il a acquis :</p>
+<p data-i18n="page_candidats_mandataires_sociaux.une_profonde_expertise_en_systeme_dinformatio">– Une profonde expertise en système d’information et transformation numérique,</p>
+<p data-i18n="page_candidats_mandataires_sociaux.une_experience_internationale_tres_etendue_un">– Une expérience internationale très étendue : une trentaine de pays, sur les 5 continents, avec une prédominance pour l’Afrique où il a également travaillé 2 ans en tant que coopérant (Kenya) pour le compte d’une agence de l’ONU</p>
+<p data-i18n="page_candidats_mandataires_sociaux.une_connaissance_de_secteurs_dactivite_tres_v">– Une connaissance de secteurs d’activité très variés, en particulier : l’industrie, le BTP, les télécommunications, l’environnement, l’énergie, la Défense, la recherche, les assurances, la gestion d’actifs.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.diplome_de_lessec_et_de_telecom_paris_anglais">Diplômé de l’ESSEC et de Télécom Paris, anglais courant, Membre de l’IFA d’Audit. Ref 732</p>
+</td></tr></tbody></table>
+<p align="left"> </p>
+</td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.non_executive_director_in_european_companies__2" valign="top">
+<div align="center"> </div>
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.non_executive_director_in_european_companies__3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.non_executive_director_in_european_companies_"><b><span style="font-size: small;"> </span></b><strong>Non Executive Director in European companies and family offices with a focus and presence in Asia.</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.this_male_candidate_has_a_successful_track_re">This male candidate has a successful track record of over twenty-two years advising Fortune 500 companies on strategy, mergers and acquisitions (M&amp;A), corporate finance and business development in ASEAN and India. Knowledge and experience of profit and loss (P&amp;L) and Balance Sheet responsibilities, starting and growing a highly profitable investment banking business and in completing a complex restructuring for a large family owned business. Boards Director experience in listed and unlisted companies as a Non Executive and Executive Director. 52 year old Indian national, INSEAD MBA, Physics background and International outlook having lived in India, Singapore, France, and the U.K.. Presently based in Singapore. Languages: English, Hindi, Gujarati, French basic</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_881"><span style="font-size: small;">Ref: 881</span></p>
+</td></tr></tbody></table>
+</td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.industries_a_destination_du_btp_securite_fran_2" valign="top">
+<div align="center"> </div>
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.industries_a_destination_du_btp_securite_fran_3" height="93" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.industries_a_destination_du_btp_securite_fran"><b><span style="font-size: small;"> Industries à destination du BTP /sécurité (France, Pays-Bas Egypte)</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_ingenieur_et_science_po_a_dans_le"><span style="font-size: small;">Le candidat, ingénieur et Science-Po a dans les domaines et les pays mentionnés ci-dessus une expérience de Président et d’administrateur</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_871"><span style="font-size: small;">Ref: 871</span></p>
+</td></tr></tbody></table>
+</td></tr>
+<tr align="left"><td data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_4" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr align="left"><td data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_5" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa"><strong> Candidat à un poste d’administrateur indépendant Longue et large expérience de DG PME industrielle familiale Filiales Europe et Asie, Administrateur de sociétés du secteur tertiaire</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ingenieur_43_ans_de_carriere_industrielle_don">Ingénieur, 43 ans de carrière industrielle, dont 13 en production, puis 30 en Direction Générale et Présidence d’une PME familiale industrielle (CA 40 M€), secteur mécanique et métallurgie.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.creation_et_presidence_de_filiales_en_europe_">Création et Présidence de filiales en Europe, Chine et Inde. Développement d’alliances et réseaux internationaux. Forte expérience commerciale et managériale en Europe, Moyen Orient et Asie.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.23_ans_president_de_conseil_de_surveillance_e">23 ans Président de Conseil de Surveillance en tant qu’administrateur indépendant de deux sociétés du secteur tertiaire : édition &amp; multimedia (2 M€), restauration &amp; séminaires (5 M€).</p>
+<p data-i18n="page_candidats_mandataires_sociaux.experience_en_evaluation_acquisition_et_integ">Expérience en évaluation, acquisition et intégration de sociétés et des problématiques de gouvernance, transmission, mutation d’actionnariats.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.connaissance_de_lenseignement_superieur_10_an">Connaissance de l’Enseignement Supérieur : 10 ans Président d’un Conseil de Perfectionnement. Anglais et Allemand .</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_544" style="font-size: 12px; font-weight: normal;"><span style="font-size: small;">Ref: 544</span></p>
+</td></tr></tbody></table></td></tr>
+<tr align="center" style="font-weight: normal; font-size: 10pt; font-style: normal;"><td data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_grande_experience__2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr align="left"><td data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_grande_experience__3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_grande_experience_" style="font-size: 12px; font-weight: bold;"><strong>Administrateur indépendant, grande expérience en audit</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_ingenieur_commercial_dhec_liege_a">Le candidat, ingénieur commercial d’HEC Liège, a exercé pendant 25 ans en qualité de Commissaire aux comptes et d’Expert-comptable en Belgique et au Grand-Duché de Luxembourg.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.certifie_comme_administrateur_de_societes_ifa">Certifié comme Administrateur de Sociétés (IFA/SC.PO) et en stratégie de la gestion des risques CEFAR/AMRAE. Membre des Instituts Français et Luxembourgeois des administrateurs.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.fort_de_son_experience_internationale_au_sein">Fort de son expérience internationale au sein de cabinets d’audit anglo-saxons pour des sociétés commerciales, industrielles et financières (de taille intermédiaire), il est devenu entrepreneur par la création et le développement de ses propres cabinets d’expertise-comptable, de domiciliation de sociétés et d’audit (affilié à un réseau international, Kreston).</p>
+<p data-i18n="page_candidats_mandataires_sociaux.son_parcours_professionnel_lui_a_fait_connait">Son parcours professionnel lui a fait connaître des secteurs d’activité très variés et en particulier le BTP et la gestion patrimoniale, des structures de tailles différentes, avec des enjeux et des modèles de business à divers stades de développement. Il a participé à de très nombreuses missions de restructurations tant en France qu’au Luxembourg.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.de_par_sa_nationalite_italienne_et_son_parcou">De par sa nationalité italienne, et son parcours européen, il connait en profondeur les cultures française, italienne et anglaise et en maîtrise les langues associées.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_il_est_administrateur_de_societes_">Aujourd’hui, il est administrateur de sociétés Luxembourgeoises ainsi qu’auditeur interne au sein de structures financières sous régulation Luxembourg.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_532" style="font-size: 12px; font-weight: normal;"><span style="font-size: small;">Ref: 532</span></p>
+</td></tr></tbody></table></td></tr>
+<tr align="center" style="font-weight: normal; font-size: 12px; font-style: normal;"><td data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_6" valign="top">
+<table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr align="left"><td data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_7" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_2" style="font-size: 12px; font-weight: bold;"><b>Candidat à un poste d’administrateur indépendant,</b> longue expérience de Dirigeant de PME/ETI y compris à l’international dont Extrême Orient</p>
+<p data-i18n="page_candidats_mandataires_sociaux.25_ans_de_direction_generale_de_pme_eti_indus" style="font-size: 12px; font-weight: normal;">– 25 ans de Direction Générale de PME / ETI industrielles de 10/50/120 millions € de CA, multi sites et multi pays – Secteurs industriels : matériaux composites, peintures aéronautiques, imprimerie, emballage plastique, transformation du bois, pièces d’équipements pour l’industrie et la filière pétrole et gaz. – Types d’actionnariats : groupes cotés français et étrangers, groupes familiaux, sociétés sous LBO. – Expérience en développement, gestion, restructuration, procédures collectives, reprise sous LBO et croissance externe. <span style="font-size: smaller;">– A travaillé en Europe, Inde, Iran, Chine, Afrique du Sud. Connaissance du Grand Export pour</span> y avoir implanté des filiales industrielles. – Membre IFA, APIA – Ingénieur UTC, Master of Sciences du Cranfield Institute of Technology, MBA du Groupe HEC – Anglais courant</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_678" style="font-size: 12px; font-weight: bold;"><span style="font-size: small;">Ref: 678</span></p>
+</td></tr></tbody></table>
+<p style="font-size: 12px; font-weight: bold;"> </p>
+</td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_8" valign="top"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_9" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.candidat_a_un_poste_dadministrateur_independa_3"><b>Candidat à un poste d’administrateur indépendant, (Comité d’Audit ou de Rémunérations). Dans plusieurs secteurs, grande expérience de la Finance et de la Direction Opérationnelles d’Entreprise. </b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.dote_dune_triple_formation_mba_americain_inge">Doté d’une triple formation (MBA américain, Ingénieur, Sciences Eco), le candidat a un poste d’administrateur indépendant, après avoir été consultant junior dans deux cabinets renommés, a effectué sa carrière dans les filiales françaises de deux groupes internationaux majeurs , l’un américain, puis l’autre allemand. Pour ce dernier, il aussi travaillé au sein de la maison mère en Allemagne. Il a une riche expérience de plus de 20 ans de Direction Financière étendue (finances, comptabilité, fiscalité, juridique et informatique) dans des environnements internationaux. Dans cette fonction, il a participé, tant en France qu’à l’étranger, à de nombreuses opérations de fusion/acquisition et a siégé dans plus de dix conseils de surveillance ou d’administration de filiales des groupes ci-dessus mentionnés. Mais, l’originalité de son parcours tient en ce qu’il a aussi été Directeur Général  » terrain « , en particulier dans des opérations réussies de redressement de plusieurs entreprises appartenant à différents domaines. Les secteurs économiques où un Conseil pourrait bénéficier de son expérience englobent notamment la chimie, la pharmacie, l’agroalimentaire, les arômes et parfums ainsi que l’immobilier. Trilingue français/anglais/allemand</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_503"><span style="font-size: small;">Ref: 503</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.industrie_pharmaceutiquele_candidat_docteur_e" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.industrie_pharmaceutiquele_candidat_docteur_e_2" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.industrie_pharmaceutique"><span style="font-size: small;"><b> Industrie pharmaceutique</b></span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_docteur_en_pharmacie_aihp_a_une_e"><span style="font-size: small;">Le candidat, Docteur en Pharmacie, AIHP, a une expérience des travaux de recherche en hopital et de postes de Direction de R &amp; D dans des entreprises pharmaceutiques y compris une de grande taille avec des filiales aux USA.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.createur_dune_start_up_de_conseil_en_strategi"><span style="font-size: small;">Créateur d’une start-up de conseil en stratégie R &amp; D pharmaceutique et co-fondateur d’une autre dans la conception de nouveaux médicaments anti-viraux.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_561"><span style="font-size: small;">Ref: 561</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_electronique_aeron" valign="top"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administrateur_independant_electronique_aeron_2">
+<div align="left"><span style="font-size: small;"><b>Administrateur Indépendant, Electronique, Aéronautique, Défense et Sécurité. </b> </span></div>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.le_candidat_de_formation_x_et_supaero_ensae_c"><span style="color: #000000; font-size: small;">Le candidat de formation X et Sup’Aéro (ENSAé), complétée par Management stratégique (IFG-ICG), a exercé des postes de hautes responsabilités au sein de la Direction Générale de l’Armement du ministère de la défense. D’une large expérience en électronique de défense, il est un des rares hauts fonctionnaires maitrisant le secteur de l’armement français et européen dans le domaine des hautes technologies. Titulaire du certificat d’administrateur de société (IFA)</span>.</p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_462"><span style="font-size: small;">Ref: 462</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.equipements_et_appareillages_industriels_ener_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.equipements_et_appareillages_industriels_ener_3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.equipements_et_appareillages_industriels_ener"><b><span style="font-size: small;"> </span></b><span style="font-size: small;"><b>Equipements et appareillages industriels (Energie, Transport, Haute Technologie)</b></span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_ingenieur_mba_bilingue_francais_a"><span style="font-size: small;">Le candidat Ingénieur + MBA bilingue français/anglais a une expérience très poussée: – de l’Asie /Pacifique avec 7 ans de résidence au Japon et la présidence de sociétés tant au Japon qu’en Chine, Corée, Taiwan, Thailande,Indes, Australie. – De l’Europe et du Commonwealth avec 6 ans de résidence à Londres où ont été ajoutés des postes d’administrateurs sur ces zones à ceux deja occupés en Asie.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_261"><span style="font-size: small;">Ref: 261</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.aviation_aeronautique_spatial_defense_securit_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.aviation_aeronautique_spatial_defense_securit_3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.aviation_aeronautique_spatial_defense_securit"><span style="font-size: small;"><b> </b></span><span style="font-size: small;">.</span><b><span style="font-size: small;">Aviation, Aéronautique, Spatial, Défense &amp; Sécurite.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_de_formation_economique_commerce_"><span style="font-size: small;">Le candidat de formation Economique &amp; Commerce International (Londres et Paris) completée par Management (INSEAD) et Défense (IHEDN) a une large expérience internationale à travers la Banque Mondiale (Amériques et Asie) puis l’industrie Aéronautique/spatiale/défense/sécurite Francaise, Européenne et Américaine pour lesquelles il a occupé des postes de très hautes responsabilités opérationnelles et « Corporate ». </span><span style="font-size: small;">Il partage sa résidence entre Washington et Paris et est particulièrement actif dans les secteurs indiqués sur l’Europe, les Amériques et le Moyen Orient.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_513"><span style="font-size: small;">Ref: 513 </span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.administrateur_de_filiales_anglaises_de_socie_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administrateur_de_filiales_anglaises_de_socie_3" height="158" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.administrateur_de_filiales_anglaises_de_socie"><b><span style="font-size: small;"> Administrateur de filiales anglaises de sociétés françaises et réciproquement</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_a_30_ans_dexperience_dans_quelque"><span style="color: #000000; font-size: small;">Le candidat a 30 ans d’expérience dans quelques-unes des plus grandes entreprises du Royaume-Uni, de l’Allemagne, des Etats-Unis et des Pays-Bas. Financier de formation, habitué aux problématiques des états-major aussi bien qu’à celles des opérations, son expertise concerne des entreprises aussi variées que la marine, la chimie, le développement durable et l’immobilier. D’origine anglaise, mais implanté depuis longtemps en France, à Paris et dans la région rhénane, il se ferait un plaisir de construire des ponts entre des filiales françaises et leurs maisons-mère britanniques/allemandes ou vice versa. </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_203"><span style="color: #000000; font-size: small;">Ref: 203</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.le_candidat_de_formation_x_et_insead_a_une_la_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.le_candidat_de_formation_x_et_insead_a_une_la_3" height="121" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_de_formation_x_et_insead_a_une_la"><span style="font-size: small;"><b>Le candidat de formation X et INSEAD a une large expérience des secteurs infrastructures, aménagement, bâtiment, environnement, développement durable, ingénierie, services publics, concessions et partenariats publics privés. </b> Dans ces secteurs, il a tenu des postes de direction opérationnelle y compris sur des chantiers internationaux de grande envergure (Algérie, Chine). Il été administrateur au sein de Conseils d’Administration et de Surveillance de type très variés et PDG d’une filiale d’un des leaders de l’ingénierie et du conseil. Il vient de récemment créer sa propre société de conseil afin pouvoir de faire bénéficier de son expérience des sociétés de ces secteurs, en particulier au travers de mandats d’administrateur indépendant </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_508"><span style="color: #000000; font-size: small;">Ref: 508</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.edition_de_logicielle_candidat_expert_comptab" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.edition_de_logicielle_candidat_expert_comptab_2" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.edition_de_logiciel"><b><span style="font-size: small;"> Edition de logiciel</span></b></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.le_candidat_expert_comptable_a_une_large_expe"><span style="font-size: small;">Le candidat, Expert comptable a une large expérience de direction financière, secrétariat général et d’administrateur de </span><span style="font-size: small;">SSII et de sociétés d’édition de logiciels</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_909"><span style="font-size: small;">Ref: 909</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.genie_medical_france_et_usaapres_avoir_ete_au" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.genie_medical_france_et_usaapres_avoir_ete_au_2" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.genie_medical_france_et_usa"><b> <span style="font-family: Times New Roman, Times, serif; font-size: small;">Génie Médical France et USA</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_avoir_ete_aux_usa_manager_de_projets_ma"><span style="font-size: small;">Après avoir été aux USA Manager de projets marketing d’une filiale d’une grande société pharmaceutique US, puis pendant 4 ans Directeur du marketing International d’une société US en Génie Médical, il fonde en France une start-up pour les diagnostics médicaux. Il en sera le PDG pilotera un développement réussi. Société opérant en Europe et aux USA, cotée sur Euronext. Grand expérience des contacts de haut niveau et des transferts de technologie (USA et Europe) avec les milieux scientifiques et financiers. Formation: Master en Management de l’ ISG</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_104"><span style="font-size: small;">Ref: 104</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.pharmacie_humaine_otc_et_sante_animalele_cand" valign="top"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.pharmacie_humaine_otc_et_sante_animalele_cand_2" valign="top">
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.pharmacie_humaine_otc_et_sante_animale"><b><span style="font-family: Times New Roman, Times, serif; font-size: small;">Pharmacie humaine (OTC) et Santé animale</span></b></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.le_candidat_veterinaire_avec_une_formation_de"><span style="font-size: small;">Le candidat, vétérinaire avec une formation de gestionnaire acquise à l’ ESSEC est un dirigeant expérimenté au sein de grands groupes, en particulier américains, tant comme opérationel (DG ou Business Unit) que fonctionnel (Marketing) au sein de filiales commercialisant des produits pour la santé animale ou humaine (OTC). Expérience d’administrateur du Syndicat de l’Industrie du Médicament vétérinaire. Connaissance de la langue russe.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_115"><span style="font-size: small;">Ref: 115</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.equipements_pour_l_energie_le_petrole_et_le_g_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.equipements_pour_l_energie_le_petrole_et_le_g_3" valign="middle">
+<p data-i18n="page_candidats_mandataires_sociaux.equipements_pour_l_energie_le_petrole_et_le_g"><span style="font-size: small;"><b> Equipements pour l’ énergie le pétrole et le gaz</b></span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_ingenieur_et_mba_hec_isa_a_une_ex"><span style="font-size: small;">Le candidat, ingénieur et MBA HEC-ISA a une expérience d’administrateur dans plusieurs sociétés du domaine ci-dessus.</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.experience_tres_etendue_produits_alimentaires_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="97%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.experience_tres_etendue_produits_alimentaires_3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.experience_tres_etendue_produits_alimentaires"><b><span style="font-size: small;">Expérience très étendue (Produits alimentaires de grande consommation) France et International durant plus de 15 ans</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_a_des_postes_dadministrateur_est_"><span style="font-size: small;"> Le candidat à des postes d’administrateur est issu d’une Ecole Supérieure de Commerce. Il a été PDG, Administrateur et Dirigeant Opérationnel de filiales dans plusieurs pays Européens et aux USA. Il a effectué des opérations de restructuration complexes. Dans le cadre de ses responsabilités, il a levé des fonds auprès de grands investisseurs en venture capital et mené des missions de conseil dans le cadre d’ opérations de Fusions &amp; Acquisitions (multinationales et start up).</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_845"><span style="font-size: small;">Ref: 845</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.experience_internationale_tres_etendue_high_t_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.experience_internationale_tres_etendue_high_t_3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.experience_internationale_tres_etendue_high_t"><b> </b><span style="font-size: small;"><b><span style="font-size: small;">Expérience internationale très étendue (High Tech et informatique) </span></b> </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_a_passe_plus_de_30_ans_dans_des_e"><span style="font-size: small;">Le candidat a passé plus de 30 ans dans des environnements internationaux dont plus de 10 ans de vie aux USA. I</span><span style="font-size: small;">l a été PDG, Administrateur ou dirigeant opérationnel de filiales de grandes sociétés d’informatique (généraliste, prestataires de service, progiciels) et Vice Président d’une start-up (biométrie). Des responsabilités prises dans le domaine du commerce des objets d’arts et de l’immobilier ont enrichi sa vision de l’entreprise. Aujourd’hui, consultant international, il se propose, en devenant administrateur indépendant, de faire bénéficier des sociétés de sa compétence. F</span><span style="font-size: small;">ormation: Ingénieur Arts et Métiers et INSEAD</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.presse_et_medias_developpement_internationall" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.presse_et_medias_developpement_internationall_2" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.presse_et_medias_developpement_international"><b><span style="font-size: small;"> Presse et Médias Développement International</span></b></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.le_candidat_aujourdhui_consultant_internation"><span style="font-size: small;">Le candidat, aujourd’hui consultant international, a débuté comme Directeur de la Ch. Com. Française dans un pays nordique, avant de représenter des industries françaises du textile et de l’habillement dans les instances internationales. Ensuite, au sein d’un grand groupe de presse/médias français, il fût Directeur de filiale au Portugal, Directeur International entre autres chargé des montages de JV, Directeur Gérant d’une filiale en France, Directeur Adjoint avec des postes d’administrateurs. Mandataire social potentiel de sociétés du domaine presse/médias avec un développement international (pratique plusieurs langues: suédois, portugais, anglais et allemand). Formation Droit, langues orientales ( Russe).</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_101"><span style="font-size: small;">Ref: 101 </span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.questions_energetiques_et_gestion_des_risques_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.questions_energetiques_et_gestion_des_risques_3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.questions_energetiques_et_gestion_des_risques"><b><span style="font-size: small;"> Questions énergétiques et gestion des risques associés</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.le_candidat_a_une_longue_experience_des_affai"><span style="font-size: small;">Le candidat a une longue expérience des affaires énergétiques (génie civil spécialisé et équipements lourds/turbomachines…) et du « risk management » associé. Durant ces dernières années, il a assimilé le statut particulier, les aléas inhérents, les modalités de travail des hauts dirigeants et administrateurs de sociétés et leur implication accrue dans la gestion de l’énergie et les risques.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_402"><span style="font-size: small;">Ref: 402</span></p>
+</td></tr></tbody></table></td></tr>
+</tbody></table></td>
+<td align="right" data-i18n="page_candidats_mandataires_sociaux.femmes_candidatescandidate_administratrice_in" valign="top" width="544">
+<div align="center"><table align="center" border="2" cellpadding="0" cellspacing="6" width="100%"><tbody>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.femmes_candidates" style="text-align: center; color: #f50c10; font-size: 16px; font-weight: bold;" valign="top">Femmes candidates</td></tr>
+<tr><td align="right" data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_grande_2" style="text-align: left;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_grande_3">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_grande" style="margin: 0cm; margin-bottom: .0001pt;"><span style="font-family: georgia, palatino, serif;"><b>Candidate administratrice indépendante : Grande expérience internationale</b></span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_ecole_des_mines_et_biotechnologi" style="margin: 0cm; margin-bottom: .0001pt;"><span style="font-family: georgia, palatino, serif;">La candidate ( Ecole des Mines et Biotechnologie au MIT) a exercé 3 mandats successifs au Conseil de Surveillance d’une ETI familiale de dimension internationale: croissance interne et externe, défis liés à une croissance rapide (manufacturing, supply chain, RH). Plus de 40 ans hors de France: USA + différents pays européens, en Allemagne depuis 2000. Conseil en stratégie chez Bain, directrice opérationnelle chez Pasteur-Mérieux. Depuis deux ans, mentorat de start-ups auprès de l’accélérateur MassChallenge.</span></p>
+<p align="left"><span style="font-size: small;"><b> </b></span></p>
+</td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_hotell_3">
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_hotell"><span style="font-size: small;"><b>Candidate administratrice indépendante : Hôtellerie, Restauration, Tourisme; France et Europe</b> Expérience pluridisciplinaire acquise au sein d’un groupe hôtelier international coté au CAC 40. Au fil de 30 années, dont 12 ans dans la restauration publique, la candidate a successivement occupé des postes de dirigeante dans des domaines variés : contrôle de gestion, produits, opérations, marketing, audit interne, production, publishing et communication des bureaux de ventes internationales, enfin quant à l’efficacité des coûts marketing &amp; distribution. </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_elle_est_consultante_independante_"><span style="font-size: small;">Aujourd’hui, elle est consultante indépendante dans ces domaines. Très bonne connaissance de l’international. Formation : Maîtrise de Sciences Economiques (Paris2), DEA Théories et Politiques monétaires (Paris 2), Executive Doctorate in Business Administration (Paris Dauphine, 2009). Membre de l’IFA et Secrétaire Générale de l’Association Européenne de Neuroéconomie.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_303"><span style="font-size: small;">Ref: 303</span></p>
+</td></tr>
+</tbody></table></td></tr>
+<!-- <tr><td align="center" valign="top" height="233"><table border="0" width="95%" cellspacing="3" cellpadding="0" align="center"><tbody><tr><td>
+<p><b><span style="font-size: small;">Consultante experte en strat&eacute;gie et finance d&rsquo;investissement dans le secteur de l&rsquo;&eacute;nergie et des services publics en France et &agrave; l&rsquo;international</span></b></p>
+<p><span style="font-size: small;">La candidate a 15 ans d&rsquo;exp&eacute;rience dans le domaine ci-dessus. Elle est administrateur et membre du comit&eacute; d&rsquo;audit d&rsquo;une entreprise fran&ccedil;aise cot&eacute;e op&eacute;rant dans le domaine de l&rsquo;&eacute;nergie. Elle a obtenu le Certificat d&rsquo;Administrateur de Soci&eacute;t&eacute;s de l&rsquo;Institut Fran&ccedil;ais des Administrateurs et vise un deuxi&egrave;me mandat. Ayant v&eacute;cu et travaill&eacute; &agrave; Londres, &agrave; New-York, et en Am&eacute;rique du Sud, elle a une bonne ma&icirc;trise des enjeux &agrave; l&rsquo;international. Elle est intervenue sur des probl&eacute;matiques dans le secteur de l&rsquo;&eacute;nergie lors de missions de conseil en strat&eacute;gie, d&rsquo;analyses financi&egrave;res, de d&eacute;cisions d&rsquo;allocation de capital et d&rsquo;&eacute;valuation d&rsquo;investissements.</span></p>
+<p><span style="font-size: small;">Elle est dipl&ocirc;m&eacute;e de l&rsquo;ESSEC et a obtenu la charte CFA (&lsquo;Chartered Financial Analyst&rsquo;).</span></p>
+<p><span style="font-size: small;">Ref: 514</span></p>
+</td></tr></tbody></table></td></tr> -->
+<tr><td align="right" data-i18n="page_candidats_mandataires_sociaux.candidate_au_poste_dadministratrice_independa_2" style="text-align: left;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_au_poste_dadministratrice_independa_3">
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.candidate_au_poste_dadministratrice_independa"><span style="font-size: small;"><b> </b></span><span style="font-weight: bold;">Candidate au poste d’administratrice indépendante .</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.docteur_en_economie_la_candidate_beneficie_du">Docteur en économie , la candidate bénéficie d’une expérience professionnelle de plus de 30 ans . Ses compétences métiers couvrent le secteur banque / finance , le conseil en organisation et stratégie , les nouvelles technologies et la transformation digitale .</p>
+<p data-i18n="page_candidats_mandataires_sociaux.membre_des_comites_de_direction_elle_a_assure">Membre des comités de direction elle a assuré avec succès des responsabilités opérationnelles (centre de profit , développement ) au sein d’une des plus grandes banques mondiales , d’un cabinet de conseil de premier plan (big four) et d’une société spécialisée en système d’information cotée au CAC 40 . Compte tenu des projets qu’elle a réalisé et de ses différentes fonctions elle connaît bien la zone Europe ( UK , Bénelux , Hongrie , Espagne ,Italie) , les Etats Unis , l’Inde et le Maroc .</p>
+<p data-i18n="page_candidats_mandataires_sociaux.membre_du_cercle_des_administrateurs_de_lasso">Membre du Cercle des administrateurs , de l’association des Alumni d’ATOS, elle mène aussi des actions de bénévolat pour V.E.C.V ( Votre Ecole Chez Vous ) association reconnue d’utilité publique et sous contrat avec l’éducation nationale .</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_324">Ref: 324</p>
+<p align="left"> </p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="right" data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_5" style="text-align: left;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_6">
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen"><span style="font-size: small;"><b> Candidate à un poste d’administratrice indépendante, connaissant bien le BTP, les services aux entreprises, la santé, les fonds d’investissement et la communication. </b></span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.apres_avoir_mene_des_travaux_daudit_chez_erns"><span style="font-size: small;">Après avoir mené des travaux d’audit chez Ernst &amp; Young, la candidate, au cours des 13 années suivantes, a acquis successivement une expérience de Direction d’une unité opérationnelle, de Directeur financier puis de Secrétaire Général au sein d’une une <b>E</b>ntreprise de <b>T</b>aille <b>I</b>ntermédiaire. Cette entreprise opérant dans un dur contexte international a traversé des périodes de fortes crises.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ensuite_apres_avoir_ete_secretaire_general_du"><span style="font-size: small;">Ensuite, après avoir été Secrétaire Général d’un important Cabinet d’Avocats, elle a créé son propre cabinet de conseil mettant ses compétences en gestion et finances au service de la stratégie, de la gouvernance et de l’organisation de ses clients.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.la_candidate_membre_de_lifa_est_diplomee_de_l"><span style="font-size: small;">La candidate, membre de l’IFA, est diplômée de l’IEP Paris, Eco-fi, d’un DESS de banque-assurance et titulaire d’un master de gestion effectué à Dauphine. »</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_825"><span style="font-size: small;">Ref: 825 </span></p>
+</td></tr></tbody></table></td></tr>
+<tr align="center"><td data-i18n="page_candidats_mandataires_sociaux.woman_european_company_board_readymba_insead_" style="text-align: left;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.woman_european_company_board_readymba_insead__2">
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.woman_european_company_board_ready"><strong>Woman European Company Board ready </strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.mba_insead_certificate_and_diploma_in_company">MBA INSEAD, Certificate and Diploma in Company Direction from Institute of Directors (IOD London)</p>
+<p data-i18n="page_candidats_mandataires_sociaux.en_france_creatrice_de_son_propre_cabinet_de_"><strong>En France</strong>, créatrice de son propre cabinet de recherche et d’études de marché en Informatique, développé jusqu’à 150 personnes sur l’Europe puis revendu à un grand du conseil ; ensuite PDG d’un cabinet d’étude en Information Technology. <strong>Puis en Europe</strong>, chargée du développement d’un grand cabinet de Conseil en RH et après d’un autre en informatique. <strong>Ensuite, longue carrière aux USA</strong> comme Directeur Exécutif à divers postes pour le développement d’un grand cabinet international de conseil en management.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.de_retour_en_europe_membre_du_comite_executif"><strong>De retour en Europe</strong>, membre du Comité Exécutif Europe d’un cabinet renommé de conseil en leadership et recherche de dirigeants</p>
+<p data-i18n="page_candidats_mandataires_sociaux.cette_large_experience_internationale_vecue_d">Cette large expérience internationale vécue dans 6 pays lui a permis de connaître de nombreux secteurs B to B, dont le numérique et aussi la grande consommation. Son relationnel « Business » (INSEAD, IOD, American Chamber of Commerce Zurich) peut être mis au service d’un Board. A noter : Membre pendant 5 ans du Board du CAWC, Connections for Abused Women and their Children à Chicago, Présidente de la commission Communication</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_304">Ref: 304</p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="right" data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_7" style="text-align: left;" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_8" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_2"><b><span style="font-size: small;"> </span></b><strong>Candidate à un poste d’administratrice indépendante</strong> Elle apporte 30 années d’expérience déroulées dans un environnement International de structures publiques/privées et dans des domaines variés comme la recherche, la production, la stratégie, la gestion des risques (humains, capitaux et sociétaux), le management de projets et des équipes, le « mentoring » de Startups. Ses domaines clés d’intervention sont l’industrie pharmaceutique et chimique en collaboration étroite et permanente avec un tissu de PME locales et internationales. Forte de toutes ces expériences et expertises, elle a la capacité à intervenir dans de nombreuses industries connexes ou complémentaires (équipementiers, cosmétique, agrochimique…). Son intérêt pour un développement économique dans une logique durable et équitable est son fil conducteur parce qu’elle croit en l’intelligence collective, la co-construction et la collaboration comme fondement du succès d’une entreprise et plus largement de notre société. La candidate a une formation de Docteur Ingénieur en Chimie, elle est certifiée Administratrice par l’EM Lyon.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_299">Ref 299</p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="right" data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_5" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_6" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde"><b><span style="font-size: small;"> La candidate à un poste d’administratrice indépendante</span></b> <span style="font-size: small;">est aujourd’hui consultante et enseignante en finances à l’Ecole Nationale des Ponts et Chaussées. Elle a obtenu un DECS de Comptabilité et un Executive MBA en Management à New York University. Stern Business School. Bilingue français anglais avec 26 années d’expérience comme Directeur Financier et Administratif au sein d’entreprises internationales (dont aux USA) dans divers secteurs d’activité, en particulier les produits de grande consommation et le luxe. Très opérationnelle et proche du business, elle a une expertise en stratégie, organisation, management et systèmes d’information. Fondé de pouvoir d’une fondation d’entreprise et Membre du Board de EPWN, elle a vécu de l’intérieur le fonctionnement d’un Conseil d’Administration. Membre de l’IFA, de Women Corporate Directors et de EPWN</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_302"><span style="font-size: small;">Ref: 302</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_7" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_8" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_2"><b><span style="font-size: small;"> La candidate à un poste d’administratrice indépendante Trés large expérience internationale en développement d’affaires, Biotechnologies</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_ecole_des_mines_et_biotechnology"><span style="font-size: small;">La candidate ( Ecole des Mines et Biotechnology au MIT), réside en Allemagne depuis l’an 2000, Nombreuses années hors de France: USA + différents pays européens. Conseil en stratégie chez Bain, Directrice opérationnelle chez Pasteur-Mérieux, notamment pour une opération de « spin-off » / vente d’une activité. Depuis 8 ans, réussit comme consultante indépendante pour le lancement / développement international de start-up (biotechnologie et santé).</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_603"><span style="font-size: small;">Ref: 603</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_de_directrice_de_linnova_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_de_directrice_de_linnova_3"><div align="left">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_de_directrice_de_linnova"><strong>Candidate à un poste de Directrice de l’Innovation, Connaissance des Conseils d’Adminsitration</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_est_de_formation_initiale_ingeni">La candidate est de formation initiale ingénieur docteur en génie industriel (INPG), puis elle a obtenu un « Executive MBA » et un doctorat en business administration (IAE, PSB). Elle a 15 ans d’expérience dans un groupe papetier international pour piloter de manière transverse le développement opérationnel et stratégique de l’innovation (multiples imprégnations internationales dont l’Allemagne où elle a vécu, les USA, l’Espagne). Depuis 9 ans, elle a développé son activité de conseil en management de l’innovation et en parallèle encadre des recherches académiques sur la culture d’innovation : entre autres, le management de la créativité collective. Elle a également une bonne connaissance des Conseils d’Administration, car elle est certifiée administratrice par l’ADAE, dont elle est devenue membre du Comex et coordinatrice pédagogique de la formation d’administrateurs. Elle dirige par ailleurs une collection d’ouvrages sur les nouvelles tendances de valeur et la performance des « Boards ».</p>
+<p data-i18n="page_candidats_mandataires_sociaux.langues_etrangeres_anglais_allemand_notions_e">Langues étrangères : anglais, allemand – Notions : espagnol, italien</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_756">Ref:756</p>
+</div></td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_9" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_10">
+<div align="left"><span style="font-size: small;"><b>Candidate à un poste d’administratrice indépendante, elle apporte plus de 20 ans d’expérience à haut niveau dans les Télécoms à l’international. </b></span></div>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.avec_une_longue_experience_de_direction_gener"><span style="font-size: small;">Avec une longue expérience de Direction générale, chez les opérateurs et chez les fournisseurs de Télécoms, la candidate a encadré des équipes internationales et multidisciplinaires (finance, marketing, commercial, développement produit). Membre du Comité exécutif d’une association mondiale d’opérateurs pendant plus de 10 ans, elle acquis une connaissance globale de l’industrie et de ses acteurs ainsi qu’une expérience de gouvernance.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_une_formation_deconomiste_aux_"><span style="font-size: small;">La candidate a une formation d’économiste (aux Etats-Unis et en Suisse) et un MBA d’INSEAD. Elle est Membre du Cercle des Administrateurs d’INSEAD et Women Corporate Directors, Elle possède la double nationalité française et américaine.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_108"><span style="font-size: small;">Ref: 108</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_11" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_12">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_3"><span style="text-align: left; font-weight: bold;"><strong>Candidate à un poste d’administratrice indépendante. </strong>Expérience internationale variée au sein de grands groupes américains et européens (Spatial, Médical et Défense), mais aussi pour des PME et startups. </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_un_doctorat_en_mathematiques_appliquees">Après un doctorat en mathématiques appliquées, pendant une vingtaine d’années, elle a piloté de grands projets (plus de 10 millions d’euros) à l’export (USA, Afrique du Sud, Espagne, Italie, Indonésie, Thaïlande etc…) et des équipes multiculturelles en haute technologie de l’information et de la communication. Ensuite, dans le domaine l’intelligence artificielle, elle a travaillé à définir une nouvelle stratégie de développement d’une start-up issue de l’Ecole Normale Supérieure</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ayant_obtenu_des_certificats_pour_evaluation_">Ayant obtenu des certificats pour évaluation financière et la création de start-up technologique (HEC et Polytechnique), elle a intégré l’agence de l’innovation industrielle puis la grande banque publique d’investissement pour y assurer l’analyse stratégique des grands projets sélectionnés (jusqu’à 110 millions d’euros) par ces organismes. Aujourd’hui, en indépendante, elle assure des missions de conseil en stratégie. Membre du Cercle des Administrateurs .</p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_109"><span style="font-size: small;">Ref: 109</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_de_formation_ingenieur_insead_a__3" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_de_formation_ingenieur_insead_a__4" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_de_formation_ingenieur_insead_a_"><b><span style="font-size: small;"> La candidate, de formation Ingénieur + INSEAD, a une longue expérience de postes de direction de haut niveau et d’administratrice dans le secteur industriel complétée une véritable expertise dans la gestion des risques de grands projets internationaux.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_10_ans_a_des_postes_de_responsabilite_t"><span style="font-size: small;">Après 10 ans à des postes de responsabilité technique (études, production, essais, management de grands projets), la candidate a exercé différentes fonctions de Direction concernant des montants pouvant dépasser 500 M€ et comportant un volet international: Stratégie, Administration et Finances, Opérations, Contrôle de gestion, Chaîne d’approvisionnement. Cette expérience pluridisciplinaire (mécanique, électronique, informatique, communications, l’a naturellement conduite vers des postes de Directeur de Business Unit industrielle, de Directeur au sein de Directions Générales et d’Administrateur. La candidate a souvent en parallèle exercé des responsabilités transverses en management des risques pluridisciplinaires d’ unités et de projets opérationnels. Cette expérience permet aujourd’hui de la considérer comme une experte dans ce domaine. Elle donne des cours quant au contrôle des entreprises ausen angalis de « Management control » dans diverse écoles dont l’ESSEC. La candidate est membre de l’IFA et du Cercle des Administrateurs INSEAD / Wharton/….</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_754"><span style="font-size: small;">ref: 754</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.consultante_franco_suisse_experte_en_gouverna_2" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.consultante_franco_suisse_experte_en_gouverna_3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.consultante_franco_suisse_experte_en_gouverna"><b><span style="font-size: small;"> </span></b><strong>Consultante, Franco-Suisse, experte en gouvernance d’entreprises familiales</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_avoir_ete_avocate_au_barreau_de_paris_s">Après avoir été Avocate au Barreau de Paris, spécialisée en droit des affaires, pendant sept ans, elle a dirigé l’entreprise familiale viticole basée en Gascogne. Son action a été particulièrement orientée sur le développement commercial à l’international, et l’ouverture de nouveaux marchés. Forte de cette expérience, pendant 4 ans, elle a été Secrétaire Générale du Family Business Network France. Elle y a entre autres développé un programme pédagogique multidisciplinaire d’ateliers et de conférences pour les familles entrepreneuriales.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_consultante_independante_elle_les_">Aujourd’hui, consultante indépendante, elle les conseille, dans le contexte d’une l’évolution internationale accélérée, pour organiser au mieux leur gouvernance et planifier la transmission, en particulier au sein de la famille.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.elle_a_suivi_un_cursus_de_droit_des_affaires_">Elle a suivi un cursus de droit des affaires et de philosophie du droit, et est titulaire du certificat d’aptitude à la profession d’avocat et d’un master de coaching. Elle vit entre la France et l’Italie.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.langues_francais_anglais_italien">Langues : Français – Anglais – Italien</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_832"><span style="font-size: small;">ref: 832</span></p>
+</td></tr></tbody></table></td></tr>
+<!-- <tr><td align="center" valign="top"><table border="0" width="97%" cellspacing="0" cellpadding="0" align="center"><tbody><tr><td valign="top">
+<p><b><span style="font-size: small;"> </span></b><span style="font-size: small;"><b>Consultante experte en strat&eacute;gie et finance d&rsquo;investissement dans le secteur de l&rsquo;&eacute;nergie et des services publics en France et &agrave; l&rsquo;international</b></span></p>
+<p><span style="font-size: small;">La candidate a 15 ans d&rsquo;exp&eacute;rience dans le domaine ci-dessus. Elle est administrateur et membre du comit&eacute; d&rsquo;audit d&rsquo;une entreprise fran&ccedil;aise cot&eacute;e op&eacute;rant dans le domaine de l&rsquo;&eacute;nergie. Elle a obtenu le Certificat d&rsquo;Administrateur de Soci&eacute;t&eacute;s de l&rsquo;Institut Fran&ccedil;ais des Administrateurs et vise un deuxi&egrave;me mandat. Ayant v&eacute;cu et travaill&eacute; &agrave; Londres, &agrave; New-York, et en Am&eacute;rique du Sud, elle a une bonne ma&icirc;trise des enjeux &agrave; l&rsquo;international. Elle est intervenue sur des probl&eacute;matiques dans le secteur de l&rsquo;&eacute;nergie lors de missions de conseil en strat&eacute;gie, d&rsquo;analyses financi&egrave;res, de d&eacute;cisions d&rsquo;allocation de capital et d&rsquo;&eacute;valuation d&rsquo;investissements. </span></p>
+<p>Elle est dipl&ocirc;m&eacute;e de l&rsquo;ESSEC et a obtenu la charte CFA (&lsquo;Chartered Financial Analyst&rsquo;).</p>
+<p><span style="font-size: small;">Ref: 514</span></p>
+</td></tr></tbody></table></td></tr> -->
+<tr style="font-size: 12px;"><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_de_nationalite_f_2">
+<div align="center"><table border="0" cellpadding="5" width="510"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_de_nationalite_f_3" width="492">
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_de_nationalite_f"><strong>Administratrice indépendante de nationalité française vivant aujourd’hui à Madrid. Large expérience opérationnelle dans le business des télécommunications, puis dans une ONG Internationale et aujourd’hui entrepreneur.</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_un_dea_deconomie_a_paris_la_sorbonne_et">Après un DEA d’économie à Paris La Sorbonne et un MBA à l’Université de San Francisco aux Etats Unis, la candidate a pendant 7 ans travaillé au sein d’un grand opérateur français des télécommunications. Elle fut la première femme à rejoindre la division Internationale, en tant qu’expatriée, chargée du lancement des activités commerciales en Espagne. Elle y demeurera pour lancer les activités d’un autre groupe du même secteur et prendre la responsabilité de leur filiale en Espagne et au Portugal. Elle a ensuite pendant quatre ans été manager pour la péninsule ibérique de filiales de sociétés américaines de télécommunications, cotées au Nasdaq (matériels et logiciels).</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ensuite_durant_6_annees_elle_a_ete_responsabl">Ensuite, durant 6 années, elle a été responsable pour les pays latins d’une grande ONG internationale visant la promotion de la présence des femmes en entreprise à des postes de responsabilité et conseils d’administration. Elle a développé une expertise dans la gestion de la diversité.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_elle_a_cree_sa_propre_entreprise_d">Aujourd’hui, elle a créé sa propre entreprise de consulting pour, au sein des sociétés, tel un grand groupe de cosmétiques, développer l’esprit d’équipe, le leadership et faciliter l’évolution des organisations, entres autres en utilisant le coaching, la musique et les rythmes. Mentor au sein de l’association internationale Professional Women Network (PWN) ainsi que membre de l’Association espagnole Women CEO. Langues : Français, Anglais, Espagnol.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_723">Ref 723</p>
+</td></tr></tbody></table></div>
+<p align="center"> </p>
+</td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_experimentee_jur_2" valign="top"><table align="center" border="0" cellpadding="5" width="526"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_experimentee_jur_3" width="512">
+<p data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_experimentee_jur"><strong>Administratrice indépendante expérimentée, juriste de nationalité espagnole avec une grande expérience du business européen y compris via Internet</strong></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_une_formation_de_juriste_en_espagne_et_">Après une formation de juriste en Espagne et en Allemagne, la candidate a exercé pendant 5 ans à Bruxelles , Madrid et Barcelone dans plusieurs cabinets d’avocats d’affaire l’un espagnol et deux américains: Traitement de conflits très variés en amont des actions devant les tribunaux, y compris vis-à-vis de la Commission Européenne : droits de douanes, abus de position dominante, accord commerciaux, fusions acquisitions,… Ensuite, pendant 6 ans, elle fait partie du Cabinet de M. Marcelino Oreja, membre de la Commission Européenne , chargé de la Direction du suivi des Entreprises, responsable des actions concertées entre la Commission et les Etats membres pour les politiques d’amélioration de l’environnement et du développement des entreprises Puis à Madrid, elle a été la conceptrice, et la responsable de l’animation d’un grand projet de plateforme de commerce électronique destiné à faciliter les transactions de commerce international. Il avait comme objectif de permettre les échanges commerciaux avec d’importantes réductions de coûts dans les exportations et importations Ce projet a bénéficié de soutiens financiers de l’Union Européenne, de chambres de commerce et de diverses associations issues de 8 pays européens. Un prototype opérationnel a pu être réalisé. Le projet a reçu plusieurs prix et distinctions.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.en_parallele_elle_a_ete_directrice_juridique_">En parallèle, elle a été Directrice juridique et conseillère du Président d’un très grand groupe espagnol du domaine des produits alimentaires et de la construction d’ensembles tels des hôtels. Elle a en particulier participé à la création d’un portail internet pour élargir la base des consommateurs. Aujourd’hui, elle a créé son propre cabinet de Conseil tant pour les entreprises que pour les organismes publics. Elle peut leur faire bénéficier de sa large expérience européenne, mais aussi dans la mise en place de relations avec la Chine et les pays d’Amérique Latine.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.en_espagne_elle_a_ete_administratrice_de_la_c">En Espagne, elle a été administratrice de la Confédération des employeurs espagnols, Vice Présidente de Women CEO et dans une grande ville de l’Est des USA, administratrice d’une grande école internationale ainsi que d’une ONG visant l’amélioration des conditions de vie des personnes défavorisées. En 2013, elle a participé au cours<strong><em> « </em></strong><em>Making corporate boards more effective</em> « à Harward Business School.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_762">Ref 762</p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_9" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr style="font-size: 12px;"><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_10">
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_3" style="text-align: left; font-size: 10pt;"><span style="font-weight: bold;">La candidate à un poste d’administratrice indépendante, de nationalité française et américaine, est domiciliée aux USA et en France. Parcours anglo-saxon de 30 ans à la croisée de l’immobilier et de la finance</span> chez Bank of America, General Motors, EY, …ou au service de clients institutionnels comme la Banque Mondiale ou BlackRock. Elle a eu tour à tour des rôles d’analyste, d’émetteur, d’évaluateur, de prêteur, et d’investisseur</p>
+<p data-i18n="page_candidats_mandataires_sociaux.elle_a_mene_plusieurs_operations_de_fusion_ac" style="text-align: left; font-size: 10pt;">Elle a mené plusieurs opérations de fusion/acquisition ou vente de sociétés, et siégé dans plusieurs conseils d’administration de filiales d’un grand groupe.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_consultante_independante_connaissa">Aujourd’hui , consultante indépendante, connaissant bien les Etats-Unis, le Canada, les pays d’Europe de l’Ouest et la Russie, elle intervient à l’international pour accompagner des acteurs institutionnels à bien formuler et exécuter leurs stratégies immobilières. Elle siège au conseil de plusieurs associations professionnelles immobilières.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.certifications_immobilieres_courantes_avec_ob"><strong style="font-weight: normal;">Certifications immobilières courantes, avec obligation de formation continue: </strong> Aux USA: MAI (Member of the Appraisal Institute), CRE (Counselors of Real Estate) En Europe: FRICS: Fellow of the Royal Institution of the Chartered Surveyors</p>
+<p data-i18n="page_candidats_mandataires_sociaux.formation_sciences_po_paris_institut_durbanis"><strong>Formation</strong>: Sciences-Po Paris, Institut d’Urbanisme de Paris, New York University Administratrice certifiée (IFA)</p>
+<p align="center" data-i18n="page_candidats_mandataires_sociaux.ref_320" style="font-size: 12px; text-align: left;">Ref: 320</p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.diplomee_de_liae_de_nice_de_paris_i_pantheon__2" height="22" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.diplomee_de_liae_de_nice_de_paris_i_pantheon__3">
+<p data-i18n="page_candidats_mandataires_sociaux.diplomee_de_liae_de_nice_de_paris_i_pantheon_" style="text-align: left; font-size: 10pt;"><span style="font-weight: bold;">Diplômée de l’IAE de Nice, de Paris I Panthéon Sorbonne et d´HEC, avec orientation à l’international, au commercial et marketing, la candidate de nationalité franco-bulgare a passé un tiers de sa vie professionnelle à l’étranger, Bulgarie, Maroc, Italie, USA, France</span>, etc.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.elle_a_20_ans_dexperience_de_directions_opera" style="text-align: left; font-size: 10pt;">Elle a 20 ans d’expérience de directions opérationnelles et stratégiques, secteurs de la distribution pharmaceutique, des biens d’équipement et des services, dans des sociétés italiennes, françaises et japonaises en Europe. Elle a à son actif plusieurs délicats retournements de situation et a vécu deux situations particulières: introduction à la bourse de NYSE et rachat hostile par un grand groupe japonais.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.elle_a_egalement_acquis_une_bonne_connaissanc" style="text-align: left; font-size: 10pt;">Elle a également acquis une bonne connaissance du fonctionnement des Conseils, d’une part, en tant que membre de Comités de Direction (présentations devant les administrateurs), et d’autre part, pour avoir de fait dans plusieurs circonstances joué le rôle d’un Secrétaire de Conseil (préparations des dossiers pour les CA, connaissance des parties prenantes, rapports de gouvernance).</p>
+<p data-i18n="page_candidats_mandataires_sociaux.elle_est_actuellement_conseil_independant_en_" style="text-align: left; font-size: 10pt;">Elle est actuellement conseil indépendant en stratégie, accompagnatrice de créateurs d’entreprise ou d’activités innovantes de grands groupes, spécialisée dans la valorisation &amp; développement des marques, membre du comité stratégique d’une start-up et conseiller en carrière bénévole (mentoring HEC). Membre de l’Institut Français des Administrateurs, de la French American Foundation, du Professional’s Women Network et du groupement gouvernance HEC.</p>
+<p align="center" data-i18n="page_candidats_mandataires_sociaux.ref_617" style="font-size: 12px; text-align: left;">Ref: 617</p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_de_formation_ingenieur_insead_a__5" height="223" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_de_formation_ingenieur_insead_a__6" height="203" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_de_formation_ingenieur_insead_a__2"><b><span style="font-size: small;"> La candidate, de formation Ingénieur + INSEAD, a une longue expérience de postes de direction de haut niveau et d’administratrice dans le secteur industriel complétée une véritable expertise dans la gestion des risques de grands projets internationaux.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_10_ans_a_des_postes_de_responsabilite_t_2"><span style="font-size: small;">Après 10 ans à des postes de responsabilité technique (études, production, essais, management de grands projets), la candidate a exercé différentes fonctions de Direction concernant des montants pouvant dépasser 500 M€ et comportant un volet international: Stratégie, Administration et Finances, Opérations, Contrôle de gestion, Chaîne d’approvisionnement. Cette expérience pluridisciplinaire (mécanique, électronique, informatique, communications, l’a naturellement conduite vers des postes de Directeur de Business Unit industrielle, de Directeur au sein de Directions Générales et d’Administrateur. La candidate a souvent en parallèle exercé des responsabilités transverses en management des risques pluridisciplinaires d’ unités et de projets opérationnels. Cette expérience permet aujourd’hui de la considérer comme une experte dans ce domaine. Elle donne des cours de « Contrôle des entreprises » en anglais « Management control » dans diverses écoles dont l’ESSEC.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_est_membre_de_lifa_et_du_cercle_">La candidate est membre de l’IFA et du Cercle des Administrateurs INSEAD / Wharton/….</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_754_2"><span style="font-size: small;">Ref: 754</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_grande_societe_e_2" height="426" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_grande_societe_e_3" height="413" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_grande_societe_e"><b><span style="font-size: small;"> Administratrice indépendante, Grande Société Européenne</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_domiciliee_depuis_25_ans_a_paris"><span style="font-size: small;">La candidate domiciliée depuis 25 ans à Paris possède la double nationalité française et espagnole. Son expérience en management d’opérations hautement stratégiques pour de grandes entreprises cotées du Royaume-Uni, de la France, et de la Belgique a été accumulée sur 30 ans. D’abord, et en profondeur, au sein du secteur des télécommunications, mais également plus récemment pour la santé (hôpitaux) et l’industrie alimentaire (Pêche). Elle a son actif plusieurs délicats retournements de situation comme membre du Conseil d’Administration devant superviser le bon déroulement opérationnel, comme membre du Comex, et comme consultant. Administratrice indépendante d’une société Norvégienne, elle a vécu deux situations très enrichissantes : introduction sur à la bourse de Londres et rachat hostile par un grand groupe allemand.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.dans_un_contexte_franco_espagnol_tendu_elle_a">Dans un contexte franco espagnol tendu, elle a été CEO, puis Présidente du Conseil d’Administration de la  » joint-venture  » espagnole de deux groupes issus (IBEX35 / CAC40). Son expérience internationale est européenne et plus particulièrement pour les pays du Sud dont elle parle les langues couramment, mais s’étend à l’Amérique du Sud.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.formation_computing_sciences_engineer_cours_p">Formation : Computing Sciences Engineer, + Cours pour Dirigeants à l’INSEAD. Membre du Board International du Global Telecommunications Women Network et en Espagne de  » Plataforma de Expertas « . Membre du  » Achieving Outstanding Performance  » (AoP) et TMT Group’s de l’INSEAD</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_753"><span style="font-size: small;">Ref: 753 </span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.actuellement_directeur_grands_comptes_dans_un_2" height="392" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="97%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.actuellement_directeur_grands_comptes_dans_un_3" height="165" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.actuellement_directeur_grands_comptes_dans_un_4" height="232">
+<p data-i18n="page_candidats_mandataires_sociaux.actuellement_directeur_grands_comptes_dans_un"><b><span style="font-size: small;">Actuellement Directeur «  Grands Comptes  » dans une société internationale de télécommunications cotée, la candidate recherche, en accord avec son employeur, un mandat d’administrateur indépendant.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.pendant_plus_de_15_ans_la_candidate_a_travail"><span style="font-size: small;">Pendant plus de 15 ans, la candidate a travaillé dans le Conseil et l’Ingénierie (informatique, électronique, process,…), au sein d’un groupe international côté, pour le Développement et le Management de Grands Comptes, notamment de l’Industrie (automobile, médical, défense,…) et des Télécoms.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_une_expertise_de_business_deve">La candidate a une expertise de  » Business Developer  » ainsi qu’une forte ouverture marketing et RH. Au sein de filiales (60 à 800 personnes avec pour certaines des chiffres d’affaires de plus de 500 M€), elle a été Administrateur (France et Espagne) , Directeur Général et Présidente (SAS). Elle a par ailleurs exercé des responsabilités transverses et contribué à la transformation d’organisations, tant en période de croissance qu’en période de crise.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.membre_de_leuropean_professionals_women_netwo"><span style="font-size: small;">Membre de l’European Professional’s Women Network, du Cercle Gouvernance et Equilibre, certifiée par l’Essec pour la formation spécifique pour devenir administratrice  » Women Be European Board Ready  » </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_604"><span style="font-size: small;">Ref: 604</span></p>
+</td></tr></tbody></table></td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.la_candidate_pharmacie_mba_actuellement_conse_2" height="177" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="97%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_pharmacie_mba_actuellement_conse_3" height="165" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_pharmacie_mba_actuellement_conse"><b><span style="font-size: small;"> </span></b><b><span style="font-size: small;">La candidate, Pharmacie-MBA, actuellement conseil indépendant en stratégie, a 30 ans d’expérience de directions opérationnelles et stratégiques dans les secteurs des produits de grande consommation et pharmaceutiques. Son expérience internationale réussie, entre autres comme «  commerciale de haut niveau « , démontre une grande adaptabilité dans des environnements multi-culturels.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_dadministratrice_inde_4"><b></b><span style="font-size: small;">La candidate à un poste d’administratrice indépendante a commencé sa carrière dans la recherche et le développement en laboratoire et industrie pharmaceutique. Elle a ensuite été consultante en stratégie pour un grand cabinet international où elle a mené des projets dans plusieurs industries (Pharmacie, Ind. Agro. Alim., Distribution, secteurs où un Conseil pourrait bénéficier de son expérience). Ensuite, dans un groupe international leader dans le secteur des boissons, elle passé plus de 20 ans à diverses responsabilités opérationnelles (centres de profit, ventes-marketing, innovation) et stratégiques en France et dans le monde. A ce titre, elle a participé aux Comités Exécutifs, a dirigé des grandes équipes multi-culturelles et fonctionnelles. Elle sait ce que signifie conduire dans le cadre d’une vision stratégique des actions sur le terrain. D’une famille d’entrepreneurs, elle a investi dans des start-ups et les accompagne. Elle sait donc s’adapter à des organisations de différentes tailles. Trilingue français/anglais/allemand, membre de l’IFA</span><b><span style="font-size: small;">. </span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_632"><span style="font-size: small;">Ref: 632</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.au_cours_des_22_dernieres_annees_cette_candid_2" height="230" valign="top"><div align="center"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.au_cours_des_22_dernieres_annees_cette_candid_3"><div align="left">
+<p data-i18n="page_candidats_mandataires_sociaux.au_cours_des_22_dernieres_annees_cette_candid"><span style="font-size: small;"><b>Au cours des 22 dernières années, cette candidate à un poste d’administratrice a été membre de Comités de Direction, experte en finance, stratégie et projets de transformation tant en France et qu’à l’international dans les secteurs des services financiers, des infrastructures liées aux secteurs du transport, de l’énergie, des déchets, et des loisirs. </b></span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.apres_10_ans_dexperience_en_financements_stru">Après 10 ans d’expérience en financements structurés dans les secteurs des utilities et du transport, elle est intervenue dans la définition des évolutions stratégiques d’un des premiers groupes bancaires français (évaluations d’investissement, allocation de capital, conclusions de partenariats) et a mené des projets de transformation majeurs en tant que directeur financier de groupes internationaux leaders dans les domaines de la gestion d’actifs, de la banque d’investissement, et de la gestion privée. Elle a été administrateur de plusieurs sociétés du secteur financier en France et à l’étranger (Italie, UK, USA, Hong-Kong), et est actuellement administrateur de l’association nationale des directeurs financiers, la DFCG, dont elle préside la région Ile de France. Elle est par ailleurs membre de l’IFA et a initié le groupe de réflexion IFA/DFCG sur la thématique  » Directeur Financier et Comité d’Audit « . Elle a enseigné l’analyse financière et le contrôle de gestion à Dauphine et à HEC. Elle est diplômée de Sciences Po Paris et de Columbia University.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_813"><span style="font-size: small;">Ref: 813</span></p>
+</div></td></tr></tbody></table></div></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.directrice_financiere_et_des_operations_avec__2" height="242" valign="top">
+<div align="center"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.directrice_financiere_et_des_operations_avec__3" height="162">
+<p data-i18n="page_candidats_mandataires_sociaux.directrice_financiere_et_des_operations_avec_"><span style="font-size: small;"><b>Directrice Financière et des Opérations,</b> <b>avec 25 ans d´expérience dans des groupes industriels internationaux cotés en bourse, des secteurs Énergie, Environnement, Aluminium, Emballage, Chimie et Services B2B</b> </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_dispose_d_une_vaste_pratique_du_">La candidate dispose d´une vaste pratique du «  Risk management « , des grands projets d´investissements, des fusions &amp; acquisitions, et de la transformation des organisations, tant dans des périodes de croissance que de crise économique globale. Grâce aux différents mandats qu’elle a exercés, y compris comme administratrice de filiales, dont l´un de co-Présidente d´un Conseil, elle a acquis une expérience approfondie de la gouvernance des joint-ventures internationales dans des contextes complexes et politiquement sensibles.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.diplomee_d_hec_et_du_mba_de_mcgill_university">Diplômée d´HEC (et du MBA de McGill University au Canada), complété d´une formation récente au MIT (Sloan School of Management), elle vit en Allemagne, parle couramment l´anglais, l´allemand et l´espagnol, et pourra faire bénéficier le Conseil de son vécu international.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_803"><span style="font-size: small;">Ref: 803 .</span><b><span style="font-size: small;"> </span> </b></p>
+</td></tr></tbody></table></div>
+<p align="center"> </p>
+</td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_experi_2" height="212" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_experi_3" height="199" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_experi"><b><span style="font-size: small;"> Candidate administratrice indépendante. Expérience internationale. Télécoms, Spatial, Conseil en R&amp;D, SSII. Excellente maîtrise des problèmes de gouvernance.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_de_formation_juridique_internati"><span style="font-size: small;">La candidate, de formation juridique internationale (UK, France et USA) a occupé des postes de Directeur Juridique et Secrétaire du Conseil d’importantes sociétés cotées et non cotées ayant des activités largement internationales dans les domaines des télécoms, du conseil en R&amp;D, des SSII et de l’industrie spatiale. Elle a acquis une large expérience des restructurations, des partenariats dans de multiples pays dont le Qatar et le Japon, du M&amp;A dans différents pays dont la France et les USA, et du droit pénal des affaires. Au titre de ses activités en qualité de Secrétaire du Conseil, elle a été fortement impliquée dans les problématiques de gouvernance et est habituée aux pratiques des conseils multinationaux . Elle a été administrateur de filiales en Italie et en Allemagne. </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_504"><span style="font-size: small;">Ref: 504</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_mba_doxford_univ" height="232" valign="top"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_mba_doxford_univ_2">
+<div align="left"><span style="font-size: small;"><b> Administratrice Indépendante, MBA d’Oxford University avec plus de 15 ans d’expérience managériale et de « Corporate Gouvernance » acquise principalement dans des Entreprises non cotées de Taille Intermédiaire en France, Angleterre et aux USA.</b> </span></div>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.au_travers_des_activites_menees_dans_postes_t"><span style="font-size: small;">Au travers des activités menées dans postes tenus à Paris et à Oxford, la candidate a développé des compétences de généraliste en gestion, finance et développement commercial dans le secteur des services au sein de PME européennes. Au fil des cinq dernières années, elle a acquis une expérience dans les relations avec les actionnaires (de la levée de fond au reporting trimestriel et organisation/animation des assemblées générales) ainsi que dans la gouvernance intégrant la dimension RSE et l’audit financier, social et environnemental.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.apres_avoir_en_angleterre_co_developpe_ex_nih"><span style="font-size: small;">Après avoir en Angleterre co-développé ex-nihilo une société du domaine de la finance éthique et de l’immobilier responsable dont elle est aujourd’hui administratrice, la candidate est rentrée en France en 2010 pour y créer une société similaire. Elle en est aujourd’hui PDG. Son mandat d’administratrice se terminera en juillet 2012, lui laissant des disponibilités pour exercer efficacement un poste d’administratrice indépendante, en particulier dans une société avec des activités en UK.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.formation_master_of_business_administration_u"><span style="font-size: small;">Formation: Master of Business Administration, Université d’Oxford (SBS) et formation continue auprès de l’Institute of Directors et l’Institut Français des Administrateurs. »</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_107"><span style="font-size: small;">Ref: 107</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_20_ans_dexperien_2" height="232" valign="top">
+<div align="center"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_20_ans_dexperien_3" valign="top">
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.administratrice_independante_20_ans_dexperien"><span style="font-size: small;"><b>Administratrice indépendante, 20 ans d’expérience dans le monde des NTIC : Entrepreneur, PDG, Investisseur. </b> La candidate, après avoir été administrateur de plusieurs sociétés du monde des NTIC et de l’Internet. Aujourd’hui administrateur indépendant d’une société cotée Eurolist C, elle pourrait faire bénéficier à d’autres de son expérience diversifiée (Entrepreneur, PDG, Administrateur, Investisseur). </span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.apres_avoir_occupe_des_postes_de_direction_ge"><span style="font-size: small;">Après avoir occupé des postes de Direction Générale pendant 10 ans, elle a créé une start-up Internet en 1999 revendue en 2001. Elle réalise alors des missions de conseil en stratégie et prend la direction du développement d’un grand cabinet d’audit et de conseil avant de rejoindre un fonds d’investissement comme « Partner ».</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.apres_un_master_2_universite_de_paris_2_dassa"><span style="font-size: small;">Après un Master 2 Université de Paris 2 d’Assas en « Coaching », elle crée en 2010 sa société de « Business Coaching » pour aujourd’hui accompagner des entreprises dans leur développement au travers des missions de « Coaching » de dirigeants et d’accompagnement opérationnel.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.formation_doctorat_de_gestion_universite_de_p"><span style="font-size: small;">Formation: Doctorat de gestion Université de Paris 1, MBA, Master 2 coaching Assas.</span></p>
+<p align="left" data-i18n="page_candidats_mandataires_sociaux.ref_152"><span style="font-size: small;">Ref: 152</span></p>
+</td></tr></tbody></table></div>
+<p align="center"> </p>
+</td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_13" height="156" valign="top"><div align="center"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_14">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_indepen_4"><span style="font-size: small;"><b>Candidate à un poste d’administratrice indépendante dans le domaine de la santé </b> Docteur en médecine, spécialiste qualifiée en santé publique, elle a occupé des fonctions très diverses dans les services de l’état et de 2 régimes d’assurance maladie Elle envisage de prendre sa retraite au 01/07/2013 et pense en tant qu’administratrice indépendante pouvoir faire profiter de son expérience étendue un Conseil d’Administration d’une société opérant sur des marchés de la santé. Pour s’y préparer, elle devenue membre l’IFA (Institut Français des Administrateurs)et Administratrice Certifiée après avoir suivi le cours de formation proposé par l’ IFA /Science Po . </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_365"><span style="font-size: small;">Ref: 365</span></p>
+</td></tr></tbody></table></div></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.femme_ingenieur_supelec_candidate_comme_admin_2" height="133" valign="top"><div align="center"><table border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.femme_ingenieur_supelec_candidate_comme_admin_3">
+<p data-i18n="page_candidats_mandataires_sociaux.femme_ingenieur_supelec_candidate_comme_admin"><b><span style="font-size: small;">Femme ingénieur Supelec, candidate comme administratrice indépendant</span></b>e</p>
+<p data-i18n="page_candidats_mandataires_sociaux.pour_avoir_occupe_dans_des_ssii_pendant_plusi"><span style="font-size: small;">Pour avoir occupé dans des SSII pendant plusieurs années des postes de PDG, Présidente du Directoire, Administrateur de SA et créé une SAS dans le domaine du luxe, la candidate a une expérience approfondie des postes opérationnels de dirigeante comportant entre autres, introduction en bourse, fusions-acquisitions, création d’entreprise, levées de fonds.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_elle_travaille_dans_le_domaine_des">Aujourd’hui, elle travaille dans le domaine des fonds d’investissement.</p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_612"><span style="font-size: small;">Ref: 612</span></p>
+</td></tr></tbody></table></div></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_comme_m_2" height="302" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_comme_m_3" valign="top">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_a_un_poste_dadministratrice_comme_m"><b><span style="font-size: small;">Candidate à un poste d’administratrice, comme membre du Comité Stratégie ou d’audit Très grande expérience de la finance à l’international. </span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.diplomee_dhec_de_la_london_business_school_et"><span style="font-size: small;">Diplômée d’HEC, de la London Business School et de New York University (International Program), elle commence au sein d’une grande banque américaine par gérer les relations avec des grandes entreprises du secteur privé et public. En 1985, elle rejoint une banque d’affaires internationale renommée pour les opérations de conseil financier et de fusions / acquisitions. Elle a conseillé des Etats, en particulier de pays émergents, des grandes sociétés internationales et des institutions financières, notamment sur: – des investissements industriels dans les pays de l’Est et dans les pays émergents, – des montage et financements de grands projets dans les secteurs de l’énergie et des infrastructures, – des renégociations de dettes – la gestion et la cession de portefeuilles d’actifs et de prêts de grandes institutions financières. Dans ce cadre, elle a l’habitude de travailler directement avec les COMEX et Conseils d’Administration et avec les gouvernements.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.elle_est_membre_de_lifa_de_lassociation_hec_d"><span style="font-size: small;">Elle est membre de l’IFA, de l’association HEC dans ses domaines de compétences, de plusieurs organisations de femmes dirigeantes et de Business Angels. »</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_512"><span style="font-size: small;">Ref: 512 </span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td align="center" data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_d_administratrice_ind_2" height="202" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_d_administratrice_ind_3">
+<p data-i18n="page_candidats_mandataires_sociaux.la_candidate_a_un_poste_d_administratrice_ind"><b><span style="font-size: small;">La candidate à un poste d’ Administratrice indépendante est avocate en droit des affaires et a été responsable juridique de groupes internationaux cotés. Un séjour de plusieurs années comme résidente en Corée du Sud (au sein d’un cabinet d’avocats coréen puis à la Chambre de Commerce Franco Coréenne) lui a permis de connaître de l’intérieur la culture nord asiatique. Elle a donné des cours sur ce thème.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.experience_approfondie_du_domaine_des_ventes_"><b></b><span style="font-size: small;">Expérience approfondie du domaine des ventes au grand public dont de produits électroniques. En tant qu’avocate, puis comme responsable juridique, elle est familière des conseils d’administration. Bilingue français-anglais. Elle connait par ailleurs la culture germanique. Formation : Diplôme de Juriste Conseil d’Entreprise (DJCE), Certificat d’Aptitude à la Profession d’Avocat</span><b><span style="font-size: small;">.</span></b></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_635"><span style="font-size: small;">Ref: 635</span></p>
+</td></tr></tbody></table></td></tr>
+<tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_hotell_4" height="233"><table align="center" border="0" cellpadding="0" cellspacing="3" width="95%"><tbody><tr><td data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_hotell_5">
+<p data-i18n="page_candidats_mandataires_sociaux.candidate_administratrice_independante_hotell_2"><span style="font-size: small;"><b>Candidate administratrice indépendante : Hôtellerie, Restauration, Tourisme ; France et Europe</b> Expérience pluridisciplinaire acquise au sein d’un groupe hôtelier international coté au CAC 40. Au fil de 30 années, dont 12 ans dans la restauration publique, la candidate a successivement occupé des postes de dirigeante dans des domaines variés : contrôle de gestion, produits, opérations, marketing, audit interne, production, publishing et communication des bureaux de ventes internationales, enfin quant à l’efficacité des coûts marketing &amp; distribution. </span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.aujourdhui_elle_est_consultante_independante__2"><span style="font-size: small;">Aujourd’hui, elle est consultante indépendante dans ces domaines. Très bonne connaissance de l’international. Formation : Maîtrise de Sciences Economiques (Paris 2), DEA Théories et Politiques monétaires (Paris 2), Executive Doctorate in Business Administration (Paris Dauphine, 2009). Membre de l’IFA et Secrétaire Générale de l’Association Européenne de Neuroéconomie.</span></p>
+<p data-i18n="page_candidats_mandataires_sociaux.ref_303_2"><span style="font-size: small;">Ref: 303</span></p>
+</td></tr></tbody></table></td></tr>
+<!-- <tr><td align="center" valign="top" height="233"><table border="0" width="95%" cellspacing="3" cellpadding="0" align="center"><tbody><tr><td>
+<p><b><span style="font-size: small;">Consultante experte en strat&eacute;gie et finance d&rsquo;investissement dans le secteur de l&rsquo;&eacute;nergie et des services publics en France et &agrave; l&rsquo;international</span></b></p>
+<p><span style="font-size: small;">La candidate a 15 ans d&rsquo;exp&eacute;rience dans le domaine ci-dessus. Elle est administrateur et membre du comit&eacute; d&rsquo;audit d&rsquo;une entreprise fran&ccedil;aise cot&eacute;e op&eacute;rant dans le domaine de l&rsquo;&eacute;nergie. Elle a obtenu le Certificat d&rsquo;Administrateur de Soci&eacute;t&eacute;s de l&rsquo;Institut Fran&ccedil;ais des Administrateurs et vise un deuxi&egrave;me mandat. Ayant v&eacute;cu et travaill&eacute; &agrave; Londres, &agrave; New-York, et en Am&eacute;rique du Sud, elle a une bonne ma&icirc;trise des enjeux &agrave; l&rsquo;international. Elle est intervenue sur des probl&eacute;matiques dans le secteur de l&rsquo;&eacute;nergie lors de missions de conseil en strat&eacute;gie, d&rsquo;analyses financi&egrave;res, de d&eacute;cisions d&rsquo;allocation de capital et d&rsquo;&eacute;valuation d&rsquo;investissements.</span></p>
+<p><span style="font-size: small;">Elle est dipl&ocirc;m&eacute;e de l&rsquo;ESSEC et a obtenu la charte CFA (&lsquo;Chartered Financial Analyst&rsquo;).</span></p>
+<p><span style="font-size: small;">Ref: 514</span></p>
+</td></tr></tbody></table></td></tr> -->
+</tbody></table></div>
+<p align="center"> </p>
+</td>
+</tr></tbody></table> </div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Footer include -->
+<div id="footer-placeholder"></div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plan du site - G-ET-S</title>
+<link href="css/theme.css" rel="stylesheet" type="text/css"/>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+<link crossorigin="anonymous" href="bootstrap/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/i18n.js"></script>
+    <script src="js/includes.js"></script>
+<style>
+        body {
+            background: linear-gradient(180deg, #eef2f8 0%, #ffffff 35%);
+            min-height: 100vh;
+        }
+
+        .page-hero {
+            padding: 72px 0 48px;
+            text-align: center;
+            color: #0f172a;
+        }
+
+        .page-hero h1 {
+            font-weight: 800;
+            font-size: clamp(2rem, 2.8vw, 2.5rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #1e73be;
+        }
+
+        .sitemap-content {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 48px;
+            box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+        }
+
+        .sitemap-section {
+            margin-bottom: 40px;
+        }
+
+        .sitemap-section h2 {
+            color: #1e73be;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .sitemap-section h3 {
+            color: #334155;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .sitemap-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sitemap-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .sitemap-list li:before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #1e73be;
+        }
+
+        .sitemap-list a {
+            color: #334155;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .sitemap-list a:hover {
+            color: #1e73be;
+            text-decoration: underline;
+        }
+
+        .sitemap-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .sitemap-column {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #1e73be;
+        }
+
+        @media (max-width: 768px) {
+            .sitemap-content {
+                padding: 32px 24px;
+                border-radius: 20px;
+                margin: 0 16px 50px;
+            }
+
+            .sitemap-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div id="nav-placeholder"></div>
+<main>
+<section class="page-hero">
+<div class="container">
+<h1 data-i18n="page_plan_du_site.plan_du_site_2"><i class="fas fa-sitemap me-3"></i>Plan du site</h1>
+</div>
+</section>
+<section class="container mb-5">
+<div class="sitemap-content">
+<!-- Accueil -->
+<div class="sitemap-section">
+<h2 data-i18n="page_plan_du_site.accueil"><i class="fas fa-home me-2"></i>Accueil</h2>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.page_daccueil"><a href="index.html">Page d'accueil</a></li>
+<li data-i18n="page_plan_du_site.actualites"><a href="actualites.html">Actualités</a></li>
+</ul>
+</div>
+<!-- G & S contributeur pour une saine Corporate Governance -->
+<div class="sitemap-section">
+<h2 data-i18n="page_plan_du_site.g_s_contributeur_pour_une_saine_corporate_gov"><i class="fas fa-building me-2"></i>G &amp; S contributeur pour une saine Corporate Governance</h2>
+<div class="sitemap-columns">
+<!-- Généralités Corporate Governance -->
+<div class="sitemap-column">
+<h3 data-i18n="page_plan_du_site.generalites_corporate_governance">Généralités "Corporate Governance"</h3>
+<h4 data-i18n="page_plan_du_site.contributions_de_guy_le_pechon" style="font-size: 1rem; color: #1e73be; margin-top: 15px;">Contributions de Guy Le Péchon</h4>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.shadow_conseil_dadministration_de_jeunes"><a href="pages/shadow-conseil.html">Shadow Conseil d'Administration de jeunes</a></li>
+<li data-i18n="page_plan_du_site.administrateur_independant_un_vaccin"><a href="pages/administrateur-independant.html">Administrateur indépendant un vaccin ?</a></li>
+<li data-i18n="page_plan_du_site.ifa_et_le_numerique"><a href="pages/travaux-ifa-digital.html">IFA et le Numérique</a></li>
+<li data-i18n="page_plan_du_site.comparaison_feminisation_boards_et_comex"><a href="pages/comparaison-feminisation-boards-comex.html">Comparaison féminisation Boards et Comex</a></li>
+<li data-i18n="page_plan_du_site.intelligence_emotionnelle_des_administrateurs"><a href="pages/intelligence-emotionnelle-administrateurs.html">Intelligence émotionnelle des administrateurs</a></li>
+<li data-i18n="page_plan_du_site.facilities_management_les_normes_europeennes"><a href="pages/facilities-management-normes-europeennes.html">Facilities Management, Les normes Européennes</a></li>
+<li data-i18n="page_plan_du_site.comment_les_dsi_peuvent_impliquer_les_conseil"><a href="pages/dsi-conseils-administration.html">Comment les DSI peuvent impliquer les Conseils d'Administration</a></li>
+<li data-i18n="page_plan_du_site.le_monde_numerique_et_la_relation_client"><a href="pages/monde-numerique-relation-client.html">Le monde numérique et la relation client</a></li>
+<li data-i18n="page_plan_du_site.apports_de_lintelligence_artificielle_a_la_co"><a href="pages/apports-ia-compliance.html">Apports de l'Intelligence artificielle à la Compliance</a></li>
+<li data-i18n="page_plan_du_site.salaries_et_dirigeants_en_confiance"><a href="pages/salarie-dirigeants-confiance.html">Salariés et Dirigeants en Confiance</a></li>
+<li data-i18n="page_plan_du_site.le_monde_et_la_gouvernance_des_eti"><a href="pages/livre-eti.html">Le monde et la gouvernance des ETI</a></li>
+<li data-i18n="page_plan_du_site.intelligence_collective_webinar_xmpc"><a href="pages/intelligence-collective.html">Intelligence collective (Webinar XMPC)</a></li>
+<li data-i18n="page_plan_du_site.instances_de_gouvernance_cours_a_linseec"><a href="pages/cours-inseec.html">Instances de gouvernance (Cours à l'INSEEC)</a></li>
+<li data-i18n="page_plan_du_site.club_europeen"><a href="pages/club-europeen.html">Club Européen</a></li>
+</ul>
+<h4 data-i18n="page_plan_du_site.documents_utiles" style="font-size: 1rem; color: #1e73be; margin-top: 15px;">Documents utiles</h4>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.formation_aux_comex_codir"><a href="pages/certificat-centrale.html">Formation aux Comex/Codir</a></li>
+<li data-i18n="page_plan_du_site.formations_au_c_a"><a href="pages/formations-administrateurs.html">Formations au C.A.</a></li>
+<li data-i18n="page_plan_du_site.sites_interessants_et_amis"><a href="sites-interesssants-4/index.html">Sites intéressants et Amis</a></li>
+<li data-i18n="page_plan_du_site.bibliographie"><a href="pages/bibliographie.html">Bibliographie</a></li>
+</ul>
+</div>
+<!-- Féminisation des instances dirigeantes -->
+<div class="sitemap-column">
+<h3 data-i18n="page_plan_du_site.feminisation_des_instances_dirigeantes">Féminisation des instances dirigeantes</h3>
+<h4 data-i18n="page_plan_du_site.contributions_de_guy_le_pechon_2" style="font-size: 1rem; color: #1e73be; margin-top: 15px;">Contributions de Guy Le Péchon</h4>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.etudes_g_s_2010_a_2025"><a href="pages/etude-juin-2025.html">Etudes G &amp; S 2010 à 2025</a></li>
+<li data-i18n="page_plan_du_site.assises_de_la_parite_2012_et_2023"><a href="pages/assises-parite.html">Assises de la parité 2012 et 2023</a></li>
+<li data-i18n="page_plan_du_site.article_presse"><a href="la-presse-parle-de-gouvernance-structures/index.html">Article Presse</a></li>
+<li data-i18n="page_plan_du_site.observatoire_des_genres"><a href="pages/observatoire-genres.html">Observatoire des genres</a></li>
+</ul>
+<h4 data-i18n="page_plan_du_site.documents_utiles_2" style="font-size: 1rem; color: #1e73be; margin-top: 15px;">Documents utiles</h4>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.directive_europeenne_2024"><a href="pages/directive-europeenne.html">Directive Européenne (2024)</a></li>
+<li data-i18n="page_plan_du_site.article_14_loi_rixain_2021"><a href="pages/loi-rixain.html">Article 14 Loi Rixain (2021)</a></li>
+<li data-i18n="page_plan_du_site.loi_zimmerman_2011"><a href="pages/loi-zimmerman.html">Loi Zimmerman (2011)</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Qui est G & S -->
+<div class="sitemap-section">
+<h2 data-i18n="page_plan_du_site.qui_est_g_s"><i class="fas fa-info-circle me-2"></i>Qui est G &amp; S</h2>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.introduction"><a href="pages/organisation-gs.html">Introduction</a></li>
+<li data-i18n="page_plan_du_site.gouvernance_advisors"><a href="gouvernance-advisors/index.html">Gouvernance Advisors</a></li>
+<li data-i18n="page_plan_du_site.historique"><a href="pages/historique.html">Historique</a></li>
+<li data-i18n="page_plan_du_site.contact"><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<!-- Prestations de Gouvernance et Structures -->
+<div class="sitemap-section">
+<h2 data-i18n="page_plan_du_site.prestations_de_gouvernance_et_structures"><i class="fas fa-briefcase me-2"></i>Prestations de Gouvernance et Structures</h2>
+<div class="sitemap-columns">
+<!-- Pour mandataires -->
+<div class="sitemap-column">
+<h3 data-i18n="page_plan_du_site.pour_mandataires">Pour mandataires</h3>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.formation_au_digital"><a href="pages/informatique.html">Formation au digital</a></li>
+<li data-i18n="page_plan_du_site.candidature_comme_mandataire"><a href="pages/candidats-mandataires.html">Candidature comme mandataire</a></li>
+</ul>
+</div>
+<!-- Pour Sociétés -->
+<div class="sitemap-column">
+<h3 data-i18n="page_plan_du_site.pour_societes">Pour Sociétés</h3>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.candidats_mandataires_sociaux"><a href="pages/candidats-mandataires-sociaux.html">Candidats mandataires sociaux</a></li>
+<li data-i18n="page_plan_du_site.auto_diagnostic_loi_rixain"><a href="pages/questionnaire-rixain-societes.html">Auto diagnostic Loi Rixain</a></li>
+<li data-i18n="page_plan_du_site.diagnostics"><a href="pages/diagnostics-ca.html">Diagnostics</a></li>
+<li data-i18n="page_plan_du_site.catalogue_de_documents_pour_ladministrateur"><a href="pages/catalogue-documents.html">Catalogue de documents pour l'administrateur</a></li>
+<li data-i18n="page_plan_du_site.glossaire_des_prestations_de_conseil"><a href="pages/glossaire-prestations.html">Glossaire des Prestations de conseil</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Pages légales -->
+<div class="sitemap-section">
+<h2 data-i18n="page_plan_du_site.informations_legales"><i class="fas fa-gavel me-2"></i>Informations légales</h2>
+<ul class="sitemap-list">
+<li data-i18n="page_plan_du_site.mentions_legales_confidentialite"><a href="mentions-legales.html">Mentions légales - Confidentialité</a></li>
+<li data-i18n="page_plan_du_site.plan_du_site"><a href="plan-du-site.html">Plan du site</a></li>
+</ul>
+</div>
+<div class="text-center mt-5">
+<a class="btn btn-outline-primary" href="index.html">
+<i class="fas fa-arrow-left me-2"></i>
+                        Retour à l'accueil
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<div id="footer-placeholder"></div>
+</body>
+</html>
