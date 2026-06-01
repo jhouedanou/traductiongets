@@ -352,7 +352,15 @@
     "view_slides": "See the transparencies",
     "view_program": "See the program",
     "see_curves": "See Curves",
-    "see_flyer": "See leaflet"
+    "see_flyer": "See leaflet",
+    "order_book": "Order the book",
+    "listen_interview": "Listen to the interview",
+    "view_video_interview": "Watch the interview video",
+    "view_webinar": "Watch the webinar",
+    "certificate_presentation": "Certificate presentation by the academic director, Valérie Lejeune",
+    "contact_audit": "Contact us for an audit",
+    "view_youtube": "Watch the video on YouTube",
+    "contact_author": "Contact the author"
   },
   "breadcrumb": {
     "separator": ">>"
@@ -1438,7 +1446,8 @@
     "accueil": "<a href=\"../index.html\">Home</a>",
     "generalites": "General",
     "le_monde_numerique_et_la_relation_client": "The digital world and customer relations",
-    "le_monde_numerique_et_la_relation_client_2": "The digital world and customer relations"
+    "le_monde_numerique_et_la_relation_client_2": "The digital world and customer relations",
+    "jai_eu_le_plaisir": "I had the pleasure of contributing in the form of <a href=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3DtCVHIHwlDCo&amp;sa=D&amp;source=editors&amp;ust=1758713341200481&amp;usg=AOvVaw3w64SDKKkgBpEXv5yKxfeS\" target=\"_blank\">a short video</a> in a remote workshop organised by the X Digital association of alumni from the École Polytechnique."
   },
   "page_monde_numerique": {
     "page_en_cours_de_developpement": "Current page development",
@@ -1623,5 +1632,11 @@
     "email_label": "Email",
     "phone_label": "Phone",
     "retour_a_laccueil": "Back to home"
+  },
+  "footer_contrib": {
+    "name": "Guy Le Péchon",
+    "role": "Partner/Manager of Gouvernance & Structures",
+    "credentials": "X-INSEAD, member of the IFA",
+    "contact_author": "<i class=\"fas fa-envelope me-2\"></i>Contact the author"
   }
 }

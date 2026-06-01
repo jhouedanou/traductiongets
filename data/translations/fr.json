@@ -352,7 +352,15 @@
     "view_slides": "Voir les transparents",
     "view_program": "Voir le programme",
     "see_curves": "Voir Courbes",
-    "see_flyer": "Voir dépliant"
+    "see_flyer": "Voir dépliant",
+    "order_book": "Commander le livre",
+    "listen_interview": "Écouter l'interview",
+    "view_video_interview": "Voir la vidéo de l'interview",
+    "view_webinar": "Voir le webinar",
+    "certificate_presentation": "Présentation du Certificat par la responsable pédagogique, Valérie Lejeune",
+    "contact_audit": "Nous contacter pour un audit",
+    "view_youtube": "Voir la vidéo sur YouTube",
+    "contact_author": "Contacter l'auteur"
   },
   "breadcrumb": {
     "separator": ">>"
@@ -1424,7 +1432,8 @@
     "accueil": "<a href=\"../index.html\">Accueil</a>",
     "generalites": "Généralités",
     "le_monde_numerique_et_la_relation_client": "Le monde numérique et la relation client",
-    "le_monde_numerique_et_la_relation_client_2": "Le monde numérique et la relation client"
+    "le_monde_numerique_et_la_relation_client_2": "Le monde numérique et la relation client",
+    "jai_eu_le_plaisir": "J'ai eu le plaisir de pouvoir intervenir sous forme  <a href=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3DtCVHIHwlDCo&amp;sa=D&amp;source=editors&amp;ust=1758713341200481&amp;usg=AOvVaw3w64SDKKkgBpEXv5yKxfeS\" target=\"_blank\">d'une courte vidéo</a> dans un atelier à distance organisé par l'association X Digital des anciens élèves de l'École Polytechnique."
   },
   "page_monde_numerique": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1594,5 +1603,11 @@
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
     "webinaires_passes": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Webinaires passés"
+  },
+  "footer_contrib": {
+    "name": "Guy Le Péchon",
+    "role": "Associé/Gérant de Gouvernance & Structures",
+    "credentials": "X-INSEAD, membre de l'IFA",
+    "contact_author": "<i class=\"fas fa-envelope me-2\"></i>Contacter l'auteur"
   }
 }

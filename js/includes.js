@@ -228,6 +228,18 @@ function loadIncludes() {
             if (basePath) {
                 fixImagePaths('#contribution-footer-placeholder', basePath);
             }
+            // Translate contribution footer after loading
+            if (typeof window.i18n !== 'undefined' && window.i18n.translateElement) {
+                window.i18n.translateElement(document.getElementById('contribution-footer-placeholder'));
+            } else {
+                var _i18nContribInterval = setInterval(function() {
+                    if (typeof window.i18n !== 'undefined' && window.i18n.translateElement) {
+                        clearInterval(_i18nContribInterval);
+                        window.i18n.translateElement(document.getElementById('contribution-footer-placeholder'));
+                    }
+                }, 50);
+                setTimeout(function() { clearInterval(_i18nContribInterval); }, 5000);
+            }
         });
     }
 
