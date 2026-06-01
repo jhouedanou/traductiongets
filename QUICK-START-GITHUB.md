@@ -1,5 +1,7 @@
 # 🚀 Guide rapide : déploiement vers GitHub Pages
 
+> ⚠️ **Attention sécurité** : avec une publication depuis `main`, le dossier `backend/` devient publiquement visible. Retirer/déplacer tout contenu sensible avant d'activer GitHub Pages.
+
 ## Configuration en 3 étapes
 
 ### 1️⃣ Activer GitHub Pages
