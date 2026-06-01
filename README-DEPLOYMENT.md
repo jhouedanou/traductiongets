@@ -34,7 +34,8 @@ QUICK-START-GITHUB.md
 
 - GitHub Pages ne sert que du **contenu statique**
 - Le dossier `backend/` reste visible dans le site publié, mais ses endpoints serveur ne fonctionneront pas sur GitHub Pages
-- Le fichier `.nojekyll` reste nécessaire pour éviter le filtrage Jekyll des dossiers/fichiers commençant par `_`
+- ⚠️ Si `backend/` contient des éléments sensibles, il faut le déplacer hors de la branche publiée (ou le retirer) avant publication
+- Le fichier `.nojekyll` reste nécessaire car le dépôt contient des dossiers commençant par `_` (`_pginfo`, `__MACOSX`)
 - Les règles Apache de `.htaccess` ne s'appliquent pas sur GitHub Pages
 
 ---
