@@ -46,7 +46,6 @@ La publication GitHub Pages se met à jour automatiquement.
 ## ⚠️ Limites à garder en tête
 
 - GitHub Pages héberge uniquement du contenu statique
-- Le site doit rester statique pour être compatible GitHub Pages
 - Le dossier `backend/` devient publiquement visible si vous publiez depuis `main` (retirer/déplacer tout contenu sensible)
 
 ---
