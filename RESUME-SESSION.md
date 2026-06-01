@@ -34,58 +34,31 @@
 
 ---
 
-### 3. 🚀 Système de Déploiement Automatisé (GitHub Actions)
+### 3. 🚀 Système de Déploiement Automatisé (GitHub Pages)
 
 #### Fichiers créés :
 
-##### a) `.github/workflows/deploy-ftp.yml`
-- 🤖 Workflow GitHub Actions pour déploiement FTP automatique
+##### a) `.github/workflows/deploy-github-pages.yml`
+- 🤖 Workflow GitHub Actions pour déploiement GitHub Pages
 - ⚡ Se déclenche automatiquement à chaque push sur `main`
 - 🔧 Possibilité de déclenchement manuel
-- 📊 Notifications de succès/échec
+- 📦 Prépare un artefact statique pour publication
 
-##### b) `.git-ftp-ignore`
-- 📁 Liste des fichiers exclus du déploiement FTP
-- 🛡️ Protège les fichiers sensibles et inutiles
+##### b) `.nojekyll`
+- 🛡️ Désactive le traitement Jekyll
+- ✅ Garantit la publication correcte des fichiers statiques
 
-##### c) `.gitignore` (mis à jour)
-- 🔒 Exclut `deploy-ftp.sh` (contient identifiants)
-- 🗂️ Exclut tous les fichiers sensibles et temporaires
-- ✅ Empêche les fuites d'identifiants
+#### Documentation mise à jour :
 
-#### Documentation créée :
+##### c) `QUICK-START-GITHUB.md`
+- ⚡ Guide de démarrage rapide pour GitHub Pages
+- 3️⃣ Activation en 3 étapes simples
+- 💡 Rappels sur les limites du contenu statique
 
-##### d) `GITHUB-ACTIONS-SETUP.md`
-- 📖 Guide complet de configuration GitHub Actions
-- 🔐 Instructions pour configurer les secrets GitHub
-- 🐛 Section dépannage détaillée
-- 📊 Tableaux comparatifs et exemples
-
-##### e) `QUICK-START-GITHUB.md`
-- ⚡ Guide de démarrage rapide (5 minutes)
-- 3️⃣ Configuration en 3 étapes simples
-- 💡 Astuces de sécurité
-
-##### f) `README-DEPLOYMENT.md`
-- 📦 Vue d'ensemble du système de déploiement
-- 🔀 Comparaison des 2 méthodes disponibles
-- 🔐 Bonnes pratiques de sécurité
-- 🆘 Support et ressources
-
----
-
-### 4. 🛠️ Script de Déploiement Local (Backup)
-**Fichier créé** : `deploy-ftp.sh`
-
-- 📝 Script shell pour déploiement FTP manuel
-- ⚠️ Contient identifiants (ajouté à `.gitignore`)
-- 🎨 Interface colorée et conviviale
-- 🔧 Détecte automatiquement les fichiers modifiés
-
-**Fichier créé** : `DEPLOIEMENT-FTP.md`
-- 📚 Documentation du script local
-- 🔄 Guide de workflow
-- 🐛 Section dépannage
+##### d) `README-DEPLOYMENT.md`
+- 📦 Vue d'ensemble du déploiement GitHub Pages
+- 🧾 Récapitulatif des fichiers publiés
+- 🆘 Support et dépannage
 
 ---
 
@@ -95,12 +68,8 @@
 MigrationGetS/
 ├── .github/
 │   └── workflows/
-│       └── deploy-ftp.yml              ✅ Workflow GitHub Actions
-├── .git-ftp-ignore                     ✅ Exclusions déploiement
-├── .gitignore                          ✏️ Mis à jour (sécurité)
-├── deploy-ftp.sh                       ✅ Script local (non tracké)
-├── DEPLOIEMENT-FTP.md                  ✅ Doc script local
-├── GITHUB-ACTIONS-SETUP.md             ✅ Doc GitHub Actions
+│       └── deploy-github-pages.yml     ✅ Workflow GitHub Pages
+├── .nojekyll                           ✅ Publication statique
 ├── QUICK-START-GITHUB.md               ✅ Guide rapide
 ├── README-DEPLOYMENT.md                ✅ Vue d'ensemble
 ├── RESUME-SESSION.md                   ✅ Ce fichier
@@ -121,7 +90,7 @@ open pages/certificat-centrale.html
 # Vérifier l'animation du bouton Actualités
 ```
 
-### 2. Configurer GitHub Actions (5 min)
+### 2. Configurer GitHub Pages (2 min)
 
 #### a) Pousser sur GitHub
 ```bash
@@ -130,13 +99,9 @@ git commit -m "Add GitHub Actions deployment + Certificat Centrale page"
 git push origin main
 ```
 
-#### b) Configurer les Secrets GitHub
-1. Aller sur GitHub → Settings → Secrets and variables → Actions
-2. Ajouter ces 4 secrets :
-   - `FTP_HOST` → `ftp.cluster002.hosting.ovh.net`
-   - `FTP_USER` → `gets`
-   - `FTP_PASSWORD` → `Hs9Txr5H4`
-   - `FTP_PATH` → `/`
+#### b) Activer GitHub Pages
+1. Aller sur GitHub → Settings → Pages
+2. Choisir **GitHub Actions** comme source
 
 #### c) C'est tout ! 🎉
 Le déploiement sera automatique à chaque push !
@@ -147,34 +112,29 @@ Le déploiement sera automatique à chaque push !
 
 ### ✅ Mesures de sécurité appliquées
 
-1. **`.gitignore` protège** :
-   - ✅ `deploy-ftp.sh` (identifiants FTP)
-   - ✅ `.env` et fichiers de config
-   - ✅ Logs et temporaires
+1. **Le workflow Pages exclut** :
+   - ✅ `backend/`
+   - ✅ la documentation Markdown
+   - ✅ les fichiers de configuration GitHub
 
-2. **GitHub Secrets** :
-   - ✅ Identifiants chiffrés AES-256
-   - ✅ Jamais affichés dans les logs
-   - ✅ Accès restreint aux admins
-
-3. **`.git-ftp-ignore`** :
-   - ✅ Scripts de déploiement exclus
-   - ✅ Documentation dev exclue
-   - ✅ Fichiers Git exclus
+2. **GitHub Pages** :
+   - ✅ publication sécurisée via Actions
+   - ✅ artefact statique dédié
+   - ✅ URL fournie par l'environnement `github-pages`
 
 ### ⚠️ Vérification importante
 
 ```bash
-# S'assurer que deploy-ftp.sh n'est pas tracké
+# Vérifier que le dépôt est prêt pour GitHub Pages
 git status
 
-# deploy-ftp.sh ne doit PAS apparaître
+# les changements attendus doivent être propres
 ```
 
-Si il apparaît :
+Si nécessaire :
 ```bash
-git rm --cached deploy-ftp.sh
-git commit -m "Remove sensitive file"
+git add .
+git commit -m "Finalize GitHub Pages setup"
 ```
 
 ---
