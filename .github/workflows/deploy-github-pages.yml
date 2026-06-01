@@ -39,8 +39,7 @@ jobs:
             --exclude='.vscode/' \
             --exclude='backend/' \
             --exclude='*.md' \
-            /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/ /tmp/github-pages-site/
-          touch /tmp/github-pages-site/.nojekyll
+            ${{ github.workspace }}/ /tmp/github-pages-site/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
