@@ -1,35 +1,28 @@
 # 📦 Déploiement sur GitHub Pages
 
-Ce dépôt est maintenant déployé automatiquement sur **GitHub Pages**.
+Ce dépôt est publié directement sur **GitHub Pages** depuis la branche `main`.
 
 ---
 
 ## ✅ Fonctionnement
 
-Le site est publié automatiquement :
-- à chaque `git push` sur `main`
-- ou manuellement depuis l'onglet **Actions** avec `workflow_dispatch`
-
-Le workflow :
-- récupère le dépôt
-- prépare une copie statique du site
-- exclut les fichiers non publics et le dossier `backend/`
-- publie le résultat sur GitHub Pages
+Le site est servi directement depuis la branche `main` (dossier racine).
+À chaque `git push` sur `main`, GitHub Pages republie le contenu statique.
 
 ---
 
 ## 🚀 Mise en place
 
 1. Ouvrir **Settings** → **Pages** dans le dépôt GitHub
-2. Dans **Source**, sélectionner **GitHub Actions**
-3. Pousser une modification sur `main` ou lancer le workflow manuellement
+2. Dans **Build and deployment > Source**, sélectionner **Deploy from a branch**
+3. Sélectionner la branche **main** et le dossier **/(root)** puis enregistrer
+4. Pousser une modification sur `main`
 
 ---
 
 ## 📁 Fichiers concernés
 
 ```
-.github/workflows/deploy-github-pages.yml
 .nojekyll
 README-DEPLOYMENT.md
 QUICK-START-GITHUB.md
@@ -40,8 +33,7 @@ QUICK-START-GITHUB.md
 ## ⚠️ Notes importantes
 
 - GitHub Pages ne sert que du **contenu statique**
-- Le dossier `backend/` n'est pas publié
-- Les fichiers Markdown de documentation ne sont pas publiés
+- Le dossier `backend/` est dans le dépôt mais n'est pas utilisable en hébergement GitHub Pages (statique uniquement)
 - Les règles Apache de `.htaccess` ne s'appliquent pas sur GitHub Pages
 
 ---
@@ -49,9 +41,9 @@ QUICK-START-GITHUB.md
 ## 🆘 Dépannage
 
 Si le site ne se publie pas :
-1. vérifier que **GitHub Actions** est autorisé dans les paramètres du dépôt
-2. vérifier que **Pages** utilise bien **GitHub Actions** comme source
-3. consulter les logs du workflow dans l'onglet **Actions**
+1. vérifier que **Pages** utilise **Deploy from a branch**
+2. vérifier que la branche **main** et le dossier **/(root)** sont sélectionnés
+3. attendre quelques minutes puis recharger l'URL GitHub Pages
 
 ---
 

@@ -4,7 +4,10 @@
 
 ### 1️⃣ Activer GitHub Pages
 
-Sur GitHub : **Settings** → **Pages** → **Source** → **GitHub Actions**
+Sur GitHub : **Settings** → **Pages** → **Build and deployment** :
+- **Source** : `Deploy from a branch`
+- **Branch** : `main`
+- **Folder** : `/(root)`
 
 ### 2️⃣ Pousser le code
 
@@ -16,9 +19,9 @@ git push origin main
 
 ### 3️⃣ Vérifier le déploiement
 
-- Ouvrir l'onglet **Actions**
-- Attendre le workflow **Deploy to GitHub Pages**
-- Ouvrir l'URL publiée dans l'environnement `github-pages`
+- Ouvrir **Settings** → **Pages**
+- Vérifier le message de publication GitHub Pages
+- Ouvrir l'URL du site
 
 ---
 
@@ -34,20 +37,19 @@ git commit -m "Mise à jour du site"
 git push origin main
 ```
 
-Le déploiement se lance automatiquement.
+La publication GitHub Pages se met à jour automatiquement.
 
 ---
 
 ## ⚠️ Limites à garder en tête
 
 - GitHub Pages héberge uniquement du contenu statique
-- Le dossier `backend/` n'est pas déployé
-- Les fichiers `.md` de documentation ne sont pas publiés
+- Le site doit rester statique pour être compatible GitHub Pages
 
 ---
 
 ## 🆘 En cas de problème
 
-1. vérifier que **Pages** utilise **GitHub Actions** comme source
-2. vérifier l'exécution du workflow dans **Actions**
-3. relancer le workflow manuellement si nécessaire
+1. vérifier que **Pages** utilise **Deploy from a branch**
+2. vérifier la branche `main` et le dossier `/(root)`
+3. attendre quelques minutes après le push puis recharger la page
