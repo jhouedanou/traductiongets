@@ -88,7 +88,7 @@
     }
   },
   "advisors": {
-    "title": "The G&S “GOVERNANCE-ADVISORS”™ network",
+    "title": "The G&amp;S \"GOVERNANCE-ADVISORS\"<sup>TM</sup> network",
     "touveron": {
       "name": "Alain Touveron",
       "education": "Engineer CPE Lyon, MBA INSEAD Fontainebleau",
@@ -109,7 +109,12 @@
       "role": "(Dauphine) Partner/Manager of Eloya — Human Resources Consulting",
       "bio": "Trained in management, personal development and recruitment, he heads the Eloya Firm specializing in headhunting as well as support for managers and management teams. He has been working on HR projects for seven years. He develops his expertise in several sectors of activity: NTCI – Tertiary – Banking – Industry – Distribution – Construction."
     },
-    "linkedin": "Linkedin"
+    "linkedin": "Linkedin",
+    "breadcrumb": "<span style=\"color: #00ccff;\"><a style=\"color: #00ccff;\" href=\"../index.html\">Home</a> &gt;&gt; GOVERNANCE ADVISORS</span>",
+    "touveron_text": "<p><span style=\"font-size: 18px; font-weight: 400;\"><b>Alain Touveron</b>, Engineer CPE Lyon, MBA INSEAD Fontainebleau</span></p><p><span style=\"font-weight: 400;\">After having been Team Manager in Research and Development, Industrial Property, Licensing, then Manager of Operational Profit Centers at Progil-Groupe RP, Sandoz Basel and Safic Alcan – Chargeurs Réunis Group, he spent more than 20 years in his own firm leading an Executive Search activity and co-founding the World Search Group, Federation of European Executive Search firms.<br><a class=\"elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-decd641\" href=\"https://www.linkedin.com/in/alain-touveron-435b6342/\" target=\"_blank\" rel=\"noopener\"><span class=\"elementor-screen-only\">Linkedin</span><i class=\"fab fa-linkedin\"></i></a></span></p>",
+    "pechon_text": "<span style=\"font-size:18px;font-weight:400\"><b>Guy Le Péchon</b> (X, MIT, INSEAD), Associate / Manager of G &amp; S, Research, Diagnostics, Surveys, IT</span><br><br>After having been Director of IT and Telecommunications Coordination at Rhône-Poulenc for around ten years, while carrying out consulting activities in Information Systems, he works to improve corporate governance. Thus, he is an active member of the French Institute of Administrators and one of the founding members of the Circle of Administrators. He was an operational partner of several start-ups.<br><a class=\"elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-decd641\" href=\"https://www.linkedin.com/in/guy-le-p%C3%A9chon-0b72a9/\" target=\"_blank\"><span class=\"elementor-screen-only\">Linkedin</span><i class=\"fab fa-linkedin\"></i></a>",
+    "deferron_text": "<span style=\"font-size:18px;\"><b>Diane de Ferron</b> Consultant, Franco-Swiss, expert in family business governance</span><br><br>After having been a lawyer specializing in business law at the Paris Bar, she managed the family wine business based in Gascony for 5 years, developing its international activities.\nThen, for 4 years, General Secretary of the Family Business Network France, she was its facilitator.<br><br>Today, she advises family businesses on corporate and <b>family governance</b>, including succession issues.<br><a class=\"elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-decd641\" href=\"https://www.linkedin.com/in/diane-de-ferron-8700502a/\" target=\"_blank\"><span class=\"elementor-screen-only\">Linkedin</span><i class=\"fab fa-linkedin\"></i></a>",
+    "pouyat_text": "<span style=\"font-size:18px;\"><b>Olivier Pouyat</b>, (Dauphine) Partner/Manager of <a href=\"http://www.eloya.fr/index_eloya.html\">Eloya</a> — Human Resources Consulting</span><br><br>Trained in management, personal development and recruitment, he heads the Eloya Firm specializing in headhunting as well as support for managers and management teams. He has been working on HR projects for seven years. He develops his expertise in several sectors of activity: NTCI – Tertiary – Banking – Industry – Distribution – Construction.<br><a class=\"elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-decd641\" href=\"https://www.linkedin.com/in/olivier-pouyat-9755a21/\" target=\"_blank\"><span class=\"elementor-screen-only\">Linkedin</span><i class=\"fab fa-linkedin\"></i></a>"
   },
   "missions": {
     "title": "Missions",
