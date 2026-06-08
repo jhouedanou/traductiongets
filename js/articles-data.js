@@ -1,7 +1,7 @@
 // Données centralisées des articles pour le site G-ET-S
 window.articlesData = {
     'generalites-contrib': [
-        { title: "Shadow Conseil d'Administration de jeunes", titleEn: "Youth Board of Directors", url: 'pages/shadow-conseil.html', dateCreation: '2025-09-12' },
+        { title: "Shadow Conseil d'Administration de jeunes", titleEn: "Board of young Directors", url: 'pages/shadow-conseil.html', dateCreation: '2025-09-12' },
         { title: 'Administrateur indépendant un vaccin ?', titleEn: 'Independent Director – a Vaccine?', url: 'pages/administrateur-independant.html', dateCreation: '2025-09-30' },
         { title: 'IFA et le Numérique', titleEn: 'IFA and Digital Technology', url: 'pages/travaux-ifa-digital.html', dateCreation: '2025-09-29' },
         { title: 'Comparaison féminisation Boards et Comex', titleEn: 'Board and Comex Feminization Comparison', url: 'pages/comparaison-feminisation-boards-comex.html', dateCreation: '2025-09-28' },
@@ -11,7 +11,7 @@ window.articlesData = {
         { title: 'Le monde numérique et la relation client', titleEn: 'The Digital World and Customer Relations', url: 'pages/monde-numerique-relation-client.html', dateCreation: '2025-09-24-2' },
         { title: 'Apports de l\'Intelligence artificielle à la Compliance', titleEn: 'AI Contributions to Compliance', url: 'pages/apports-ia-compliance.html', dateCreation: '2025-09-24-1' },
         { title: 'Salariés et Dirigeants en Confiance', titleEn: 'Employees and Managers: Building Trust', url: 'pages/salarie-dirigeants-confiance.html', dateCreation: '2025-09-24-0' },
-        { title: 'Le monde et la gouvernance des ETI', titleEn: 'The World and ETI Governance', url: 'pages/livre-eti.html', dateCreation: '2025-09-20' },
+        { title: 'Le monde et la gouvernance des ETI', titleEn: 'The world and mid-size companies', url: 'pages/livre-eti.html', dateCreation: '2025-09-20' },
         { title: 'Intelligence collective (Webinar XMPC)', titleEn: 'Collective Intelligence (XMPC Webinar)', url: 'pages/intelligence-collective.html', dateCreation: '2025-09-14' },
         { title: 'Instances de gouvernance (Cours à l\'INSEEC)', titleEn: 'Governance Bodies (Course at INSEEC)', url: 'pages/cours-inseec.html', dateCreation: '2025-09-11' },
         { title: 'Club Européen', titleEn: 'European Club', url: 'pages/club-europeen.html', construction: true, dateCreation: '2025-09-08' }
@@ -42,13 +42,13 @@ window.articlesData = {
     ],
     'pour-mandataires': [
         { title: 'Formation au digital', titleEn: 'Digital Training', url: 'pages/informatique.html' },
-        { title: 'Candidature comme mandataire', titleEn: 'Application as Corporate Officer', url: 'pages/candidats-mandataires.html' }
+        { title: 'Candidature comme mandataire', titleEn: 'Application for Board members', url: 'pages/candidats-mandataires.html' }
     ],
     'pour-societes': [
-        { title: 'Candidats mandataires sociaux', titleEn: 'Corporate Officer Candidates', url: 'pages/candidats-mandataires-sociaux.html' },
+        { title: 'Candidats mandataires sociaux', titleEn: 'Board members candidates', url: 'pages/candidats-mandataires-sociaux.html' },
         { title: 'Auto diagnostic Loi Rixain', titleEn: 'Rixain Law Self-Assessment', url: 'pages/questionnaire-rixain-societes.html' },
         { title: 'Diagnostics', titleEn: 'Diagnostics', url: 'pages/diagnostics-ca.html' },
-        { title: "Catalogue de documents pour l'administrateur", titleEn: 'Document Catalogue for Directors', url: 'pages/catalogue-documents.html' },
+        { title: "Catalogue de documents pour l'administrateur", titleEn: 'Catalogue of documents for Board members candidates', url: 'pages/catalogue-documents.html' },
         { title: 'Glossaire des Prestations de conseil', titleEn: 'Advisory Services Glossary', url: 'pages/glossaire-prestations.html' }
     ]
 };
