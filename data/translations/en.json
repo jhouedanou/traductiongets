@@ -414,7 +414,13 @@
     "consulter_linvitation": "Read the invitation <i aria-hidden=\"true\" class=\"fas fa-arrow-up-right-from-square\"></i>",
     "compte_rendu_de_la_riche_soiree": "Rich evening report <i aria-hidden=\"true\" class=\"fas fa-file-pdf\"></i>",
     "actualites_futures": "Future news",
-    "passe_recent": "Recent past"
+    "passe_recent": "Recent past",
+    "news_date_7_juillet_2026": "<i class=\"fas fa-calendar-day\"></i>July 7, 2026",
+    "news_date_24_avril_2026": "<i class=\"fas fa-calendar-day\"></i>April 24, 2026",
+    "news_date_23_avril_2026": "<i class=\"fas fa-calendar-day\"></i>April 23, 2026 — 6 p.m.",
+    "news_date_15_novembre_2025": "<i class=\"fas fa-calendar-day\"></i>November 15, 2025",
+    "news_date_15_octobre_2025": "<i class=\"fas fa-calendar-day\"></i>October 15, 2025",
+    "news_date_14_octobre_2025": "<i class=\"fas fa-calendar-day\"></i>October 14, 2025"
   },
   "page_mentions_legales": {
     "danscette_page_gouvernance_structures_precise": "<span style=\"color: #000099;\">In</span> <b><span style=\"color: #000099;\">this page, Governance &amp; Structures specifies the legal elements relating to its WEB site</span></b>",
