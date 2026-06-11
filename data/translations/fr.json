@@ -400,6 +400,7 @@
     "ainsi_les_participants_amelioreront_leur_conn": "Ainsi, les participants amélioreront leur connaissance des relations attendues entre les Comex/ouCodir et les Conseils d'Administration.",
     "premiere_journee_du_nouveau_certificat_de_for_2": "Première journée du nouveau Certificat de formation « Comex Codir, Gouvernance 5.0 » de Centrale-Supélec Executive Education.",
     "voir_les_details_a_la_page_formation_au_comex": "Voir les détails à la page « Formation au Comex Codir ».",
+    "voir_les_details": "Voir les détails <i aria-hidden=\"true\" class=\"fas fa-arrow-right\"></i>",
     "g_s_a_participe_a_son_elaboration_et_animera_": "G & S a participé à son élaboration et animera plusieurs cours.",
     "avecpascal_picq_paleoanthropologue_de_renom_u": "Avec <strong>Pascal Picq</strong>, paléoanthropologue de renom : une conférence inédite sur l'anthropologie et l'évolution des entreprises.",
     "photo_du_standavec_guy_le_pechon_accompagne_d": "<a href=\"https://www.g-et-s.com/images/20251115.jpg\" rel=\"noopener\" target=\"_blank\">Photo du stand</a> avec Guy Le Péchon accompagné de Catherine Montagnon,\n                        polytechnicienne, et son livre « L’humanité, les médecins et le travail :\n                        des changements de paradigme ? » à sortir très prochainement.",
@@ -443,7 +444,8 @@
     "g_s_examinera_avec_attention_toutes_les_deman": "G & S examinera avec attention toutes les demandes d'établisement de lien réciproque. Contacter le <a href=\"mailto:webmaster@g-et-s.com\">Webmaster</a>",
     "cookies": "<b>« Cookies »</b>",
     "le_site_g_s_na_pas_de_mecanismes_denregistrem": "Le site G & S n'a pas de mécanismes d'enregistrement de « cookies ».",
-    "mentions_legales": "<i class=\"fas fa-gavel me-3\"></i>Mentions légales"
+    "mentions_legales": "<i class=\"fas fa-gavel me-3\"></i>Mentions légales",
+    "retour_a_laccueil": "<i class=\"fas fa-arrow-left me-2\"></i> Retour à l'accueil"
   },
   "page_plan_du_site": {
     "generalites_corporate_governance": "Généralités \"Corporate Governance\"",
@@ -499,7 +501,8 @@
     "documents_utiles": "Documents utiles",
     "contributions_de_guy_le_pechon_2": "Contributions de Guy Le Péchon",
     "documents_utiles_2": "Documents utiles",
-    "plan_du_site_2": "<i class=\"fas fa-sitemap me-3\"></i>Plan du site"
+    "plan_du_site_2": "<i class=\"fas fa-sitemap me-3\"></i>Plan du site",
+    "retour_a_laccueil": "<i class=\"fas fa-arrow-left me-2\"></i> Retour à l'accueil"
   },
   "page_administrateur_independant": {
     "criteres_dindependance": "Critères d'indépendance",
@@ -542,7 +545,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "articles_de_presse": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Articles de presse"
+    "articles_de_presse": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Articles de presse",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_assises_parite_new": {
     "objectifs_de_levenement": "<i class=\"fas fa-bullseye text-info me-2\"></i>Objectifs de l'événement",
@@ -582,7 +587,13 @@
     "prochaines_assises_prevues_en_2025": "Prochaines assises prévues en 2025",
     "engagements_pris": "<i class=\"fas fa-check-circle text-success me-2\"></i>Engagements pris",
     "suivi_des_actions": "<i class=\"fas fa-calendar-check text-warning me-2\"></i>Suivi des actions",
-    "les_assises_de_la_parite": "Les Assises de la Parité"
+    "les_assises_de_la_parite": "Les Assises de la Parité",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "event_date_8_mars_2024": "<i class=\"fas fa-calendar-alt me-2\"></i> 8 mars 2024 - Journée internationale des droits des femmes",
+    "directrice_generale_cac_40": "Directrice Générale, CAC 40",
+    "presidente_du_cercle_des_femmes_dirigeantes": "Présidente du Cercle des Femmes Dirigeantes",
+    "participer_aux_prochaines_assises": "<i class=\"fas fa-envelope me-2\"></i> Participer aux prochaines assises",
+    "telecharger_le_rapport_complet": "<i class=\"fas fa-download me-2\"></i> Télécharger le rapport complet"
   },
   "page_assises_parite": {
     "forum_de_la_mixite_21_decembre_2012": "<i class=\"fas fa-calendar text-primary me-2\"></i>Forum de la Mixité - 21 décembre 2012",
@@ -650,11 +661,13 @@
     "profession_administrateurscenes_de_vie_et_bon": "<b><span style=\"color: #0000ff;\">Profession : Administrateur</span></b><br/>\n<span style=\"color: #0000cc;\">Scènes de vie et bonnes pratiques en entreprises (Guy Ferré, Editions du Palio)</span>\n<p data-i18n=\"page_bibliographie.grace_a_une_serie_detudes_de_cas_se_lisant_fa\">Grâce à une série d'études de cas se lisant facilement comme de courts romans policiers, l'auteur, s'appuyant sur sa longue expérience concrète d'administrateur, présente le coté délicat et passionnant de la fonction d'administrateur. Sur chaque cas, il fait des commentaires et en déduit des bonnes pratiques de gouvernance.</p>",
     "une_liste_dautres_livres_reperes_par_g_scomme": "<span style=\"color: #000000;\">Une liste d'autres livres repérés par G &amp; S<br/>\n                                                comme intéressants pour la gouvernance des entreprises peut être déchargée en <a href=\"./../wp-content/uploads/2020/01/livres.pdf\">cliquant ici</a></span>",
     "lactualite_nannihile_pas_les_ecrits_passes_im_2": "<div align=\"center\">\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"3\" width=\"99%\">\n<tbody>\n<tr>\n<td bgcolor=\"#CCCCCC\" data-i18n=\"page_bibliographie.lactualite_nannihile_pas_les_ecrits_passes_im_3\">\n<p align=\"center\" data-i18n=\"page_bibliographie.lactualite_nannihile_pas_les_ecrits_passes_im\"><span style=\"color: #ff0000;\"><b>L'actualité n'annihile pas les écrits passés importants</b></span></p>\n<p align=\"center\" data-i18n=\"page_bibliographie.un_extrait_du_rapport_bouton_concernantles_cr\"><span style=\"color: #000099;\"><b>Un extrait du rapport Bouton concernant<br/>les critères permettant de qualifier<br/>un administrateur \"d'indépendant\"<br/>sont rappelés ici:</b></span></p>\n<p align=\"left\" data-i18n=\"page_bibliographie.1_ni_mandataire_social_ni_salarie_actuel_ou_a\"><span style=\"font-size: small;\">\n                                                                        1- Ni mandataire social, ni salarié actuel (ou au cours des cinq dernières années).<br/>\n                                                                        2- Ni administrateur \"croisé\".<br/>\n                                                                        3- Ni client, fournisseur ou banquier (d'affaires ou de financement) significatif ou représentant une part significative de l'activité de la société.<br/>\n                                                                        4- Ni lien familial proche avec un mandataire social.<br/>\n                                                                        5- Ni associé, ni collaborateur actuel de Commissaires aux comptes (ou au cours des cinq dernières années).<br/>\n                                                                        6- Ni administrateur de l'entreprise (depuis plus de douze ans).<br/>\n                                                                        7- Actionnaires:<br/>\n                                                                        – Inférieur à 10% : indépendant si ne participe pas au contrôle.<br/>\n                                                                        – Supérieur à 10% : examen par le conseil, selon la composition du capital et l'existence de conflits d'intérêts potentiels.\n                                                                    </span></p>\n</td>\n</tr>\n</tbody>\n</table>\n</div>",
-    "lactualite_nannihile_pas_les_ecrits_passes_im_3": "<p align=\"center\" data-i18n=\"page_bibliographie.lactualite_nannihile_pas_les_ecrits_passes_im\"><span style=\"color: #ff0000;\"><b>L'actualité n'annihile pas les écrits passés importants</b></span></p>\n<p align=\"center\" data-i18n=\"page_bibliographie.un_extrait_du_rapport_bouton_concernantles_cr\"><span style=\"color: #000099;\"><b>Un extrait du rapport Bouton concernant<br/>les critères permettant de qualifier<br/>un administrateur \"d'indépendant\"<br/>sont rappelés ici:</b></span></p>\n<p align=\"left\" data-i18n=\"page_bibliographie.1_ni_mandataire_social_ni_salarie_actuel_ou_a\"><span style=\"font-size: small;\">\n                                                                        1- Ni mandataire social, ni salarié actuel (ou au cours des cinq dernières années).<br/>\n                                                                        2- Ni administrateur \"croisé\".<br/>\n                                                                        3- Ni client, fournisseur ou banquier (d'affaires ou de financement) significatif ou représentant une part significative de l'activité de la société.<br/>\n                                                                        4- Ni lien familial proche avec un mandataire social.<br/>\n                                                                        5- Ni associé, ni collaborateur actuel de Commissaires aux comptes (ou au cours des cinq dernières années).<br/>\n                                                                        6- Ni administrateur de l'entreprise (depuis plus de douze ans).<br/>\n                                                                        7- Actionnaires:<br/>\n                                                                        – Inférieur à 10% : indépendant si ne participe pas au contrôle.<br/>\n                                                                        – Supérieur à 10% : examen par le conseil, selon la composition du capital et l'existence de conflits d'intérêts potentiels.\n                                                                    </span></p>"
+    "lactualite_nannihile_pas_les_ecrits_passes_im_3": "<p align=\"center\" data-i18n=\"page_bibliographie.lactualite_nannihile_pas_les_ecrits_passes_im\"><span style=\"color: #ff0000;\"><b>L'actualité n'annihile pas les écrits passés importants</b></span></p>\n<p align=\"center\" data-i18n=\"page_bibliographie.un_extrait_du_rapport_bouton_concernantles_cr\"><span style=\"color: #000099;\"><b>Un extrait du rapport Bouton concernant<br/>les critères permettant de qualifier<br/>un administrateur \"d'indépendant\"<br/>sont rappelés ici:</b></span></p>\n<p align=\"left\" data-i18n=\"page_bibliographie.1_ni_mandataire_social_ni_salarie_actuel_ou_a\"><span style=\"font-size: small;\">\n                                                                        1- Ni mandataire social, ni salarié actuel (ou au cours des cinq dernières années).<br/>\n                                                                        2- Ni administrateur \"croisé\".<br/>\n                                                                        3- Ni client, fournisseur ou banquier (d'affaires ou de financement) significatif ou représentant une part significative de l'activité de la société.<br/>\n                                                                        4- Ni lien familial proche avec un mandataire social.<br/>\n                                                                        5- Ni associé, ni collaborateur actuel de Commissaires aux comptes (ou au cours des cinq dernières années).<br/>\n                                                                        6- Ni administrateur de l'entreprise (depuis plus de douze ans).<br/>\n                                                                        7- Actionnaires:<br/>\n                                                                        – Inférieur à 10% : indépendant si ne participe pas au contrôle.<br/>\n                                                                        – Supérieur à 10% : examen par le conseil, selon la composition du capital et l'existence de conflits d'intérêts potentiels.\n                                                                    </span></p>",
+    "breadcrumb": "<a href=\"../index.html\">Accueil</a> &gt;&gt; Bibliographie « CORPORATE GOVERNANCE »"
   },
   "page_boards_et_comex": {
     "cette_page_est_en_cours_de_construction_le_co": "Cette page est en cours de construction. Le contenu sera disponible prochainement.",
-    "boards_et_comex": "Boards et Comex"
+    "boards_et_comex": "Boards et Comex",
+    "retour_a_laccueil": "← Retour à l'accueil"
   },
   "page_candidats_mandataires_sociaux": {
     "candidat_e_s_mandatairesadministratrices_admi": "CANDIDAT(E)S MANDATAIRES<br/>\nADMINISTRATRICES ADMINISTRATEURS",
@@ -1027,7 +1040,14 @@
     "un_secteur_dactivite_correspond_en_general_a_": "Un secteur d'activité correspond en général à un marché (ex. secteur bancaire, emballage, électronique grand public...).",
     "un_pays_dactivite_est_un_pays_ou_vous_avez_ve": "Un pays d'activité est un pays où vous avez vécu au moins une année et dont vous connaissez la vie professionnelle et la culture.",
     "une_langue_sera_consideree_comme_courante_si_": "Une langue sera considérée comme courante si vous pouvez la pratiquer sans problème par oral et écrit dans la vie professionnelle.",
-    "candidature_comme_mandataire": "CANDIDATURE COMME MANDATAIRE"
+    "candidature_comme_mandataire": "CANDIDATURE COMME MANDATAIRE",
+    "experience_de_mandataire_social_1": "Expérience de mandataire social 1",
+    "experience_de_mandataire_social_2": "Expérience de mandataire social 2",
+    "experience_de_mandataire_social_3": "Expérience de mandataire social 3",
+    "formation_indiquer_le_diplome": "Formation, indiquer le diplôme",
+    "envoyer": "Envoyer",
+    "effacer": "Effacer",
+    "tel_title": "Seuls les caractères de numéros de téléphone (#, -, *, etc.) sont acceptés."
   },
   "page_catalogue_documents": {
     "documents_disponibles_en_telechargement": "Documents disponibles en téléchargement",
@@ -1065,7 +1085,8 @@
   },
   "page_club_europeen": {
     "cette_page_est_en_cours_de_construction_le_co": "Cette page est en cours de construction. Le contenu sera disponible prochainement.",
-    "club_europeen": "Club Européen"
+    "club_europeen": "Club Européen",
+    "retour_a_laccueil": "← Retour à l'accueil"
   },
   "page_comparaison_feminisation_boards_comex": {
     "comparaison_des_vitesses_de_feminisation_des_": "<i class=\"fas fa-chart-bar me-3\"></i>Comparaison des vitesses de féminisation des Boards et Comex"
@@ -1078,11 +1099,14 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "les_conseils_dadministration_et_le_numerique": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Les conseils d'administration et le numérique"
+    "les_conseils_dadministration_et_le_numerique": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Les conseils d'administration et le numérique",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_consultant_independant": {
     "cette_page_est_en_cours_de_construction_le_co": "Cette page est en cours de construction. Le contenu sera disponible prochainement.",
-    "consultant_independant": "Consultant indépendant"
+    "consultant_independant": "Consultant indépendant",
+    "retour_a_laccueil": "← Retour à l'accueil"
   },
   "page_cours_inseec": {
     "un_cours_de_trois_heures_pour_les_etudiants_d": "<i class=\"fas fa-graduation-cap text-primary me-2\"></i>Un cours de trois heures pour les étudiants de l'<strong>INSEEC Master 2</strong> comportant un atelier de simulation du déroulement d'un Conseil d'Administration, les étudiants jouant les rôles des administrateurs et administratrices.",
@@ -1099,7 +1123,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "couverture_lharmattan": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Couverture L'Harmattan"
+    "couverture_lharmattan": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Couverture L'Harmattan",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_diagnostics_ca": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1119,7 +1145,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "directive_europeenne": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Directive européenne"
+    "directive_europeenne": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Directive européenne",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_dsi_conseils_administration": {
     "le_rappel_de_cette_intervention_souligne_comb": "Le rappel de cette intervention souligne combien le dialogue entre la direction des systèmes d'information et le conseil d'administration est devenu un enjeu majeur pour les entreprises engagées dans leur transformation numérique.",
@@ -1136,7 +1164,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "entreprise_liberee_preface": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Entreprise libérée (Préface)"
+    "entreprise_liberee_preface": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Entreprise libérée (Préface)",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_etude_juin_2025": {
     "g_s_a_commence_ses_etudes_annuelles_de_la_fem": "G & S a commencé ses études annuelles de la féminisation des Conseils d'Administration des entreprises des sociétés cotées en 2010 à l'occasion de la préparation de la Loi Copé Zimmerman.",
@@ -1197,7 +1227,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "generalites_corporate_governance": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Généralités Corporate Governance"
+    "generalites_corporate_governance": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Généralités Corporate Governance",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_glossaire_prestations": {
     "tant_un_conseil_dadministration_que_des_manag": "Tant un conseil d'administration que des managers exécutifs peuvent être amené à utiliser des prestations de conseil.",
@@ -1245,11 +1277,14 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "ia_et_la_compliance_avant_propos": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    IA et la Compliance (Avant-Propos)"
+    "ia_et_la_compliance_avant_propos": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    IA et la Compliance (Avant-Propos)",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_ifa_et_numerique": {
     "cette_page_est_en_cours_de_construction_le_co": "Cette page est en cours de construction. Le contenu sera disponible prochainement.",
-    "ifa_et_le_numerique": "IFA et le numérique"
+    "ifa_et_le_numerique": "IFA et le numérique",
+    "retour_a_laccueil": "← Retour à l'accueil"
   },
   "page_information_administrateurs": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1259,7 +1294,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "linformation_des_administrateurs": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    L'information des administrateurs"
+    "linformation_des_administrateurs": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    L'information des administrateurs",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_informatique": {
     "g_s_a_en_tete_des_ateliers_dune_journee_selon": "G & S a en tête des ateliers d'une journée selon une approche originale « les mains dans le cambouis » avec des partenaires qualifiés chaque fois sur un thème spécifique tel que :",
@@ -1316,7 +1353,10 @@
     "guy_le_pechon_x_et_valerie_lejeune_uco_ont_de": "Guy Le Péchon (X) et Valérie Lejeune (UCO) ont dédicacé le livre.",
     "petit_dejeuner_avec_presentation_du_chapitre_": "Petit Déjeuner avec présentation du chapitre \"Intelligence Collective\"",
     "petit_dejeuner_bookin_autour_du_chapitre_sur_": "Petit Déjeuner \"Book'In\" autour du chapitre sur la Responsabilité Sociale et Environnementale",
-    "le_monde_et_la_gouvernance_des_eti": "Le monde et la gouvernance des ETI"
+    "le_monde_et_la_gouvernance_des_eti": "Le monde et la gouvernance des ETI",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "interview_de_valerie_lejeune_sur_eti_radio": "<i class=\"fas fa-podcast text-primary me-2\"></i> Interview de Valérie Lejeune sur ETI Radio <i class=\"fas fa-external-link-alt ms-auto text-muted\"></i>",
+    "video_de_20_minutes_intervention_de_guy_le_pechon": "<i class=\"fab fa-youtube text-danger me-2\"></i> Vidéo de 20 minutes - Intervention de Guy Le Péchon au Jeudigital <i class=\"fas fa-external-link-alt ms-auto text-muted\"></i>"
   },
   "page_livre_eti": {
     "salon_du_livre_des_polytechniciens": "Salon du livre des Polytechniciens",
@@ -1344,11 +1384,14 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "livre_gouvernance_ca": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Livre Gouvernance CA"
+    "livre_gouvernance_ca": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Livre Gouvernance CA",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_loi_pacte": {
     "cette_page_est_en_cours_de_construction_le_co": "Cette page est en cours de construction. Le contenu sera disponible prochainement.",
-    "loi_pacte": "Loi Pacte"
+    "loi_pacte": "Loi Pacte",
+    "retour_a_laccueil": "← Retour à l'accueil"
   },
   "page_loi_rixain_new": {
     "impact_sur_la_gouvernance_dentreprise": "<i class=\"fas fa-lightbulb text-warning me-2\"></i>Impact sur la gouvernance d'entreprise",
@@ -1383,7 +1426,9 @@
     "formation_et_sensibilisation": "<i class=\"fas fa-graduation-cap text-success me-2\"></i>Formation et sensibilisation",
     "diagnostic_de_conformite": "<i class=\"fas fa-search text-success me-2\"></i>Diagnostic de conformité",
     "plan_daction_personnalise": "<i class=\"fas fa-route text-primary me-2\"></i>Plan d'action personnalisé",
-    "la_loi_rixain_decembre_2021": "La Loi Rixain Décembre 2021"
+    "la_loi_rixain_decembre_2021": "La Loi Rixain Décembre 2021",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_pour_un_audit": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter pour un audit"
   },
   "page_loi_rixain": {
     "impact_sur_la_gouvernance_dentreprise": "<i class=\"fas fa-lightbulb text-warning me-2\"></i>Impact sur la gouvernance d'entreprise",
@@ -1428,7 +1473,8 @@
     "nhesitez_pas_a_nous_contacter_pour_obtenir_de": "N'hésitez pas à nous contacter pour obtenir des informations sur ce sujet :",
     "email_info_g_et_s_com": "<strong>Email :</strong> <a href=\"mailto:info@g-et-s.com\">info@g-et-s.com</a>",
     "contact_contact_g_et_s_com": "<strong>Contact :</strong> <a href=\"mailto:contact@g-et-s.com\">contact@g-et-s.com</a>",
-    "la_loi_zimmerman_janvier_2011_page_en_cours_d": "La loi Zimmerman Janvier 2011 - Page en cours de construction"
+    "la_loi_zimmerman_janvier_2011_page_en_cours_d": "La loi Zimmerman Janvier 2011 - Page en cours de construction",
+    "retour_a_laccueil": "← Retour à l'accueil"
   },
   "page_missions_conseil": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1438,7 +1484,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "missions_conseil": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Missions conseil"
+    "missions_conseil": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Missions conseil",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_monde_numerique_relation_client": {
     "cette_video_insiste_sur_les_nouveautes_induit": "Cette vidéo insiste sur les nouveautés induites dans la relation client du fait de la mise à disposition sur le Web de données clients en dehors des systèmes d'information dénommés « Legacy ».",
@@ -1447,7 +1495,9 @@
     "generalites": "Généralités",
     "le_monde_numerique_et_la_relation_client": "Le monde numérique et la relation client",
     "le_monde_numerique_et_la_relation_client_2": "Le monde numérique et la relation client",
-    "jai_eu_le_plaisir": "J'ai eu le plaisir de pouvoir intervenir sous forme  <a href=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3DtCVHIHwlDCo&amp;sa=D&amp;source=editors&amp;ust=1758713341200481&amp;usg=AOvVaw3w64SDKKkgBpEXv5yKxfeS\" target=\"_blank\">d'une courte vidéo</a> dans un atelier à distance organisé par l'association X Digital des anciens élèves de l'École Polytechnique."
+    "jai_eu_le_plaisir": "J'ai eu le plaisir de pouvoir intervenir sous forme  <a href=\"https://www.google.com/url?q=https://www.youtube.com/watch?v%3DtCVHIHwlDCo&amp;sa=D&amp;source=editors&amp;ust=1758713341200481&amp;usg=AOvVaw3w64SDKKkgBpEXv5yKxfeS\" target=\"_blank\">d'une courte vidéo</a> dans un atelier à distance organisé par l'association X Digital des anciens élèves de l'École Polytechnique.",
+    "publie_le_24_septembre_2025": "Publié le 24 septembre 2025",
+    "generalites_contributions": "Généralités - Contributions"
   },
   "page_monde_numerique": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1457,7 +1507,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "le_monde_numerique_et_la_relation_client_vide": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Le monde numérique et la relation client (Vidéo)"
+    "le_monde_numerique_et_la_relation_client_vide": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Le monde numérique et la relation client (Vidéo)",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_observatoire_genres": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1467,7 +1519,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "observatoire_des_genres": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Observatoire des genres"
+    "observatoire_des_genres": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Observatoire des genres",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_organisation_gs": {
     "pour_plus_dinformations": "Pour plus d'informations",
@@ -1489,7 +1543,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "ouvrage_collectif_ca": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Ouvrage collectif CA"
+    "ouvrage_collectif_ca": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Ouvrage collectif CA",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_plateforme_formation": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1499,7 +1555,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "plateforme_de_formation": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Plateforme de formation"
+    "plateforme_de_formation": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Plateforme de formation",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_questionnaire_rixain_societes": {
     "a_titre_dexemple_voici_deux_premieres_questio": "A titre d'exemple voici deux premières questions extraites du questionnaire :",
@@ -1529,7 +1587,8 @@
     "nhesitez_pas_a_nous_contacter_pour_obtenir_de": "N'hésitez pas à nous contacter pour obtenir des informations sur ce sujet :",
     "email_info_g_et_s_com": "<strong>Email :</strong> <a href=\"mailto:info@g-et-s.com\">info@g-et-s.com</a>",
     "contact_contact_g_et_s_com": "<strong>Contact :</strong> <a href=\"mailto:contact@g-et-s.com\">contact@g-et-s.com</a>",
-    "questionnaire_enquete_rixain_page_en_cours_de": "Questionnaire Enquête Rixain - Page en cours de construction"
+    "questionnaire_enquete_rixain_page_en_cours_de": "Questionnaire Enquête Rixain - Page en cours de construction",
+    "retour_a_laccueil": "← Retour à l'accueil"
   },
   "page_recherche_administrateur": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1539,7 +1598,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "recherche_administrateur": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Recherche administrateur"
+    "recherche_administrateur": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Recherche administrateur",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_salarie_dirigeants_confiance": {
     "preface": "Préface",
@@ -1555,7 +1616,9 @@
     "accueil": "<a href=\"../index.html\">Accueil</a>",
     "generalites": "Généralités",
     "salaries_et_dirigeants_en_confiance": "Salariés et Dirigeants en Confiance",
-    "salaries_et_dirigeants_en_confiance_2": "Salariés et Dirigeants en Confiance"
+    "salaries_et_dirigeants_en_confiance_2": "Salariés et Dirigeants en Confiance",
+    "publie_le_24_septembre_2025": "Publié le 24 septembre 2025",
+    "generalites_contributions": "Généralités - Contributions"
   },
   "page_shadow_conseil": {
     "pourquoi_est_ce_possible_comment": "Pourquoi ? Est-ce possible ? Comment ?",
@@ -1587,7 +1650,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "soiree_de_lancement": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Soirée de lancement"
+    "soiree_de_lancement": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Soirée de lancement",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_travaux_ifa_digital": {
     "de_quelles_informations_ladministrateur_a_t_i": "<i class=\"fas fa-info-circle me-2\"></i>\n                    De quelles informations l'Administrateur a-t-il besoin",
@@ -1606,7 +1671,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "video_glp_vl": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Video GLP VL"
+    "video_glp_vl": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Video GLP VL",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "page_webinaires_passes": {
     "page_en_cours_de_developpement": "Page en cours de développement",
@@ -1616,7 +1683,9 @@
     "pour_plus_dinformations_sur_ce_sujet_nhesitez": "Pour plus d'informations sur ce sujet, n'hésitez pas à nous contacter :",
     "email_contact_g_et_s_com": "<i class=\"fas fa-at text-primary me-2\"></i>\n<strong>Email :</strong> contact@g-et-s.com",
     "nous_contacter": "<i class=\"fas fa-envelope text-primary me-2\"></i>Nous contacter",
-    "webinaires_passes": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Webinaires passés"
+    "webinaires_passes": "<i class=\"fas fa-tools text-primary me-3\"></i>\n                    Webinaires passés",
+    "retour_a_laccueil": "<i class=\"fas fa-home me-2\"></i> Retour à l'accueil",
+    "nous_contacter_btn": "<i class=\"fas fa-envelope me-2\"></i> Nous contacter"
   },
   "footer_contrib": {
     "name": "Guy Le Péchon",
