@@ -42,10 +42,10 @@
     "email_label": "Contacts",
     "mail_label": "Courrier",
     "phone_label": "Tél",
-    "address": "Guy Le Péchon, G & S, 2 allée des troènes, 92330 SCEAUX, France",
+    "address": "Guy Le Péchon, G & S, 2 allées des Troènes, 92330 SCEAUX, France",
     "email": "info@g-et-s.com",
     "email_candidates": "contact@g-et-s.com",
-    "phone": "06 16 31 07 15"
+    "phone": "+33(0)6 16 31 07 15"
   },
   "home": {
     "meta": {
@@ -314,10 +314,16 @@
       "title": "Livres"
     }
   },
+  "page_presse": {
+    "la_presse_parle_de_gouvernance_structures": "LA PRESSE PARLE DE\nGOUVERNANCE & STRUCTURES",
+    "breadcrumb_presse": "<span style=\"color: #00ccff;\"><a style=\"color: #00ccff;\" href=\"../index.html\">ACCUEIL</a> &gt;&gt; <a style=\"color: #00ccff;\" href=\"../index.htmlla-presse-parle-de-gouvernance-structures/\">LA PRESSE PARLE DE GOUVERNANCE &amp; STRUCTURES</a></span>"
+  },
   "sites": {
     "title": "Sites intéressants",
     "breadcrumb": "Accueil >> Sites intéressants",
     "section_partners": "Sites intéressants pour la Gouvernance des entreprises — Sites partenaires de G & S",
+    "sites_interessants_pour_la_gouvernance": "<strong>Sites Intéressants pour la Gouvernance des entreprises</strong>",
+    "sites_partenaires_de_g_s": "<strong>&nbsp;Sites partenaires </strong><strong>de </strong><strong>G & S</strong>",
     "adae": "Association des Dirigeants et Administrateurs d’Entreprise",
     "banque_notes": "Banque-Notes — Comprendre l’Europe bancaire et monétaire",
     "objectif_cash": "Objectif-Cash — Cabinet spécialisé en Direction Financière Opérationnelle & Management de Transition",
@@ -395,6 +401,11 @@
     "soiree_hi_team": "<span>Soirée Hi-Team</span>\n<a class=\"hiteam-logo-link\" href=\"https://t.ly/4o3Tq\" rel=\"noopener\" target=\"_blank\">\n<img alt=\"Hi-Team Logo\" class=\"hiteam-logo\" onerror=\"this.style.display='none'\" src=\"includes/hiteam.jpg\"/>\n</a>",
     "soiree_mixite_des_instances_comex_codir_et_ca": "Soirée : Mixité des instances (COMEX/CODIR) et cadres dirigeant(e)s",
     "7_juillet_2026": "7 juillet 2026",
+    "avant_fin_2026": "Avant fin 2026",
+    "news_date_avant_fin_2026": "<i class=\"fas fa-calendar-day\"></i>Avant fin 2026",
+    "presentation_feminisation_instances_gouvernance": "Présentation de la situation de la féminisation des Instances de Gouvernance (Conseils d'administration, Comex et Codir) des sociétés du CAC40 à fin mai 2026",
+    "gouvernance_structures_serait_tres_heureux_de": "Gouvernance & Structures serait très heureux de trouver une entité partenaire organisatrice d'un évènement rassemblant des dirigeant(e)s, évènement au sein duquel G & S présenterait ses résultats originaux.",
+    "ecrire_a_contact_g_et_s_com": "Écrire à <a href=\"mailto:contact@g-et-s.com\">contact@g-et-s.com</a>",
     "guy_le_pechon_sera_lun_des_deux_animateurs_de": "Guy Le Péchon sera l'un des deux animateurs de l'après-midi consacrée à des simulations avec jeux de rôles pour deux réunions de Conseil d'Administration.",
     "cet_apres_midi_se_situe_a_la_fin_des_cours_se": "Cet après-midi se situe à la fin des cours se déroulant actuellement du Certificat de Centrale-Supélec Executive Education pour les membres en place ou potentiels de Comex et Codir.",
     "ainsi_les_participants_amelioreront_leur_conn": "Ainsi, les participants amélioreront leur connaissance des relations attendues entre les Comex/ouCodir et les Conseils d'Administration.",
@@ -1253,8 +1264,8 @@
     "ainsi_dernierement_g_s_a_mene_une_etude_appro": "Ainsi dernièrement G&S a mené une étude approfondie sur la place des femmes mandataires sociaux au sein de 550 entreprises françaises cotées sur Euronext et antérieurement une enquête originale à l'époque sur le thème de - gouvernance, performance et modernité-, enquête en collaboration avec l'ADAE et la société Acadys auprès d'un échantillon comprenant des entreprises moyennes et filiales de groupes étrangers.",
     "site_internet_http_www_g_et_s_com": "<strong>Site internet :</strong> <a href=\"http://www.g-et-s.com\" style=\"color: #1e73be;\">http://www.g-et-s.com</a>",
     "contacts_info_g_et_s_com": "<strong>Contacts :</strong> <a href=\"mailto:info@g-et-s.com\" style=\"color: #1e73be;\">info@g-et-s.com</a>",
-    "courrier_guy_le_pechon_g_s_2_allee_des_troene": "<strong>Courrier :</strong> Guy Le Péchon, G & S, 2 allée des troènes, 92330 SCEAUX, France",
-    "tel_06_16_31_07_15": "<strong>Tél :</strong> 06 16 31 07 15",
+    "courrier_guy_le_pechon_g_s_2_allee_des_troene": "<strong>Courrier :</strong> Guy Le Péchon, G & S, 2 allées des Troènes, 92330 SCEAUX, France",
+    "tel_06_16_31_07_15": "<strong>Tél :</strong> +33(0)6 16 31 07 15",
     "g_s_a_ete_le_premier_a_presenter_des_statisti": "G & S a été le premier à présenter des statistiques détaillées sur la féminisation des conseils des sociétés cotées sur Euronext Paris, lors d'une réunion des anciens de l'INSEAD en juillet 2009 pendant le temps de préparation de la loi Copé Zimmerman.",
     "letude_g_s_sur_la_place_des_femmes_administra": "L'étude G & S sur <b><span style=\"color: #0000ff;\">« La place des femmes administrateurs dans les sociétés cotées françaises »</span></b> <span style=\"color: #000000;\">présentée ci-dessous a été mise à jour à partir des rapports annuels à fin 2009.</span>",
     "le_petit_dejeuner_organise_debut_juillet_2009": "<span style=\"color: #0033cc;\">Le Petit déjeuner organisé début juillet 2009</span>",

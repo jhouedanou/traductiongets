@@ -42,10 +42,10 @@
     "email_label": "Contacts",
     "mail_label": "Mail",
     "phone_label": "Tel",
-    "address": "Guy Le Péchon, G & S, 2 allée des troènes, 92330 SCEAUX, France",
+    "address": "Guy Le Péchon, G & S, 2 allées des Troènes, 92330 SCEAUX, France",
     "email": "info@g-et-s.com",
     "email_candidates": "contact@g-et-s.com",
-    "phone": "06 16 31 07 15"
+    "phone": "+33(0)6 16 31 07 15"
   },
   "home": {
     "meta": {
@@ -252,7 +252,7 @@
     }
   },
   "training": {
-    "title": "Administrator Training",
+    "title": "Board Directors Training",
     "breadcrumb": "Home >> Director Training",
     "section1": "MANAGEMENT BODY TRAINING",
     "original": {
@@ -314,10 +314,16 @@
       "title": "Books"
     }
   },
+  "page_presse": {
+    "la_presse_parle_de_gouvernance_structures": "THE PRESS TALKS ABOUT GOUVERNANCE & STRUCTURES",
+    "breadcrumb_presse": "<span style=\"color: #00ccff;\"><a style=\"color: #00ccff;\" href=\"../index.html\">HOME</a> &gt;&gt; <a style=\"color: #00ccff;\" href=\"../index.htmlla-presse-parle-de-gouvernance-structures/\">THE PRESS TALKS ABOUT GOUVERNANCE &amp; STRUCTURES</a></span>"
+  },
   "sites": {
     "title": "Interesting sites",
     "breadcrumb": "Home >> Interesting sites",
-    "section_partners": "Interesting sites for Corporate Governance — G & S partner sites",
+    "section_partners": "Interesting web sites for Corporate Governance — G & S Partners web sites",
+    "sites_interessants_pour_la_gouvernance": "<strong>Interesting web sites for Corporate Governance</strong>",
+    "sites_partenaires_de_g_s": "<strong>G & S Partners web sites</strong>",
     "adae": "Association of Business Managers and Directors",
     "banque_notes": "Banque-Notes — Understanding banking and monetary Europe",
     "objectif_cash": "Objectif-Cash — Firm specializing in Operational Financial Management & Transition Management",
@@ -395,6 +401,11 @@
     "soiree_hi_team": "<span>Hi-Team Evening</span>\n<a class=\"hiteam-logo-link\" href=\"https://t.ly/4o3Tq\" rel=\"noopener\" target=\"_blank\">\n<img alt=\"Hi-Team Logo\" class=\"hiteam-logo\" onerror=\"this.style.display='none'\" src=\"includes/hiteam.jpg\"/>\n</a>",
     "soiree_mixite_des_instances_comex_codir_et_ca": "Evening: \"Instances Dirigeantes\" (COMEX/CODIR) and senior executives",
     "7_juillet_2026": "July 7, 2026",
+    "avant_fin_2026": "Before end of 2026",
+    "news_date_avant_fin_2026": "<i class=\"fas fa-calendar-day\"></i>Before end of 2026",
+    "presentation_feminisation_instances_gouvernance": "Presentation of the situation of the feminization of Governance Bodies (Boards of Directors, Executive Committees and Management Committees) of CAC40 companies as of end of May 2026",
+    "gouvernance_structures_serait_tres_heureux_de": "Gouvernance & Structures would be very pleased to find a partner entity to organize an event bringing together executives, at which G & S would present its original results.",
+    "ecrire_a_contact_g_et_s_com": "Write to <a href=\"mailto:contact@g-et-s.com\">contact@g-et-s.com</a>",
     "guy_le_pechon_sera_lun_des_deux_animateurs_de": "Guy Le Péchon will be one of the two facilitators of the afternoon devoted to simulations with role plays for two Board meetings.",
     "cet_apres_midi_se_situe_a_la_fin_des_cours_se": "This afternoon is at the end of the courses currently taking place for the Centrale-Supélec Executive Education Certificate for existing or potential members of Comex and Codir.",
     "ainsi_les_participants_amelioreront_leur_conn": "Thus, participants will improve their knowledge of the expected relationships between Comex/ouCodir and the Boards of Administration.",
@@ -676,8 +687,8 @@
     "retour_a_laccueil": "← Back to home"
   },
   "page_candidats_mandataires_sociaux": {
-    "candidat_e_s_mandatairesadministratrices_admi": "PRESENTATIVE CANDIDATES<br/>\nADMINISTRATORS ADMINISTRATORS",
-    "accueil_candidats_mandatairesadministratrices": "<span style=\"color: #00ccff;\"><a href=\"../index.html\" style=\"color: #00ccff;\">Home</a> &gt;&gt; <a href=\"../index.htmlelementor-380/\" style=\"color: #00ccff;\">CANDIDATES OFFICERS</a> DIRECTORS DIRECTORS</span>",
+    "candidat_e_s_mandatairesadministratrices_admi": "List of Board Members Candidates known by G & S",
+    "accueil_candidats_mandatairesadministratrices": "<span style=\"color: #00ccff;\"><a href=\"../index.html\" style=\"color: #00ccff;\">Home</a> &gt;&gt; <a href=\"../index.htmlelementor-380/\" style=\"color: #00ccff;\">BOARD MEMBERS CANDIDATES</a></span>",
     "aujourdhui_des_conseils_dadministration_peuve": "Today, Boards of Directors may be required to look for qualified women and men in order to co-opt them as directors.",
     "gouvernance_structures_connait_deja_un_certai": "Governance & Structures already knows a certain number of candidates. Their anonymous mini CV is shown below.",
     "pour_connaitre_leur_nom_et_leurs_coordonnees_": "To find out their name and contact details and contact them, write to <a href=\"mailto:contact@g-et-s.com\">contact@g-et-s.com</a> specifying the reference indicated.",
@@ -1046,7 +1057,7 @@
     "un_secteur_dactivite_correspond_en_general_a_": "A sector of activity generally corresponds to a market (e.g. banking sector, packaging, consumer electronics, etc.).",
     "un_pays_dactivite_est_un_pays_ou_vous_avez_ve": "A country of activity is a country where you have lived for at least one year and where you know the professional life and culture.",
     "une_langue_sera_consideree_comme_courante_si_": "A language will be considered fluent if you can practice it without problem orally and in writing in real life professional.",
-    "candidature_comme_mandataire": "APPLICATION AS A PROXY",
+    "candidature_comme_mandataire": "Board Member Candidate application form",
     "experience_de_mandataire_social_1": "Corporate officer experience 1",
     "experience_de_mandataire_social_2": "Corporate officer experience 2",
     "experience_de_mandataire_social_3": "Corporate officer experience 3",
@@ -1199,7 +1210,7 @@
     "les_5_normes_europeennes_ont_servi_de_point_d": "The 5 European standards served as a starting point for similar ISO standards.",
     "pour_incorporation_dans_une_lettre_de_lassoci": "For incorporation into a letter from the XMP Consult association, I wrote an article",
     "un_beotien_egare_dans_la_fabrication_de_norme": "<strong>“A philistine lost in the making of European Standards”</strong>",
-    "a_telechargeren_cliquant_icipresentant_mes_im": "to download <a download=\"\" href=\"../images/nouvelleversion/mep.pdf\">by clicking here </a>presenting my impressions following this activity of several years and including the diagram below",
+    "a_telechargeren_cliquant_icipresentant_mes_im": "to download <a download=\"\" href=\"../documents/EN/en.pdf\" data-pdf-fr=\"../images/nouvelleversion/mep.pdf\" data-pdf-en=\"../documents/EN/en.pdf\">by clicking here </a>presenting my impressions following this activity of several years and including the diagram below",
     "accueil": "<a href=\"../index.html\">Home</a>",
     "generalites": "General",
     "facilities_management_les_normes_europeennes": "Facilities Management, European standards",
@@ -1224,7 +1235,7 @@
     "institute_of_directors": "<b><span style=\"color: #0000a0;\">Institute Of Directors</span></b>",
     "formation_pour_la_certification_commechartere": "<span style=\"color: #000000;\">Training for certification as <a href=\"http://www.iod.com/Home/Training-and-Development/Chartered-Director/\">\"Chartered Director\" </a>, for company directors in the UK</span>",
     "formations_institutionnelles": "<strong>INSTITUTIONAL TRAINING</strong>",
-    "formations_dadministrateurs": "<i class=\"fas fa-graduation-cap me-3\"></i>Administrator Training",
+    "formations_dadministrateurs": "<i class=\"fas fa-graduation-cap me-3\"></i>Board Directors Training",
     "inseadinternational_directors_programexecutiv": "<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"3\" width=\"95%\">\n<tbody>\n<tr>\n<td data-i18n=\"page_formations_administrators.inseadinternational_directors_programexecutiv_2\" style=\"border: solid 1px #c7d1dac7;\">\n<div align=\"center\">\n<p data-i18n=\"administrator_training_page.insead\"><b><span style=\"color: #0000a0;\">INSEAD</span></b></p>\n<p align=\"center\" data-i18n=\"page_formations_administrators.international_directors_program\"><a href=\"https://www.insead.edu/executive-education/corporate-governance/aspiring-directors-programme?_ref=finder\"><span style=\"color: #000000;\">International Directors Program</span></a></p>\n<p align=\"center\" data-i18n=\"page_formations_administrators.executive_educationvision_tres_internationale\"><span style=\"color: #0000ff;\">Executive Education<br/>Very international vision</span></p>\n</div>\n</td>\n</tr>\n<tr>\n<td data-i18n=\"page_formations_administrators.ifa_cdainstitut_francais_des_administrateursd\" style=\"border: solid 1px #c7d1dac7;\">\n<p align=\"center\" data-i18n=\"page_formations_administrators.ifa_cdainstitut_francais_des_administrateurs\"><b><span style=\"color: #0000a0;\">IFA - CDA<br/>French Institute of Administrators</span></b></p>\n<!-- <p align=\"center\"><span style=\"color: #0000a0;\"><a href=\"http://www.ifa-asso.com/formation/seminaires_surmesure.php\"><span style=\"color: #000000;\">Tailor-made seminars</span></a></span></p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<p align=\"center\"><span style=\"color: #0000a0;\"><a href=\"http://www.ifa-asso.com/formation/certification.php\"><span style=\"color: #000000;\">The training-certification course</span></a></span></p> -->\n<p align=\"center\" data-i18n=\"page_formations_administrators.various_certificant_programs\"><span style=\"color: #0000a0;\"><a href=\"https://www.ifa-asso.com/formations/les-programmes-certatifs/\"><span style=\"color: #000000;\">Various certification programs</span></a></span></p>\n<p align=\"center\"><a href=\"https://lnk.pmlto-etao-3.ovh/vbqjJ3cXSr3KAnaWWHGzuhTVA/10311712104610810104 5112101099104111110064103045101116045115046099111109/m97rV1700661/versionWeb.html\" rel=\"noopener\" target=\"_blank\"><img alt=\"IFA Formation\" src=\"../images/image002.png\" style=\"max-width: 100%; height: auto;\"/></a></p>\n</td>\n</tr>\n<tr>\n<td data-i18n=\"page_formations_administrators.adaeass_des_administrators_et_managers_den_2\" style=\"border: solid 1px #c7d1dac7;\">\n<p align=\"center\" data-i18n=\"page_formations_administrateurs.adaeass_des_administrateurs_et_dirigeants_den\"><a align=\"center\" href=\"https://www.club-adae.fr/%F0%9F%9A%80-devenez-un-administrateur-qualifie-independant-avec-ladae/\" target=\"_blank\"><span style=\"color: #000000;\"><b><span style=\"color: #0000cc;\">ADAE </span><span style=\"color: #0000cc;\">Ass. of Company Directors and Managers </span></b></span></a></p>\n<!-- <p align=\"center\"><span style=\"color: #0000cc;\"><a href=\"http://www.adae.asso.fr/agenda.php#34\"><span style=\"color: #000000;\">AQ Label 1 certified training</span></a></span></p> -->\n</td>\n</tr>\n<tr>\n<td data-i18n=\"page_formations_administrators.essecwomen_be_european_board_readyreserve_aux\" style=\"border: solid 1px #c7d1dac7;\">\n<div align=\"center\">\n<p data-i18n=\"page_formations_administrators.essec\"><b><span style=\"color: #0000a0;\">ESSEC</span></b></p>\n<p align=\"center\" data-i18n=\"page_formations_administrators.women_be_european_board_ready\"><a href=\"https://www.club-adae.fr/%F0%9F%9A%80-devenez-un-administrateur-qualifie-independant-avec-ladae/\"><span style=\"color: #000000;\">Women Be European Board Ready</span></a></p>\n<p align=\"center\" data-i18n=\"page_formations_administrators.reserve_aux_femmes\"><span style=\"color: #0000ff;\">Reserved for women </span></p>\n</div>\n</td>\n</tr>\n<tr>\n<td data-i18n=\"page_formations_administrateurs.m_lyon_business_schoolcertificatvoir_presenta\" height=\"89\" style=\"border: solid 1px #c7d1dac7;\">\n<p align=\"center\" data-i18n=\"page_formations_administrateurs.m_lyon_business_schoolcertificat\"><span style=\"color: #000000;\"><b><span style=\"color: #0000cc;\">M LYON BUSINESS SCHOOL</span><span style=\"color: #0000cc;\">Certificate </span></b></span></p>\n<p align=\"center\" data-i18n=\"page_formations_administrators.see_presentation\"><a href=\"https://executive.em-lyon.com/Formations/Certificats/OA-Objectif-Administratrice\">See presentation</a></p>\n</td>\n</tr>\n<tr>\n<td data-i18n=\"page_formations_administrators.institute_of_directorsformation_pour_la_certi\" style=\"border: solid 1px #c7d1dac7;\">\n<div align=\"center\">\n<p data-i18n=\"page_formations_administrators.institute_of_directors\"><b><span style=\"color: #0000a0;\">Institute Of Directors</span></b></p>\n<p align=\"center\" data-i18n=\"page_formations_administrateurs.formation_pour_la_certification_commechartere\"><span style=\"color: #000000;\">Training for certification as <a href=\"http://www.iod.com/Home/Training-and-Development/Chartered-Director/\">\"Chartered Director\" </a>, for company directors in the UK</span></p>\n<!--details in the guide for <a href=\"http://www.iod.com/MainWebsite/Resources/Document/Exam-guide-June-Nov-2011.pdf\">exam</a></span>-->\n</div>\n</td>\n</tr>\n</tbody>\n</table>",
     "inseadinternational_directors_programexecutiv_2": "<div align=\"center\">\n<p data-i18n=\"administrator_training_page.insead\"><b><span style=\"color: #0000a0;\">INSEAD</span></b></p>\n<p align=\"center\" data-i18n=\"page_formations_administrators.international_directors_program\"><a href=\"https://www.insead.edu/executive-education/corporate-governance/aspiring-directors-programme?_ref=finder\"><span style=\"color: #000000;\">International Directors Program</span></a></p>\n<p align=\"center\" data-i18n=\"page_formations_administrators.executive_educationvision_tres_internationale\"><span style=\"color: #0000ff;\">Executive Education<br/>Very international vision</span></p>\n</div>",
     "ifa_cdainstitut_francais_des_administrateursd": "<p align=\"center\" data-i18n=\"page_formations_administrators.ifa_cdainstitut_francais_des_administrateurs\"><b><span style=\"color: #0000a0;\">IFA - CDA<br/>French Institute of Administrators</span></b></p>\n <p align=\"center\"><span style=\"color: #0000a0;\"><a href=\"http://www.ifa-asso.com/formation/seminaires_surmesure.php\"><span style=\"color: #000000;\">Tailor-made seminars</span></a></span></p>\n\t\t\t\t\t\t\t\t\t\t\t\t\t<p align=\"center\"><span style=\"color: #0000a0;\"><a href=\"http://www.ifa-asso.com/formation/certification.php\"><span style=\"color: #000000;\">The training-certification course</span></a></span></p> \n<p align=\"center\" data-i18n=\"page_formations_administrators.various_certificant_programs\"><span style=\"color: #0000a0;\"><a href=\"https://www.ifa-asso.com/formations/les-programmes-certatifs/\"><span style=\"color: #000000;\">Various certification programs</span></a></span></p>\n<p align=\"center\"><a href=\"https://lnk.pmlto-etao-3.ovh/vbqjJ3cXSr3KAnaWWHGzuhTVA/10311712104610810104 5112101099104111110064103045101116045115046099111109/m97rV1700661/versionWeb.html\" rel=\"noopener\" target=\"_blank\"><img alt=\"IFA Formation\" src=\"../images/image002.png\" style=\"max-width: 100%; height: auto;\"/></a></p>",
@@ -1267,8 +1278,8 @@
     "ainsi_dernierement_g_s_a_mene_une_etude_appro": "Thus recently G&S conducted an in-depth study on the place of female corporate officers within 550 French companies listed on Euronext and previously an original survey at the time on the theme of - governance, performance and modernity -, survey in collaboration with ADAE and the company Acadys with a sample including medium-sized companies and group subsidiaries foreigners.",
     "site_internet_http_www_g_et_s_com": "<strong>Website:</strong> <a href=\"http://www.g-et-s.com\" style=\"color: #1e73be;\">http://www.g-et-s.com</a>",
     "contacts_info_g_et_s_com": "<strong>Contacts:</strong> <a href=\"mailto:info@g-et-s.com\" style=\"color: #1e73be;\">info@g-et-s.com</a>",
-    "courrier_guy_le_pechon_g_s_2_allee_des_troene": "<strong>Mail:</strong> Guy Le Péchon, G & S, 2 allée des privènes, 92330 SCEAUX, France",
-    "tel_06_16_31_07_15": "<strong>Tel:</strong> 06 16 31 07 15",
+    "courrier_guy_le_pechon_g_s_2_allee_des_troene": "<strong>Mail:</strong> Guy Le Péchon, G & S, 2 allées des Troènes, 92330 SCEAUX, France",
+    "tel_06_16_31_07_15": "<strong>Tel:</strong> +33(0)6 16 31 07 15",
     "g_s_a_ete_le_premier_a_presenter_des_statisti": "G & S was the first to present detailed statistics on the feminization of boards of companies listed on Euronext Paris, during a meeting of INSEAD alumni in July 2009 during the preparation time for the Copé Zimmerman law.",
     "letude_g_s_sur_la_place_des_femmes_administra": "The G & S study on <b><span style=\"color: #0000ff;\">“The place of women directors in French listed companies”</span></b> <span style=\"color: #000000;\">presented below has been updated based on the annual reports at the end of 2009.</span>",
     "le_petit_dejeuner_organise_debut_juillet_2009": "<span style=\"color: #0033cc;\">The Breakfast organized at the beginning of July 2009</span>",
@@ -1711,7 +1722,7 @@
     "contact_label": "Contact",
     "company_label": "Company",
     "address_label": "Address",
-    "address": "2 allée des privènes, 92330 SCEAUX, France",
+    "address": "2 allées des Troènes, 92330 SCEAUX, France",
     "email_label": "Email",
     "phone_label": "Phone",
     "retour_a_laccueil": "Back to home"

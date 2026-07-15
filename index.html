@@ -728,6 +728,7 @@
                                 li.innerHTML = `
                                     <a class="item-link" href="${item.url}">
                                         <span>${(typeof i18n !== 'undefined' && i18n.getLang() === 'en' && item.titleEn) ? item.titleEn : item.title}</span>
+                                        ${item.construction ? '<span class="badge bg-warning text-dark ms-2">' + (typeof i18n !== 'undefined' ? i18n.t('ui.under_construction', 'En construction') : 'En construction') + '</span>' : ''}
                                     </a>`;
                                 ul.appendChild(li);
                             });

@@ -18,7 +18,7 @@ window.articlesData = {
     ],
     'generalites-docs': [
         { title: 'Formation aux Comex/Codir', titleEn: 'Training for Comex/Codir', url: 'pages/certificat-centrale.html' },
-        { title: "Formations au C.A.", titleEn: 'Board of Directors Training', url: 'pages/formations-administrateurs.html' },
+        { title: "Formations au C.A.", titleEn: 'Board Directors Training', url: 'pages/formations-administrateurs.html' },
         { title: 'Sites intéressants et Amis', titleEn: 'Interesting Sites and Partners', url: 'sites-interesssants-4/index.html' },
         { title: 'Bibliographie', titleEn: 'Bibliography', url: 'pages/bibliographie.html' }
     ],
@@ -45,7 +45,7 @@ window.articlesData = {
         { title: 'Candidature comme mandataire', titleEn: 'Application for Board members', url: 'pages/candidats-mandataires.html' }
     ],
     'pour-societes': [
-        { title: 'Candidats mandataires sociaux', titleEn: 'Board members candidates', url: 'pages/candidats-mandataires-sociaux.html' },
+        { title: 'Candidats mandataires sociaux', titleEn: 'Board Members Candidates presentation', url: 'pages/candidats-mandataires-sociaux.html' },
         { title: 'Auto diagnostic Loi Rixain', titleEn: 'Rixain Law Self-Assessment', url: 'pages/questionnaire-rixain-societes.html' },
         { title: 'Diagnostics', titleEn: 'Diagnostics', url: 'pages/diagnostics-ca.html' },
         { title: "Catalogue de documents pour l'administrateur", titleEn: 'Catalogue of documents for Board members candidates', url: 'pages/catalogue-documents.html' },
